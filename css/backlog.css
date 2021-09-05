@@ -1,0 +1,84 @@
+.backlog-container {
+  margin-left: 220px;
+  margin-right: 20px;
+}
+
+.backlog-main-title {
+  margin-top: 30px;
+  margin-bottom: 4px;
+  font-size: 27px;
+}
+
+.backlog-subtitle {
+  color: rgb(8, 8, 110);
+  opacity: 0.5;
+  font-size: 12px;
+  margin: 0;
+}
+
+.sub-titles-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  color: rgb(5, 5, 92);
+  font-weight: bold;
+}
+
+.backlog-unit {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 255, 0.062);
+  border-radius: 5px;
+  font-size: 15px;
+  color: rgba(36, 35, 35, 0.877);
+}
+
+.backlog-unit-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0px 10px;
+}
+
+.category-color {
+  width: 4px;
+  height: 60px;
+  background-color: green;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.profile-pic {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0;
+}
+
+.user-inforamtion-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-information {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.backlog-unit-email {
+  color: rgba(0, 0, 255, 0.534);
+  margin-top: 3px;
+}
+
+.backlog-details {
+  width: 260px;
+}
+
+.category {
+  margin-left: 80px;
+}

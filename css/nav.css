@@ -28,6 +28,7 @@
 	text-align: left;
 	width: 200px;
 }
+
 .navbar-links a{
 	margin-top: 20px;
 	text-decoration: none;
@@ -35,6 +36,7 @@
 	padding-left: 60px;
 
 }
+
 .navbar-links a:hover{
 	border-left: 7px solid #fff;
 }
