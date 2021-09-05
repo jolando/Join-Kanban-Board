@@ -1,5 +1,5 @@
 .backlog-container {
-  margin-left: 140px;
+  margin-left: 153px;
   margin-right: 20px;
 }
 
@@ -7,6 +7,11 @@
   margin-top: 30px;
   margin-bottom: 4px;
   font-size: 27px;
+  color: rgba(0, 0, 0, 0.781);
+}
+
+.category-title {
+  margin-right: 200px;
 }
 
 .backlog-subtitle {
@@ -30,7 +35,7 @@
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 255, 0.062);
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 15px;
   color: rgba(36, 35, 35, 0.877);
 }
@@ -43,11 +48,11 @@
 }
 
 .category-color {
-  width: 4px;
+  width: 6px;
   height: 70px;
   background-color: green;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .profile-picture {
@@ -76,9 +81,9 @@
 }
 
 .backlog-details {
-  width: 260px;
+  max-width: 410px;
 }
 
 .category {
-  margin-left: 80px;
+  margin-left: 50px;
 }
