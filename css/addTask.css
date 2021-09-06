@@ -9,9 +9,13 @@ form {
     background-color: rgb(226, 231, 240);
     padding: 15px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-left: 200px;
 }
+.addTask{
+    margin-left: 200px;
 
+}
 h2 {
     font-size: 14px;
     color: blue;

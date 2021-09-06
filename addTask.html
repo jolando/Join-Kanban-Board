@@ -11,12 +11,20 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/addTask.css">
+
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/over-all.css">
+   
+    <script src="js/include.js"></script>
+
     <script src="js/addTask.js"></script>
+
 </head>
 
-<body>
-    <h1>Add Task</h1>
-    <h2>Learning Management System Project</h2>
+<body onload="includeHTML()">
+    <div w3-include-html="templates/nav.html"></div>
+    <h1 class="addTask">Add Task</h1>
+    <h2 class="addTask">Learning Management System Project</h2>
 
     <form>
         <div class="form-left">
