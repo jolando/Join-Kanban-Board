@@ -1,102 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/addTask.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!--CSS-FILES-->
+    <link rel="stylesheet" href="css/addTask.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/over-all.css" />
 
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/over-all.css">
-
+    <!--JS-FILES-->
+    <script src="js/index.js"></script>
     <script src="js/include.js"></script>
-
+    <script src="js/overall.js"></script>
+    <script src="js/backlog.js"></script>
     <script src="js/addTask.js"></script>
+  </head>
 
-</head>
-
-<body onload="includeHTML()">
+  <body id="add-tast-container" onload="initAddTask();">
     <div w3-include-html="templates/nav.html"></div>
+    <!-- <div w3-include-html="templates/nav.html"></div>
     <h1 class="addTask">Add Task</h1>
     <h2 class="addTask">Learning Management System Project</h2>
 
     <form>
-        <div class="form-left">
-            <div class="title-box" id="todo-container">
-                <h3>TITLE</h3>
-                <input type="text" class="title-input" id="title-field" placeholder="Create a title">
-            </div>
-
-            <div class="category-box">
-                <h3>CATEGORY</h3>
-                <div class="category-field-box">
-                    <div class="category">Management</div>
-                    <img src="img/chevron .png">
-                </div>
-
-            </div>
-
-            <div class="description-box">
-                <h3>DESCRIPTION</h3>
-                <textarea type="text" class="longInput" id="description-field" cols="30" rows="10">
-                </textarea>
-            </div>
-
+      <div class="form-left">
+        <div class="title-box">
+          <h3>TITLE</h3>
+          <input
+            type="text"
+            class="title-input"
+            id="title-field"
+            placeholder="Create a title"
+          />
         </div>
 
-        <div class="form-right">
-            <div class="date-box">
-                <h3>DUE DATE</h3>
-                <input type="date" id="date-field">
-            </div>
-
-
-
-            <div class="urgency-box">
-                <h3>URGENCY</h3>
-                <div class="category-field-box">
-                    <div class="category" id="urgency-status-field">High</div>
-                    <img src="img/chevron .png" onclick="changeUrgency()">
-                    <div class="urgency-content d-none" id="urgency-content">
-                        <p class="urgency-status" id="high-urgency" onclick="highUrgency()">High</p>
-                        <p class="urgency-status" id="medium-urgency" onclick="mediumUrgency()">Medium</p>
-                        <p class="urgency-status" id="low-urgency" onclick="lowUrgency()">Low</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="assignment-box">
-                <h3>ASSIGNED TO</h3>
-
-                <div class="assignment-box-assets">
-                    <div class="profile-box">
-                        <img src="img/profile.png" class="profile-pic">
-                        <img src="img/icon plus.png" class="plus-icon">
-                    </div>
-
-                    <div class="button-box">
-                        <button class="cancel-button">CANCEL</button>
-                        <!-- <button onsubmit="addTask()" class="create-button">CREATE TASK</button> -->
-
-                    </div>
-                </div>
-
-            </div>
-            <button onsubmit="addTask()" class="create-button">CREATE TASK</button>
-
+        <div class="category-box">
+          <h3>CATEGORY</h3>
+          <div class="category-field-box">
+            <div class="category">Management</div>
+            <img src="img/chevron .png" />
+          </div>
         </div>
 
+        <div class="description-box">
+          <h3>DESCRIPTION</h3>
+          <textarea
+            type="text"
+            class="longInput"
+            id="description-field"
+            cols="30"
+            rows="10"
+          >
+          </textarea>
+        </div>
+      </div>
 
+      <div class="form-right">
+        <div class="date-box">
+          <h3>DUE DATE</h3>
+          <input type="date" id="date-field" />
+        </div>
+
+        <div class="urgency-box">
+          <h3>URGENCY</h3>
+          <div class="category-field-box">
+            <div class="category" id="urgency-status-field">High</div>
+            <img src="img/chevron .png" onclick="changeUrgency()" />
+            <div class="urgency-content d-none" id="urgency-content">
+              <p
+                class="urgency-status"
+                id="high-urgency"
+                onclick="highUrgency()"
+              >
+                High
+              </p>
+              <p
+                class="urgency-status"
+                id="medium-urgency"
+                onclick="mediumUrgency()"
+              >
+                Medium
+              </p>
+              <p class="urgency-status" id="low-urgency" onclick="lowUrgency()">
+                Low
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="assignment-box">
+          <h3>ASSIGNED TO</h3>
+
+          <div class="assignment-box-assets">
+            <div class="profile-box">
+              <img src="img/profile.png" class="profile-pic" />
+              <img src="img/icon plus.png" class="plus-icon" />
+            </div>
+
+            <div class="button-box">
+              <button class="cancel-button">CANCEL</button>
+            </div>
+          </div>
+        </div>
+        <button onsubmit="addTask()" class="create-button">CREATE TASK</button>
+      </div>
     </form>
 
-    <button onclick="addTask()" class="create-button">CREATE TASK</button>
-</body>
-
+    <button onclick="addTask()" class="create-button">CREATE TASK</button> -->
+  </body>
 </html>
