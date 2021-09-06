@@ -1,0 +1,89 @@
+.backlog-container {
+  margin-left: 153px;
+  margin-right: 20px;
+}
+
+.backlog-main-title {
+  margin-top: 30px;
+  margin-bottom: 4px;
+  font-size: 27px;
+  color: rgba(0, 0, 0, 0.781);
+}
+
+.category-title {
+  margin-right: 200px;
+}
+
+.backlog-subtitle {
+  color: rgb(8, 8, 110);
+  opacity: 0.5;
+  font-size: 12px;
+  margin: 0;
+}
+
+.sub-titles-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  color: rgb(5, 5, 92);
+  font-weight: bold;
+}
+
+.backlog-unit {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 255, 0.062);
+  border-radius: 10px;
+  font-size: 15px;
+  color: rgba(36, 35, 35, 0.877);
+}
+
+.backlog-unit-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.category-color {
+  width: 6px;
+  height: 70px;
+  background-color: green;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.profile-picture {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.user-inforamtion-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-information {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.backlog-unit-email {
+  color: rgba(0, 0, 255, 0.534);
+  margin-top: 3px;
+}
+
+.backlog-details {
+  max-width: 410px;
+}
+
+.category {
+  margin-left: 50px;
+}
