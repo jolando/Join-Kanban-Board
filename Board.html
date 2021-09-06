@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
+    <!--CSS-FILES-->
     <link rel="stylesheet" href="css/board.css" />
     <link rel="stylesheet" href="css/over-all.css" />
-    <script src="js/include.js"></script>
     <link rel="stylesheet" href="css/nav.css" />
+    <!--JS-FILES-->
+    <script src="js/include.js"></script>
+    <script src="js/addTask.js"></script>
+    
   </head>
   <body onload="includeHTML()">
     <div w3-include-html="templates/nav.html"></div>
@@ -16,7 +20,18 @@
     <div class="board">
       <div class="column">
         <h2>TODO</h2>
-        <div class="board-column"></div>
+        <div class="board-column" id="todo-container">
+          <!-- <div class="task-unit">
+            <div class="task-container">
+              <span id="task-title">123</span>
+              <span id="description-container">123</span>
+              <span id="category-container" class="extra-info" >sfs</span>
+              <span id="date-container" class="extra-info" >sdf</span>
+              <span id="urgency-container" class="extra-info" >sdf</span>
+              <span id="assigned-container" class="extra-info" >sdf</span>
+            </div>
+          </div> -->
+        </div>
       </div>
       <div class="column">
         <h2>IN PROGRESS</h2>

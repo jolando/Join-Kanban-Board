@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/over-all.css">
-   
+
     <script src="js/include.js"></script>
 
     <script src="js/addTask.js"></script>
@@ -28,7 +28,7 @@
 
     <form>
         <div class="form-left">
-            <div class="title-box">
+            <div class="title-box" id="todo-container">
                 <h3>TITLE</h3>
                 <input type="text" class="title-input" id="title-field" placeholder="Create a title">
             </div>
@@ -44,7 +44,7 @@
 
             <div class="description-box">
                 <h3>DESCRIPTION</h3>
-                <textarea type="text" class="longInput" cols="30" rows="10">
+                <textarea type="text" class="longInput" id="description-field" cols="30" rows="10">
                 </textarea>
             </div>
 
@@ -53,16 +53,10 @@
         <div class="form-right">
             <div class="date-box">
                 <h3>DUE DATE</h3>
-                <input type="date"></input>
+                <input type="date" id="date-field">
             </div>
-        
-           <!-- <div class="date-box">
-                <h3>DUE DATE</h3>
-                <div class="category-field-box">
-                    <div class="category">24/09/21</div>
-                    <img src="Kanban Gruppenarbeit/icons8-calendar-150.png">
-                </div>
-            </div> -->
+
+
 
             <div class="urgency-box">
                 <h3>URGENCY</h3>
@@ -82,27 +76,27 @@
                 <h3>ASSIGNED TO</h3>
 
                 <div class="assignment-box-assets">
-                <div class="profile-box">
-                    <img src="img/profile.png" class="profile-pic">
-                    <img src="img/icon plus.png" class="plus-icon">
+                    <div class="profile-box">
+                        <img src="img/profile.png" class="profile-pic">
+                        <img src="img/icon plus.png" class="plus-icon">
+                    </div>
+
+                    <div class="button-box">
+                        <button class="cancel-button">CANCEL</button>
+                        <!-- <button onsubmit="addTask()" class="create-button">CREATE TASK</button> -->
+
+                    </div>
                 </div>
 
-                <div class="button-box">
-                    <button class="cancel-button">CANCEL</button>
-                    <button class="create-button">CREATE TASK</button>
-
-                </div>
             </div>
-
-            </div>
-
+            <button onsubmit="addTask()" class="create-button">CREATE TASK</button>
 
         </div>
 
 
     </form>
 
-
+    <button onclick="addTask()" class="create-button">CREATE TASK</button>
 </body>
 
 </html>

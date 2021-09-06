@@ -30,3 +30,30 @@
 		min-width: 40%;
 	}
 }
+
+/* @@@@@@@@@@@ */
+
+.task-unit {
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(18, 50, 109, 0.335);
+	margin: 4px;
+	padding: 4px;
+	max-height: 70px;
+}
+
+.task-container {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+}
+
+
+.task-title{}
+
+
+.description-containe{}
+
+.extra-info {
+	font-size: 10px;
+}
