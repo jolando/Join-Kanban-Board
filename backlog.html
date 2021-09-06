@@ -13,9 +13,10 @@
     <script src="js/include.js"></script>
     <script src="js/overall.js"></script>
     <script src="js/backlog.js"></script>
+    <script src="js/addTask.js"></script>
   </head>
-  <body
-    id="backlog-content-container"
-    onload="initBackLog(), includeHTML()"
-  ></body>
+
+  <body id="backlog-content-container" onload="initBackLog()">
+    <div w3-include-html="templates/nav.html"></div>
+  </body>
 </html>
