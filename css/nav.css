@@ -17,6 +17,7 @@
   height: 50px;
   margin-top: 20px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .navbar-links {
