@@ -47,7 +47,7 @@ function renderTaskInfo() {
                     <span id="urgency-container" class="extra-info" >${allTasks2[i].urgency}</span>
                     <span id="assigned-container" class="extra-info" ></span>
                 </div>
-                </div>`;
+            </div>`;
     }
 }
 

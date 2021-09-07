@@ -3,6 +3,15 @@
   margin-right: 20px;
 }
 
+
+.backlog-unit-content {
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+  width: 100%;
+  /* overflow: auto; */
+}
+
 .backlog-main-title {
   margin-top: 30px;
   margin-bottom: 4px;
@@ -38,14 +47,9 @@
   border-radius: 10px;
   font-size: 15px;
   color: rgba(36, 35, 35, 0.877);
+  margin: 7px;
 }
 
-.backlog-unit-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
 
 .category-color {
   width: 6px;

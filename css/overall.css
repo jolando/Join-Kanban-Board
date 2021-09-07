@@ -2,10 +2,11 @@
   font-family: "PT Sans", sans-serif;
   margin: 0;
   padding: 0;
-  /* overflow: hidden; */
-  font-family: "PT Sans", sans-serif;
+  
+  
 }
 
 body {
   background-color: rgba(0, 0, 0, 0.192);
+  /* overflow: hidden; */
 }
