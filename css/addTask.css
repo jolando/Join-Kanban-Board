@@ -127,7 +127,7 @@ textarea::-webkit-input-placeholder {
     justify-content: space-between;
 }
 
-.create-button {
+/*.create-button {
     width: 125px;
     height: 40px;
     border-radius: 10%;
@@ -135,6 +135,11 @@ textarea::-webkit-input-placeholder {
     color: white;
     font-family: 'PT Sans', sans-serif;
     font-size: 1.17em;
+}*/
+.create-button {
+    position: absolute;
+    right: 100px;
+    top: 400px;
 }
 
 .cancel-button {
