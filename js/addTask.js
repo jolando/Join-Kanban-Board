@@ -10,22 +10,23 @@ function addTask(event) {
   let title = document.getElementById('title-field').value;
   let description = document.getElementById('description-field').value;
   let date = document.getElementById('date-field').value;
-  window.location.href = 'board.html';
+  
 
 
   let task = {
     'title': title,
     'description': description,
     // 'Category': Category,
-    'date': new Date().getTime(),
+    'date': new Date().getTime()
   };
 
   allTasks.push(task);
-
+  console.log(allTasks);
   let allTasksAsString = JSON.stringify(allTasks);
+  console.log(allTasksAsString);
   localStorage.setItem('allTasks', allTasksAsString);
 
-
+  // window.location.href = 'board.html';
 }
 
 
