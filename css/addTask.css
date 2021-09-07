@@ -131,6 +131,7 @@ textarea::-webkit-input-placeholder {
   justify-content: space-between;
 }
 
+
 .create-button {
   width: 125px;
   height: 40px;
@@ -139,6 +140,7 @@ textarea::-webkit-input-placeholder {
   color: white;
   font-family: "PT Sans", sans-serif;
   font-size: 1.17em;
+
 }
 
 .cancel-button {
