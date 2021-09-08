@@ -29,7 +29,7 @@ function initBoard() {
 //         </div
 //         `;
 
-function getTaskInfo() {
+async function getTaskInfo() {
     let allTasksAsString = localStorage.getItem('allTasks');
     allTasks2 = JSON.parse(allTasksAsString);
     console.log(allTasks2);

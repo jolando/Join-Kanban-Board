@@ -54,9 +54,24 @@
 .category-color {
   width: 6px;
   height: 70px;
-  background-color: green;
+  
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
+}
+
+.sales-color {
+    background-color: rgba(29, 189, 29, 0.363);
+}
+.product-color {
+  background-color: rgba(59, 59, 187, 0.561);
+}
+
+.management-color {
+   background-color: #d80f127a;
+}
+
+.marketing-color {
+  background-color: rgba(223, 223, 18, 0.575);
 }
 
 .profile-picture {
