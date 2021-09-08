@@ -5,19 +5,23 @@
 form {
   height: 100%;
   max-width: 800px;
-  width: 100%;
   background-color: rgba(0, 0, 255, 0.062);
-  padding: 65px 0px;
+  padding: 45px 0px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-left: 200px;
+  margin-right: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
+
 .addTask {
   margin-left: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 h2 {
   font-size: 14px;
   color: blue;
@@ -26,15 +30,17 @@ h2 {
 
 h3 {
   color: rgb(39, 39, 185);
+  margin-bottom: 8px;
 }
 
 input {
-  width: 100%;
+  width: 99%;
   height: 30px;
   font-size: 15px;
   font-family: "PT Sans", sans-serif;
-  padding: 0;
+  margin-bottom: 20px;
 }
+
 .left {
   margin-left: 200px;
 }
@@ -48,11 +54,13 @@ input {
   height: 30px !important;
   border: 0.2px solid grey;
 }
+
 .form-control {
-  width:100%;
+  width: 100%;
   height: 30px;
   font-family: "PT Sans", sans-serif;
   font-size: 15px;
+  margin-bottom: 20px;
 }
 
 .urgency-content {
@@ -64,9 +72,11 @@ input {
   padding-left: 5px;
   z-index: 1;
 }
+
 .urgency-content:hover .urgency-content {
   display: flex !important;
 }
+
 .urgency-status:hover {
   cursor: pointer;
 }
@@ -98,6 +108,7 @@ textarea {
   font-family: "PT Sans", sans-serif;
   font-size: 15px;
   padding-left: 5px;
+  resize: none;
 }
 
 textarea::-webkit-input-placeholder {
@@ -111,18 +122,18 @@ textarea::-webkit-input-placeholder {
   align-items: center;
 }
 
-.profile-pic {
-  height: 70px;
-  width: 70px;
+.task-profile-pic {
+  height: 65px !important;
+  width: 65px !important;
   border-radius: 50%;
-  margin-right: 25px;
+  margin-right: 20px;
   object-fit: cover;
   object-position: top;
 }
 
 .plus-icon {
-  height: 38px;
-  width: 38px;
+  height: 30px;
+  width: 30px;
   transition: transform 0.15s;
 }
 
@@ -135,9 +146,8 @@ textarea::-webkit-input-placeholder {
   height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-
 
 .create-button {
   width: 125px;
@@ -147,7 +157,6 @@ textarea::-webkit-input-placeholder {
   color: white;
   font-family: "PT Sans", sans-serif;
   font-size: 1.17em;
-
 }
 
 .cancel-button {
@@ -171,4 +180,98 @@ textarea::-webkit-input-placeholder {
 .create-button:hover {
   cursor: pointer;
   background-color: rgb(85, 85, 207);
+}
+
+@media(max-width:850px) {
+  form {
+    flex-direction: column;
+    max-width: 400px;
+  }
+  .profile-box {
+    justify-content: center;
+  }
+  textarea {
+    width: 180px;
+  }
+  .form-right {
+    width: 180px;
+  }
+  .task-profile-pic {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .button-box {
+    display: flex;
+  }
+  .create-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+  .cancel-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+}
+
+@media(max-width:550px) {
+  h3 {
+    font-size: 16px;
+  }
+  input {
+    font-size: 13px;
+  }
+  form{
+    margin-left: 160px;
+    margin-right: 35px;
+  }
+  .form-control {
+    font-size: 13px;
+  }
+  .task-profile-pic {
+    width: 55px !important;
+    height: 55px !important;
+  }
+  .button-box {
+    display: flex;
+  }
+  .create-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+  .cancel-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+}
+@media(max-width:465px){
+  form{
+    margin-left: 160px;
+    margin-right: 35px;
+  }
+  h1{
+    font-size: 22px !important;
+  }
+  h2{
+    font-size: 12px !important;
+  }
+  .addTask{
+    margin-left: 160px;
+  }
+}
+@media(max-width:410px){
+  textarea{
+    width: 145px;
+  }
+  .form-right{
+    width: 145px;
+  }
+  form{
+    margin-left: 145px;
+    margin-right: 15px;
+
+  }
 }
