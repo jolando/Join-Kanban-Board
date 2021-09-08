@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backlog</title>
+  <!--CSS-FILES-->
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/backlog.css" />
+  <link rel="stylesheet" href="css/overall.css" />
+  <!--JS-FILES-->
+  <script src="js/include.js"></script>
+  <script src="js/overall.js"></script>
+  <script src="js/backlog.js"></script>
+</head>
+<body onload="initBacklog()">
+  <div w3-include-html="templates/nav.html"></div>
+  <div class="backlog-container">
+    <div w3-include-html="templates/nav.html"></div>
+    <h1 class="backlog-main-title">Backlog</h1>
+    <h3 class="backlog-subtitle">Learning Management System Project</h3>
+    <div class="sub-titles-section">
+      <span>ASSIGNED TO</span>
+      <span class="category-title">CATEGORY</span>
+      <span>DETAILS</span>
+    </div>
+    <div id="backlog" class="backlog-unit-content">
+    </div>
+</body>
+</html>
