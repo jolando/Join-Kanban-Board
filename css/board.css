@@ -19,10 +19,14 @@ body{
 	height: 80vh;
 	width: 90%;
 	color: #fff;
-	border: 2px solid white;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5),
+	inset 1px 1px 1px  rgba(0, 0, 0, 0.5);
+	border: 1px solid white;
 	background-color: #bbbbbb;
 	border-radius: 10px;
 	background: linear-gradient(45deg, #036eb7, );
+	overflow-y: auto;
+
 }
 h2{
 	text-align: center;
@@ -35,10 +39,14 @@ h2{
 .task-unit {
   display: flex;
   flex-direction: column;
-  background-color: rgba(18, 50, 109, 0.335);
-  margin: 4px;
-  padding: 4px;
-  max-height: 70px;
+  background-color: rgba(53, 129, 173, 0.335);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5),
+  inset 1px 1px 1px  rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  max-height: 100px;
+  cursor: pointer;
 }
 
 .task-container {
@@ -46,12 +54,6 @@ h2{
   flex-direction: column;
   overflow-y: auto;
 }
-
-/* .task-title{}
-
-
-.description-containe{} */
-
 .extra-info {
-  font-size: 10px;
+  font-size: 14px;
 }
