@@ -1,33 +1,9 @@
 let allTasks = [];
 
-// let allTasks = [
-//     {
-//         'title': title,
-//         'description': description,
-//         // 'Category': Category,
-//         'date': date
-//     },
-//     {
-//         'title': title,
-//         'description': description,
-//         // 'Category': Category,
-//         'date': date
-//     },
-//     {
-//         'title': title,
-//         'description': description,
-//         // 'Category': Category,
-//         'date': date
-//     },
-//     {
-//         'title': title,
-//         'description': description,
-//         // 'Category': Category,
-//         'date': date
-//     },{
-//         'title': title,
-//         'description': description,
-//         // 'Category': Category,
-//         'date': date
-//     }
-// ];
+
+function getTaskInfo() {
+  let allTasksAsString = localStorage.getItem("allTasks");
+  allTasks = JSON.parse(allTasksAsString);
+  console.log(allTasks);
+}
+

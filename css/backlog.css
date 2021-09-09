@@ -6,10 +6,9 @@
 .empty-backlog-container {
   background-color: rgba(0, 0, 255, 0.233);
   padding: 10px;
-  
+
   /* height: 100px;
   width: 100px; */
-  
 }
 
 .backlog-unit-content {
@@ -68,8 +67,6 @@
   border-top-left-radius: 10px;
 }
 
-
-
 .user-profile {
   display: flex;
 }
@@ -89,14 +86,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 100%;
 }
 
-.tast-information{
+.tast-information {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  
 }
 
 .user-information {
@@ -139,23 +136,37 @@
 }
 
 .sales-color {
-  background-color: rgba(29, 189, 29, 0.363);
+  background-color: rgba(29, 189, 29, 0.308);
 }
 .product-color {
-  background-color: rgba(59, 59, 187, 0.561);
+  background-color: rgba(59, 59, 187, 0.329);
 }
 
 .management-color {
-  background-color: #d80f127a;
+  background-color: #ee8f125b;
 }
 
 .marketing-color {
-  background-color: rgba(224, 167, 92, 0.582);
+  background-color: rgba(233, 20, 20, 0.37);
 }
 
-/* @media screen and (max-width: 950px){
-  .user-inforamtion-container{
-    flex-direction: column;
-    align-items: center;
+@media screen and (max-width: 780px) {
+  .backlog-container {
+    margin: 110px 3%;
   }
-} */
+  .backlog-subtitle {
+    margin-bottom: 10px;
+  }
+  .sub-titles-section {
+    display: none;
+  }
+  .backlog-unit-name {
+    font-size: 13px;
+  }
+  .backlog-unit-email {
+    font-size: 11px;
+  }
+  .user-inforamtion {
+    margin-left: 1px;
+  }
+}

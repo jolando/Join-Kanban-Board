@@ -1,14 +1,19 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
   position: fixed;
   left: 0;
   top: 0;
   width: 130px;
   height: 100vh;
   background-color: rgb(4, 18, 73);
+  z-index: 1;
+  box-shadow: 3px 1px 11px 4px rgba(55, 35, 171, 0.26);
+}
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .logo-image {
@@ -30,7 +35,7 @@
 .navbar-links a {
   margin-top: 20px;
   text-decoration: none;
-  color: rgba(240, 240, 240, 0.767);
+  color: rgb(255, 251, 251);
   padding-left: 40px;
   font-size: 17px;
 }
@@ -48,4 +53,40 @@
   object-fit: cover;
   object-position: top;
   margin-bottom: 20px;
+}
+
+.burger-menu {
+  display: none;
+}
+
+@media screen and (max-width: 780px) {
+  .navbar {
+    height: 70px;
+    width: 100%;
+    transition: 120ms;
+  }
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    flex-direction: row;
+    margin: 0 3%;
+    height: 100%; 
+  }
+  .burger-menu {
+    display: block;
+    cursor: pointer;
+  }
+  .navbar-links {
+    display: none;
+    margin: 0;
+  }
+  .profile-pic {
+    margin: 0;
+    display: none;
+  }
+  .logo-image {
+    margin: 0;
+  }
+  
 }

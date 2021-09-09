@@ -1,7 +1,6 @@
-let allTasks = [];
-
 function initAddTask() {
   includeHTML();
+  getTaskInfo();
 }
 
 function addTask(event) {
@@ -28,7 +27,6 @@ function addTask(event) {
   console.log(allTasks);
 
   let allTasksAsString = JSON.stringify(allTasks);
-  console.log(allTasksAsString);
   localStorage.setItem("allTasks", allTasksAsString);
 }
 
