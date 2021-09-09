@@ -2,8 +2,8 @@
 // import { apiRoot, acfApiRoot } from '/config.js';
 // export const acfApiRoot = location.origin + '/wp-json/acf/v3/';
 // const apiRoot    = location.origin + '/wp-json/wp/v2/';
+let allTasks2 = [];
 
-let allTasks3 = [];
 let users = [
   {
     name: "Jones",
@@ -29,62 +29,78 @@ let users = [
 
 function initBacklog() {
   includeHTML();
-  renderBacklogCard();
   getTaskInfo();
-  renderBacklogCard();
+  document.getElementById("backlog").innerHTML = "No Tasks";
+  checkBacklogContainer();
+  console.log(allTasks2);
 }
 
 function getTaskInfo() {
   let allTasksAsString = localStorage.getItem("allTasks");
-  allTasks3 = JSON.parse(allTasksAsString);
-  console.log(allTasks3);
-
-  
+  allTasks2 = JSON.parse(allTasksAsString);
 }
 
-function renderBacklogCard(cardCategory) {
-  let contentContainer = document.getElementById("backlog");
-  // contentContainer.innerHTML = '';
-  
-
-  for (let i = 0; i < allTasks3.length; i++) {
-    const task = allTasks3[i];
-    let cardCategory = allTasks3[i].category;
-    
-    let categoryColor = getRightCategoryColor(cardCategory);
-    
-
-    contentContainer.innerHTML += `
-            <div class="backlog-unit">
-                <span id="category-color" class="category-color ${categoryColor}"></span>
-                <div class="backlog-unit-content">
-                    <div class="user-inforamtion-container">
-                        <img class="profile-picture" src="img/profile.png">
-                        <div class="user-information">
-                            <span class="backlog-unit-name">${task.title}Darrin S. Jones</span>
-                            <span class="backlog-unit-email">Darrin@gmail.com</span>
-                        </div>
-                    </div>
-                    <span class="category">${cardCategory}</span>
-                    <span class="backlog-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, minima!</span>
-                </div>
-            </div>
-        `;
+function checkBacklogContainer() {
+  let backlogContainer = document.getElementById("backlog");
+  if (backlogContainer.innerHTML == "No Tasks") {
+    for (let i = 0; i < allTasks2.length; i++) {
+      let cardCategory = allTasks2[i].category;
+      let taskDescription = allTasks2[i].description;
+      let switchDescription = checkDescription(taskDescription);
+      let categoryColor = getRightCategoryColor(cardCategory);
+      renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
+    }
   }
 }
 
+function renderBacklogCard(index, color, category, description) {
+  let contentContainer = document.getElementById("backlog");
+  contentContainer.innerHTML += `
+        <div id="backlog-unit${index} "class="backlog-unit">
+                <span id="category-color" class="category-color ${color}"></span>
+                <div class="backlog-unit-content">
+                    <div class="user-inforamtion-container">
+                         <div class="user-profile">
+                            <img class="profile-picture" src="img/profile.png">
+                            <div class="user-information">
+                                <span class="backlog-unit-name">Darrin S. Jones</span>
+                                <a href="email" class="backlog-unit-email">contact@darrin.com</a>
+                            </div> 
+                        </div>
+                        <div class="tast-information">
+                            <span class="category ${color}">${category}</span>
+                            <span id="description" class="backlog-details">${description}</span>
+                        </div>
+                        <div class="delete-icon">
+                            <img src="img/trash2.png"> 
+                        </div>
+                    </div>     
+                </div>
+            </div>
+            `;
+}
+
+function checkDescription(rightDescription) {
+  let description = document.getElementById("description");
+
+  if (description === "") {
+    return rightDescription;
+  } else {
+    return "No Description";
+  }
+}
 
 function getRightCategoryColor(category) {
-    if (category == 'Management') {
-        return 'management-color';
-    }
-    if (category == 'Marketing') {
-        return 'marketing-color';
-    }
-    if (category == 'Product') {
-        return 'product-color';
-    }
-    if (category == 'Sales') {
-        return 'sales-color';
-    }
+  if (category == "Management") {
+    return "management-color";
+  }
+  if (category == "Marketing") {
+    return "marketing-color";
+  }
+  if (category == "Product") {
+    return "product-color";
+  }
+  if (category == "Sales") {
+    return "sales-color";
+  }
 }

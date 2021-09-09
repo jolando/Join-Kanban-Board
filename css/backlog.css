@@ -3,13 +3,22 @@
   margin-right: 20px;
 }
 
+.empty-backlog-container {
+  background-color: rgba(0, 0, 255, 0.233);
+  padding: 10px;
+  
+  /* height: 100px;
+  width: 100px; */
+  
+}
 
 .backlog-unit-content {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* height: 100vh; */
   width: 100%;
-  /* overflow: auto; */
 }
 
 .backlog-main-title {
@@ -20,7 +29,7 @@
 }
 
 .category-title {
-  margin-right: 200px;
+  margin-right: 80px;
 }
 
 .backlog-subtitle {
@@ -41,37 +50,28 @@
 
 .backlog-unit {
   display: flex;
+  align-items: center;
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 255, 0.062);
   border-radius: 10px;
   font-size: 15px;
   color: rgba(36, 35, 35, 0.877);
-  margin: 7px;
+  margin: 3px 0px;
 }
-
 
 .category-color {
   width: 6px;
-  height: 70px;
-  
+  min-height: 70px;
+
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
 }
 
-.sales-color {
-    background-color: rgba(29, 189, 29, 0.363);
-}
-.product-color {
-  background-color: rgba(59, 59, 187, 0.561);
-}
 
-.management-color {
-   background-color: #d80f127a;
-}
 
-.marketing-color {
-  background-color: rgba(223, 223, 18, 0.575);
+.user-profile {
+  display: flex;
 }
 
 .profile-picture {
@@ -84,8 +84,19 @@
 }
 
 .user-inforamtion-container {
+  position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+
+.tast-information{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
 }
 
 .user-information {
@@ -97,12 +108,54 @@
 .backlog-unit-email {
   color: rgba(0, 0, 255, 0.534);
   margin-top: 3px;
+  text-decoration: none;
+}
+
+.backlog-unit-email:hover {
+  color: rgba(0, 0, 255, 0.644);
+  text-decoration: underline;
 }
 
 .backlog-details {
-  max-width: 410px;
+  width: 100%;
+  max-width: 210px;
+  word-break: break-all;
+  margin-left: 10px;
 }
 
 .category {
-  margin-left: 50px;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 50px;
+  min-width: 77px;
+  text-align: center;
 }
+
+.delete-icon {
+  /* position: absolute;
+  right: 5px; */
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.sales-color {
+  background-color: rgba(29, 189, 29, 0.363);
+}
+.product-color {
+  background-color: rgba(59, 59, 187, 0.561);
+}
+
+.management-color {
+  background-color: #d80f127a;
+}
+
+.marketing-color {
+  background-color: rgba(224, 167, 92, 0.582);
+}
+
+/* @media screen and (max-width: 950px){
+  .user-inforamtion-container{
+    flex-direction: column;
+    align-items: center;
+  }
+} */
