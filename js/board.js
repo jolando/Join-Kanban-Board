@@ -40,11 +40,11 @@ function renderTaskInfo() {
         document.getElementById('todo-container').innerHTML += `
             <div class="task-unit">
                 <div class="task-container">
-                    <span id="task-title">${allTasks2[i].title}</span>
-                    <span id="description-container">${allTasks2[i].description}</span>
-                    <span id="category-container" class="extra-info" >${allTasks2[i].category}</span>
-                    <span id="date-container" class="extra-info">${allTasks2[i].date}</span>
-                    <span id="urgency-container" class="extra-info" >${allTasks2[i].urgency}</span>
+                    <span class="task-title" id="description-container" class="description-container"><b>Title:</b> ${allTasks2[i].title}</span>
+                    <span id="task-title" ><b>Description:</b>  ${allTasks2[i].description}</span>
+                    <span id="category-container" class="extra-info" ><b>Category:</b>  ${allTasks2[i].category}</span>
+                    <span id="date-container" class="extra-info"><b>Date: </b>${allTasks2[i].date}</span>
+                    <span id="urgency-container" class="extra-info" ><b>Urgency: </b>${allTasks2[i].urgency}</span>
                     <span id="assigned-container" class="extra-info" ></span>
                 </div>
             </div>`;
