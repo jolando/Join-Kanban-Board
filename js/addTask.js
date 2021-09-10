@@ -4,6 +4,12 @@ function initAddTask() {
   getTaskInfo();
 }
 
+function NameSelector(){
+  let nameSelection = document.getElementById('name-selection');
+  nameSelection.classList.remove('d-none');
+  document.getElementById('profile').style.justifyContent = "space-around";
+}
+
 function addTask(event) {
   event.preventDefault();
   let title = document.getElementById("title-field").value;
@@ -31,6 +37,8 @@ function addTask(event) {
   localStorage.setItem("allTasks", allTasksAsString);
 
   document.forms['addTask-form'].reset();
+  document.getElementById('name-selection').classList.add('d-none');
+  document.getElementById('profile').style.justifyContent = "flex-start";
 
 }
 
