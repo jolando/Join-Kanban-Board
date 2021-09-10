@@ -1,3 +1,4 @@
+
 function initAddTask() {
   includeHTML();
   getTaskInfo();
@@ -28,6 +29,9 @@ function addTask(event) {
 
   let allTasksAsString = JSON.stringify(allTasks);
   localStorage.setItem("allTasks", allTasksAsString);
+
+  document.forms['addTask-form'].reset();
+
 }
 
 // function changeUrgency(){
