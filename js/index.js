@@ -1,4 +1,4 @@
-function initIndex() {
-  includeHTML();
-}
+// function initIndex() {
+//   includeHTML();
+// }
 

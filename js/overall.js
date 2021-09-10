@@ -1,11 +1,62 @@
 let allTasks = [];
 
+let users = [
+  {
+    userId: 1,
+    firstName: "Jones",
+    lastName: "Jackson",
+    profileImg: "",
+    email: "Jones@gmail.com",
+  },
+  {
+    userId: 2,
+    firstName: "Jones",
+    lastName: "Jackson",
+    profileImg: "",
+    email: "Jones@gmail.com",
+  },
+  ,
+  {
+    userId: 3,
+    firstName: "Jones",
+    lastName: "Jackson",
+    profileImg: "",
+    email: "Jones@gmail.com",
+  },
+  {
+    userId: 4,
+    firstName: "Jones",
+    lastName: "Jackson",
+    profileImg: "",
+    email: "Jones@gmail.com",
+  },
+  {
+    userId: 5,
+    firstName: "Jones",
+    lastName: "Jackson",
+    profileImg: "",
+    email: "Jones@gmail.com",
+  },
+  {
+    userId: 6,
+    firstName: "Jones",
+    lastName: "Jackson",
+    profileImg: "",
+    email: "Jones@gmail.com",
+  },
+  {
+    userId: 7,
+    firstName: "Jones",
+    lastName: "Jackson",
+    profileImg: "",
+    email: "Jones@gmail.com",
+  },
+];
 
 function getTaskInfo() {
   let allTasksAsString = localStorage.getItem("allTasks");
   allTasks = JSON.parse(allTasksAsString);
   console.log(allTasks);
-  
 }
 
 function saveCreatedTasks() {
@@ -13,26 +64,14 @@ function saveCreatedTasks() {
   localStorage.setItem("allTasks", allTasksAsString);
 }
 
-
-function deleteTask(allTasksIndex) {
-  allTasks.splice(allTasksIndex, 1);
-  saveCreatedTasks();
-  getTaskInfo();
-  document.getElementById('backlog-unit' + allTasksIndex).style = 'display: none;'
-  console.log(allTasksIndex)
-}
-
 let isburgerMenuOpen = false;
 function openBurgerMenu() {
-  let burgerMenu = document.getElementById('dropDownMenu');
+  let burgerMenu = document.getElementById("dropDownMenu");
   if (isburgerMenuOpen) {
-      burgerMenu.style.display ="none";
-      isburgerMenuOpen = false;
+    burgerMenu.style.display = "none";
+    isburgerMenuOpen = false;
   } else {
-      burgerMenu.style.display ="flex";
-      isburgerMenuOpen = true;
+    burgerMenu.style.display = "flex";
+    isburgerMenuOpen = true;
   }
-
 }
-
-

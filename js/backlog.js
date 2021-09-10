@@ -1,43 +1,23 @@
-// window.apiRoot = location.origin + '/wp-json/wp/v2/';
-// import { apiRoot, acfApiRoot } from '/config.js';
-// export const acfApiRoot = location.origin + '/wp-json/acf/v3/';
-// const apiRoot    = location.origin + '/wp-json/wp/v2/';
+window.onresize = checkBacklogContainer;
 
-let users = [
-  {
-    name: "Jones",
-    profileImg: "description",
-    email: "Jones@gmail.com",
-  },
-  {
-    name: "Hannes",
-    profileImg: "description",
-    email: "Hannes@gmail.com",
-  },
-  {
-    name: "Anna",
-    profileImg: "description",
-    email: "Anna@gmail.com",
-  },
-  {
-    name: "Joe",
-    profileImg: "description",
-    email: "Joe@gmail.com",
-  },
-];
-
+/**
+ * will be executed when the backlog page is refreshed
+ */
 function initBacklog() {
   includeHTML();
   getTaskInfo();
-
   checkBacklogContainer();
   console.log(allTasks);
 }
 
+/**
+ * provides the necessary information for the cards and updates them when they are deleted
+ */
 function checkBacklogContainer() {
   if (allTasks.length == 0) {
-    document.getElementById('empty-backlog').innerHTML = 'No Tasks';
+    document.getElementById("empty-backlog").innerHTML = "No Tasks";
   } else {
+    document.getElementById('backlog').innerHTML = '';
     for (let i = 0; i < allTasks.length; i++) {
       let cardCategory = allTasks[i].category;
       let taskDescription = allTasks[i].description;
@@ -46,62 +26,114 @@ function checkBacklogContainer() {
       renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
     }
   }
-  
 }
 
+/**
+ * checks if you want to load responsive card or the normal one
+ * 
+ * @param {String} index position of task in the array
+ * @param {String} colorClass name of the selected class
+ * @param {String} category name of the department
+ * @param {String} description descrption text
+ */
 function renderBacklogCard(index, color, category, description) {
-  let contentContainer = document.getElementById("backlog");
   if (window.innerWidth < 780) {
-    // console.log(window.innerWidth);
-    contentContainer.innerHTML += `
-        <div id="backlog-unit ${index}"class="backlog-unit ${color}">
-                <span id="category-color" class="category-color ${color}"></span>
-                <div class="backlog-unit-content">
-                    <div class="user-inforamtion-container">
-                         <div class="user-profile">
-                            <img class="profile-picture" src="img/profile.png">
-                            <div class="user-information">
-                                <span class="backlog-unit-name">Darrin S. Jones</span>
-                                <a href="email" class="backlog-unit-email">contact@darrin.com</a>
-                            </div> 
-                        </div>
-                        <div class="tast-information">
-                            <span id="description${index}" class="backlog-details">${description}</span>
-                        </div>
-                        <div class="delete-icon">
-                            <img onclick="deleteTask(${index})" src="img/trash2.png"> 
-                        </div>
-                    </div>     
-                </div>
-            </div>
-            `;
+    returnNormalCard(index, color, category, description);
   } else {
-    contentContainer.innerHTML += `
-        <div id="backlog-unit${index}"class="backlog-unit">
-                <span id="category-color" class="category-color ${color}"></span>
-                <div class="backlog-unit-content">
-                    <div class="user-inforamtion-container">
-                         <div class="user-profile">
-                            <img class="profile-picture" src="img/profile.png">
-                            <div class="user-information">
-                                <span class="backlog-unit-name">Darrin S. Jones</span>
-                                <a href="email" class="backlog-unit-email">contact@darrin.com</a>
-                            </div> 
-                        </div>
-                        <div class="tast-information">
-                            <span class="category ${color}">${category}</span>
-                            <span id="description${index}" class="backlog-details">${description}</span>
-                        </div>
-                        <div class="delete-icon">
-                            <img onclick="deleteTask(${index})" src="img/trash.png"> 
-                        </div>
-                    </div>     
-                </div>
-            </div>
-            `;
+    returnResponsiveCard(index, color, category, description);
   }
 }
 
+/**
+ * returns the normal card
+ * 
+ * @param {String} index position of task in the array
+ * @param {String} colorClass name of the selected class
+ * @param {String} description descrption text
+ * @returns {String} noramal card
+ */
+function returnNormalCard(index, colorClass, description) {
+  document.getElementById("backlog").innerHTML += `
+  <div id="backlog-unit${index}" class="backlog-unit ${colorClass}">
+          <span id="category-color" class="category-color ${colorClass}"></span>
+          <div class="backlog-unit-content">
+              <div class="user-inforamtion-container">
+                   <div class="user-profile">
+                      <img class="profile-picture" src="img/profile.png">
+                      <div class="user-information">
+                          <span class="backlog-unit-name">Darrin S. Jones</span>
+                          <a href="email" class="backlog-unit-email">contact@darrin.com</a>
+                      </div> 
+                  </div>
+                  <div class="tast-information">
+                      <span id="description${index}" class="backlog-details">${description}</span>
+                  </div>
+                  <div class="delete-icon">
+                      <img onclick="deleteTask(${index})" src="img/trash2.png"> 
+                  </div>
+              </div>     
+          </div>
+      </div>
+      `;
+  return
+}
+
+/**
+ * returns the responsive card
+ * 
+ * @param {String} index position of task in the array
+ * @param {String} colorClass name of the selected class
+ * @param {String} category name of the department
+ * @param {String} description descrption text
+ * @returns {String} responsive card
+ */
+function returnResponsiveCard(index, colorClass, category, description) {
+  document.getElementById("backlog").innerHTML += `
+  <div id="backlog-unit${index}" class="backlog-unit">
+          <span id="category-color" class="category-color ${colorClass}"></span>
+          <div class="backlog-unit-content">
+              <div class="user-inforamtion-container">
+                   <div class="user-profile">
+                      <img class="profile-picture" src="img/profile.png">
+                      <div class="user-information">
+                          <span class="backlog-unit-name">Darrin S. Jones</span>
+                          <a href="email" class="backlog-unit-email">contact@darrin.com</a>
+                      </div> 
+                  </div>
+                  <div class="tast-information">
+                      <span class="category ${colorClass}">${category}</span>
+                      <span id="description${index}" class="backlog-details">${description}</span>
+                  </div>
+                  <div class="delete-icon">
+                      <img onclick="deleteTask(${index})" src="img/trash.png"> 
+                  </div>
+              </div>     
+          </div>
+      </div>
+      `;
+  return
+}
+
+/**
+ * clear selected task and load the rest tasks again
+ * 
+ * @param {String} allTasksIndex position of task in the array
+ */
+function deleteTask(allTasksIndex) {
+  allTasks.splice(allTasksIndex, 1);
+  saveCreatedTasks();
+  getTaskInfo();
+  document.getElementById("backlog-unit" + allTasksIndex).style ="display: none;";
+  console.log(allTasksIndex);
+  checkBacklogContainer();
+}
+
+/**
+ * checks if the description is empty or not 
+ * 
+ * @param {String} rightDescription 
+ * @returns {String} if the description is empty load "no description" otherwise load the actual description
+ */
 function checkDescription(rightDescription) {
   if (rightDescription == "") {
     return "No Description";
@@ -110,6 +142,12 @@ function checkDescription(rightDescription) {
   }
 }
 
+/**
+ * checks which department the task is intended for 
+ * 
+ * @param {String} category is one of 4 different departments
+ * @returns {String} retrun the right classname 
+ */
 function getRightCategoryColor(category) {
   if (category == "Management") {
     return "management-color";

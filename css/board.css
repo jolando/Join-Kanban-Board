@@ -19,12 +19,12 @@ body{
 	position: relative;
 	height: 80vh;
 	width: 90%;
-	color: #fff;
+	color: rgb(0, 0, 0);
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5),
 	inset 1px 1px 1px  rgba(0, 0, 0, 0.5);
 	border: 1px solid white;
-	background-color: #bbbbbb;
-	border-radius: 10px;
+	background-color: rgba(0, 0, 255, 0.062);
+	border-radius: 5px;
 	background: linear-gradient(45deg, #036eb7, );
 	overflow-y: auto;
 
@@ -40,10 +40,10 @@ h2{
 .task-unit {
   display: flex;
   flex-direction: column;
-  background-color: rgba(53, 129, 173, 0.335);
+  background-color: rgb(247, 247, 247);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5),
   inset 1px 1px 1px  rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
+  border-radius: 4px;
   margin: 10px;
   padding: 10px;
   max-height: 100px;
