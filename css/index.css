@@ -23,7 +23,7 @@
   background-color: rgba(255, 255, 255, 0);
   margin: 20%;
   -webkit-box-shadow: 6px 7px 22px 7px rgba(0, 0, 0, 0.5);
-  box-shadow: 6px 7px 22px 7px rgba(0, 0, 0, 0.575);
+  box-shadow: 6px 7px 22px 7px rgba(3, 3, 3, 0.671);
   z-index: 1;
 }
 
@@ -32,17 +32,13 @@
   width: 33.3%;
 }
 
-/* .login-form {
-  height: 100%;
-  width: 66.9%; 
-} */
-
 .content-container {
   display: grid;
   place-content: center;
   height: 100%;
   color: rgba(255, 255, 255, 0.445);
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.233);
 }
 
 .content-title {
@@ -70,6 +66,8 @@
   height: 100%;
   width: 66.9%;
   background-color: rgb(253, 253, 253);
+  
+  border: 1px solid rgba(0, 0, 0, 0.452);
 }
 
 .login-form {
@@ -92,8 +90,13 @@
   height: 30px;
   border-color: rgba(122, 123, 124, 0.246);
   border-radius: 5px;
+  margin-top: 10px;
   color: rgb(252, 248, 248);
   /* font-weight: bold; */
+}
+
+.single-input {
+    margin-top: 20px;
 }
 
 .form-submit-btn {
@@ -102,17 +105,21 @@
   justify-content: center;
   height: 25px;
   color: white;
-  background-color: rgb(44, 75, 196);
+  background-color: rgb(11, 30, 107);
   border: none;
   padding: 16px 0;
   font-size: 20px;
-  /* margin-top: 50px; */
+  margin-top: 20px;
   /* max-width: 50px; */
 }
 
+.form-submit-btn:hover {
+    background-color: rgb(5, 6, 65);
+}
+
 .link-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 800px) {
@@ -127,8 +134,12 @@
     margin: 0;
   }
   .login-form-container {
-    background: rgb(25,30,111);
-    background: linear-gradient(77deg, rgba(25,30,111,0.9724264705882353) 20%, rgba(23,18,182,0.87718837535014) 94%);
+    background: rgb(25, 30, 111);
+    background: linear-gradient(
+      77deg,
+      rgba(25, 30, 111, 0.9724264705882353) 20%,
+      rgba(23, 18, 182, 0.87718837535014) 94%
+    );
     width: 100%;
   }
   .overlay,
@@ -137,12 +148,22 @@
     display: none;
   }
   .login-form {
-      height: 80%;
-      width: 90%;
-      color: white;
+    height: 80%;
+    width: 90%;
+    color: white;
+    text-align: center;
   }
   .form-submit-btn {
-      border: 1px solid rgba(255, 255, 255, 0.281);
+    border: 1px solid rgba(255, 255, 255, 0.281);
+    border-radius: 50px;
+  }
+  .login-title{
+      margin-top: 100px;
+  }
+  .input{
       border-radius: 50px;
+      
+      background-color: rgba(255, 255, 255, 0.788);
+      padding: 5px;
   }
 }
