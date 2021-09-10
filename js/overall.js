@@ -21,3 +21,17 @@ function deleteTask(allTasksIndex) {
   document.getElementById('backlog-unit' + allTasksIndex).style = 'display: none;'
 }
 
+let isburgerMenuOpen = false;
+function openBurgerMenu() {
+  let burgerMenu = document.getElementById('dropDownMenu');
+  if (isburgerMenuOpen) {
+      burgerMenu.style.display ="none";
+      isburgerMenuOpen = false;
+  } else {
+      burgerMenu.style.display ="flex";
+      isburgerMenuOpen = true;
+  }
+
+}
+
+
