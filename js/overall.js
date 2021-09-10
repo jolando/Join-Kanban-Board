@@ -19,5 +19,6 @@ function deleteTask(allTasksIndex) {
   saveCreatedTasks();
   getTaskInfo();
   document.getElementById('backlog-unit' + allTasksIndex).style = 'display: none;'
+  console.log(allTasksIndex)
 }
 

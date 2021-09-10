@@ -29,15 +29,15 @@ let users = [
 function initBacklog() {
   includeHTML();
   getTaskInfo();
-  document.getElementById("empty-backlog").innerHTML = "No Tasks";
+
   checkBacklogContainer();
   console.log(allTasks);
 }
 
 function checkBacklogContainer() {
-  if (document.getElementById("empty-backlog").innerHTML == "No Tasks") {
-    document.getElementById("empty-backlog").classList.add("d-none");
-
+  if (allTasks.length == 0) {
+    document.getElementById('empty-backlog').innerHTML = 'No Tasks';
+  } else {
     for (let i = 0; i < allTasks.length; i++) {
       let cardCategory = allTasks[i].category;
       let taskDescription = allTasks[i].description;
@@ -46,6 +46,7 @@ function checkBacklogContainer() {
       renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
     }
   }
+  
 }
 
 function renderBacklogCard(index, color, category, description) {
@@ -99,7 +100,6 @@ function renderBacklogCard(index, color, category, description) {
             </div>
             `;
   }
-  // window.location.reload();
 }
 
 function checkDescription(rightDescription) {

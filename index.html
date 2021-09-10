@@ -12,9 +12,44 @@
     <!--JS-FILES-->
     <script src="js/include.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/overall.js"></script>    
+    <script src="js/overall.js"></script>
   </head>
+
   <body onload="initIndex()">
-    <div w3-include-html="templates/nav.html"></div>
+    <!-- <div w3-include-html="templates/nav.html"></div> -->
+    <div class="index-container">
+      <div class="login-container">
+        <div class="login-form-content">
+          <div class="content-container">
+            <img class="programm-logo" src="img/logo.png" />
+            <h1 class="content-title">
+              <span class="programm-title">Join</span><br />Kanban<br />Board
+            </h1>
+          </div>
+        </div>
+        <div class="login-form-container">
+          <form onsubmit="registerUser()" class="login-form" action="">
+            <h4 class="login-title">Log In</h4>
+            <div class="input-container">
+              <div>
+                <p><b>Email</b></p>
+                <input class="input" id="email" title="Email" type="email" />
+              </div>
+              <div>
+                <p><b>Password</b></p>
+                <input class="input" type="password" placeholder="Enter your password"/>
+              </div>
+            </div>
+            
+            <button class="form-submit-btn" type="submit">Login</button>
+            <div class="link-container">
+              <a href="#">forgot password?</a>
+              <a href="board.html">ohne login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </div>
   </body>
 </html>
