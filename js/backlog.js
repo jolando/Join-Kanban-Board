@@ -68,7 +68,7 @@ function renderBacklogCard(index, color, category, description) {
                             <span id="description${index}" class="backlog-details">${description}</span>
                         </div>
                         <div class="delete-icon">
-                            <img src="img/trash2.png"> 
+                            <img onclick="deleteTask(${index})" src="img/trash2.png"> 
                         </div>
                     </div>     
                 </div>
@@ -76,7 +76,7 @@ function renderBacklogCard(index, color, category, description) {
             `;
   } else {
     contentContainer.innerHTML += `
-        <div id="backlog-unit${index} "class="backlog-unit">
+        <div id="backlog-unit${index}"class="backlog-unit">
                 <span id="category-color" class="category-color ${color}"></span>
                 <div class="backlog-unit-content">
                     <div class="user-inforamtion-container">
@@ -92,7 +92,7 @@ function renderBacklogCard(index, color, category, description) {
                             <span id="description${index}" class="backlog-details">${description}</span>
                         </div>
                         <div class="delete-icon">
-                            <img src="img/trash.png"> 
+                            <img onclick="deleteTask(${index})" src="img/trash.png"> 
                         </div>
                     </div>     
                 </div>
