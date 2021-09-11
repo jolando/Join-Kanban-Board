@@ -1,4 +1,20 @@
-
+let profiles = [
+  {
+    "id": 0,
+    "name": "Peter",
+    "e-mail": "peter@t-online.de"
+  },
+  {
+    "id": 1,
+    "name": "Adilet",
+    "e-mail": "Adilet@t-online.de"
+  },
+  {
+    "id": 2,
+    "name": "Sebastian",
+    "e-mail": "sebastian@t-online.de"
+  },
+]
 function initAddTask() {
   includeHTML();
   getTaskInfo();
