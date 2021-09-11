@@ -1,5 +1,5 @@
 let allTasks = [];
-
+let userCache = [];
 let users = [
   {
     userId: 1,
@@ -86,10 +86,19 @@ function getTaskInfo() {
   allTasks = JSON.parse(allTasksAsString) || [];
   console.log(allTasks);
 }
+function getProfileInfo() {
+  let allProfilesAsString = localStorage.getItem("Profiles");
+  userCache = JSON.parse(allProfilesAsString) || [];
+  console.log(userCache);
+}
 
 function saveCreatedTasks() {
   let allTasksAsString = JSON.stringify(allTasks);
   localStorage.setItem("allTasks", allTasksAsString);
+}
+function saveCreatedProfiles() {
+  let allProfilesAsString = JSON.stringify(userCache);
+  localStorage.setItem("Profiles", allProfilesAsString);
 }
 
 let isburgerMenuOpen = false;
