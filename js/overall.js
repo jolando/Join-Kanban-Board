@@ -34,7 +34,7 @@ let users = [
         email: "Jones@gmail.com"
       },
     ],
-  },,
+  },
   {
     userId: 4,
     userData: [

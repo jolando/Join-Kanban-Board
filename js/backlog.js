@@ -22,18 +22,32 @@ function backlogInit() {
  */
 function checkBacklogContainer() {
   if (allTasks.length <= 0) { 
-    setTimeout(() => {
-      document.getElementById("empty-backlog").innerHTML = "No Tasks";
-    }, 1000);
+    showEmptyBacklog();
   } else {
-    document.getElementById("backlog").innerHTML = "";
-    for (let i = 0; i < allTasks.length; i++) {
-      let cardCategory = allTasks[i].category;
-      let taskDescription = allTasks[i].description;
-      let switchDescription = checkDescription(taskDescription);
-      let categoryColor = getRightCategoryColor(cardCategory);
-      renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
-    }
+   executeRenderFunction();
+  }
+}
+
+/**
+ * if allTasks contains zero tasks show "No Tasks"
+ */
+function showEmptyBacklog() {
+  setTimeout(() => {
+    document.getElementById("empty-backlog").innerHTML = "No Tasks";
+  }, 1000);
+}
+
+/**
+ * if allTasks contains more than zero tasks execute render-function
+ */
+function executeRenderFunction() {
+  document.getElementById("backlog").innerHTML = "";
+  for (let i = 0; i < allTasks.length; i++) {
+    let cardCategory = allTasks[i].category;
+    let taskDescription = allTasks[i].description;
+    let switchDescription = checkDescription(taskDescription);
+    let categoryColor = getRightCategoryColor(cardCategory);
+    renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
   }
 }
 
@@ -59,7 +73,7 @@ function renderBacklogCard(index, color, category, description) {
  * @param {String} index position of task in the array
  * @param {String} colorClass name of the selected class
  * @param {String} description descrption text
- * @returns {String} noramal card
+ * @returns {String} normal card
  */
 const returnResponsiveCard = (index, colorClass, description) => {
   document.getElementById("backlog").innerHTML += `
