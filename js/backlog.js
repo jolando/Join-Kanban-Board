@@ -3,21 +3,30 @@ window.onresize = checkBacklogContainer;
 /**
  * will be executed when the backlog page is refreshed
  */
-function initBacklog() {
+function backlogInit() {
   includeHTML();
   getTaskInfo();
   checkBacklogContainer();
   console.log(allTasks);
 }
 
+// window.onload = () => {
+//   includeHTML();
+//   getTaskInfo();
+//   checkBacklogContainer();
+//   console.log(allTasks);
+// }
+
 /**
  * provides the necessary information for the cards and updates them when they are deleted
  */
 function checkBacklogContainer() {
-  if (allTasks.length == 0) {
-    document.getElementById("empty-backlog").innerHTML = "No Tasks";
+  if (allTasks.length <= 0) { 
+    setTimeout(() => {
+      document.getElementById("empty-backlog").innerHTML = "No Tasks";
+    }, 1000);
   } else {
-    document.getElementById('backlog').innerHTML = '';
+    document.getElementById("backlog").innerHTML = "";
     for (let i = 0; i < allTasks.length; i++) {
       let cardCategory = allTasks[i].category;
       let taskDescription = allTasks[i].description;
@@ -30,14 +39,14 @@ function checkBacklogContainer() {
 
 /**
  * checks if you want to load responsive card or the normal one
- * 
+ *
  * @param {String} index position of task in the array
  * @param {String} colorClass name of the selected class
  * @param {String} category name of the department
  * @param {String} description descrption text
  */
 function renderBacklogCard(index, color, category, description) {
-  if (window.innerWidth < 780) {
+  if (window.innerWidth > 780) {
     returnNormalCard(index, color, category, description);
   } else {
     returnResponsiveCard(index, color, category, description);
@@ -46,13 +55,13 @@ function renderBacklogCard(index, color, category, description) {
 
 /**
  * returns the normal card
- * 
+ *
  * @param {String} index position of task in the array
  * @param {String} colorClass name of the selected class
  * @param {String} description descrption text
  * @returns {String} noramal card
  */
-function returnNormalCard(index, colorClass, description) {
+const returnResponsiveCard = (index, colorClass, description) => {
   document.getElementById("backlog").innerHTML += `
   <div id="backlog-unit${index}" class="backlog-unit ${colorClass}">
           <span id="category-color" class="category-color ${colorClass}"></span>
@@ -66,6 +75,7 @@ function returnNormalCard(index, colorClass, description) {
                       </div> 
                   </div>
                   <div class="tast-information">
+                      
                       <span id="description${index}" class="backlog-details">${description}</span>
                   </div>
                   <div class="delete-icon">
@@ -75,19 +85,19 @@ function returnNormalCard(index, colorClass, description) {
           </div>
       </div>
       `;
-  return
-}
+  return;
+};
 
 /**
  * returns the responsive card
- * 
+ *
  * @param {String} index position of task in the array
  * @param {String} colorClass name of the selected class
  * @param {String} category name of the department
  * @param {String} description descrption text
  * @returns {String} responsive card
  */
-function returnResponsiveCard(index, colorClass, category, description) {
+const returnNormalCard = (index, colorClass, category, description) => {
   document.getElementById("backlog").innerHTML += `
   <div id="backlog-unit${index}" class="backlog-unit">
           <span id="category-color" class="category-color ${colorClass}"></span>
@@ -111,44 +121,45 @@ function returnResponsiveCard(index, colorClass, category, description) {
           </div>
       </div>
       `;
-  return
-}
+  return;
+};
 
 /**
  * clear selected task and load the rest tasks again
- * 
+ *
  * @param {String} allTasksIndex position of task in the array
  */
 function deleteTask(allTasksIndex) {
   allTasks.splice(allTasksIndex, 1);
   saveCreatedTasks();
   getTaskInfo();
-  document.getElementById("backlog-unit" + allTasksIndex).style ="display: none;";
+  document.getElementById("backlog-unit" + allTasksIndex).style =
+    "display: none;";
   console.log(allTasksIndex);
   checkBacklogContainer();
 }
 
 /**
- * checks if the description is empty or not 
- * 
- * @param {String} rightDescription 
+ * checks if the description is empty or not
+ *
+ * @param {String} rightDescription
  * @returns {String} if the description is empty load "no description" otherwise load the actual description
  */
-function checkDescription(rightDescription) {
+let checkDescription = (rightDescription) => {
   if (rightDescription == "") {
     return "No Description";
   } else {
     return rightDescription;
   }
-}
+};
 
 /**
- * checks which department the task is intended for 
- * 
+ * checks which department the task is intended for
+ *
  * @param {String} category is one of 4 different departments
- * @returns {String} retrun the right classname 
+ * @returns {String} retrun the right classname
  */
-function getRightCategoryColor(category) {
+let getRightCategoryColor = (category) => {
   if (category == "Management") {
     return "management-color";
   }
@@ -161,4 +172,4 @@ function getRightCategoryColor(category) {
   if (category == "Sales") {
     return "sales-color";
   }
-}
+};

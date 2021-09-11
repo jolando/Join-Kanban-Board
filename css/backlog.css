@@ -169,4 +169,7 @@
   .user-inforamtion {
     margin-left: 1px;
   }
+  .category {
+    display: none;
+  }
 }

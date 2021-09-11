@@ -7,18 +7,19 @@
     <title>Join</title>
     <!--CSS-FILES-->
     <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/board.css" />
     <link rel="stylesheet" href="css/overall.css" />
     <!--JS-FILES-->
     <script src="js/include.js"></script>
     <script src="js/board.js"></script>
     <script src="js/overall.js"></script>
+    <script src="js/mini_backend.js"></script>
   </head>
+
   <body onload="initBoard()">
     <div w3-include-html="templates/nav.html"></div>
 
     <div class="board-container">
-		
       <div>
         <h2>Todo</h2>
         <div class="board-box" id="todo-container"></div>
@@ -35,10 +36,6 @@
         <h2>Done</h2>
         <div class="board-box"></div>
       </div>
-      
     </div>
-    
-
-
   </body>
 </html>

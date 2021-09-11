@@ -3,59 +3,87 @@ let allTasks = [];
 let users = [
   {
     userId: 1,
-    firstName: "Jones",
-    lastName: "Jackson",
-    profileImg: "",
-    email: "Jones@gmail.com",
+    userData: [
+      {
+        firstName: "Jones",
+        lastName: "Jackson",
+        profileImg: "",
+        email: "Jones@gmail.com"
+      },
+    ],
   },
   {
     userId: 2,
-    firstName: "Jones",
-    lastName: "Jackson",
-    profileImg: "",
-    email: "Jones@gmail.com",
+    userData: [
+      {
+        firstName: "Joe",
+        lastName: "Jackson",
+        profileImg: "",
+        email: "Joe@gmail.com"
+      },
+    ],
   },
   ,
   {
     userId: 3,
-    firstName: "Jones",
-    lastName: "Jackson",
-    profileImg: "",
-    email: "Jones@gmail.com",
-  },
+    userData: [
+      {
+        firstName: "Joness",
+        lastName: "Jackson",
+        profileImg: "",
+        email: "Jones@gmail.com"
+      },
+    ],
+  },,
   {
     userId: 4,
-    firstName: "Jones",
-    lastName: "Jackson",
-    profileImg: "",
-    email: "Jones@gmail.com",
+    userData: [
+      {
+        firstName: "Jonessss",
+        lastName: "Jackson",
+        profileImg: "",
+        email: "Jones@gmail.com"
+      },
+    ],
   },
   {
     userId: 5,
-    firstName: "Jones",
-    lastName: "Jackson",
-    profileImg: "",
-    email: "Jones@gmail.com",
+    userData: [
+      {
+        firstName: "Jonesss",
+        lastName: "Jackson",
+        profileImg: "",
+        email: "Jones@gmail.com"
+      },
+    ],
   },
   {
     userId: 6,
-    firstName: "Jones",
-    lastName: "Jackson",
-    profileImg: "",
-    email: "Jones@gmail.com",
+    userData: [
+      {
+        firstName: "Jones",
+        lastName: "Jackson",
+        profileImg: "",
+        email: "Jones@gmail.com"
+      },
+    ],
   },
   {
     userId: 7,
-    firstName: "Jones",
-    lastName: "Jackson",
-    profileImg: "",
-    email: "Jones@gmail.com",
+    userData: [
+      {
+        firstName: "Jonesssss",
+        lastName: "Jackson",
+        profileImg: "",
+        email: "Jones@gmail.com",
+      },
+    ],
   },
 ];
 
 function getTaskInfo() {
   let allTasksAsString = localStorage.getItem("allTasks");
-  allTasks = JSON.parse(allTasksAsString);
+  allTasks = JSON.parse(allTasksAsString) || [];
   console.log(allTasks);
 }
 
