@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="css/addTask.css" />
     <link rel="stylesheet" href="css/nav.css" />
     <link rel="stylesheet" href="css/overall.css" />
+    <link rel="stylesheet" href="css/footer.css">
     <!--JS-FILES-->
     <script src="js/include.js"></script>
     <script src="js/addTask.js"></script>
     <script src="js/overall.js"></script>
     <script src="js/mini_backend.js"></script>
+    <script>setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever')</script>
 </head>
 
 
@@ -31,7 +33,7 @@
         <div class="form-left">
             <div class="title-box">
                 <h3>TITLE</h3>
-                <input type="text" class="title-input" id="title-field" placeholder="Create a title" minlength="3"/>
+                <input type="text" class="title-input" id="title-field" placeholder="Create a title" minlength="3" />
             </div>
             <div class="category-box">
                 <h3>CATEGORY</h3>
@@ -42,11 +44,10 @@
                     <option>Sales</option>
                 </select>
             </div>
-
             <div class="description-box">
                 <h3>DESCRIPTION</h3>
-                <textarea type="text" class="longInput" id="description-field" cols="30" rows="10" minlength="5"></textarea>
-           
+                <textarea type="text" class="longInput" id="description-field" cols="30" rows="10"
+                    minlength="5"></textarea>
             </div>
         </div>
         <div class="form-right">
@@ -60,22 +61,20 @@
                     <option selected>High</option>
                     <option>Medium</option>
                     <option>Low</option>
-
                 </select>
-
             </div>
             <div class="assignment-box">
                 <h3>ASSIGNED TO</h3>
                 <div class="assignment-box-assets" id="assignment-box">
-                
+
                     <div class="button-box">
                         <button class="cancel-button">CANCEL</button>
                         <button type="submit" class="create-button">CREATE TASK</button>
                     </div>
                 </div>
-
-            </div>
+        </div>
     </form>
+    <div w3-include-html="templates/footer.html"></div>
 </body>
 
 </html>

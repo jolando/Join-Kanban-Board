@@ -1,5 +1,9 @@
+body {
+  height: 100vh;
+}
+
 .backlog-container {
-  margin-left: 153px;
+  margin-left: 163px;
   margin-right: 20px;
 }
 
@@ -21,7 +25,7 @@
 }
 
 .backlog-main-title {
-  margin-top: 30px;
+  padding-top: 30px;
   margin-bottom: 4px;
   font-size: 27px;
   color: rgba(0, 0, 0, 0.781);
