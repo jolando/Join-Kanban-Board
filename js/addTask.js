@@ -18,12 +18,43 @@ let profiles = [
 function initAddTask() {
   includeHTML();
   getTaskInfo();
+  renderUserProfiles();
+
 }
 
 function NameSelector(){
   let nameSelection = document.getElementById('name-selection');
   nameSelection.classList.remove('d-none');
   document.getElementById('profile').style.justifyContent = "space-around";
+}
+
+function renderUserProfiles(){
+  for (let i = 0; i < profiles.length; i++) {
+    document.getElementById('assignment-box').innerHTML += `
+    <div class="profile-box" id="profile">
+    <img src="img/profile.png" class="task-profile-pic" />
+    <span>${profiles[i]['name']}</span>
+    <span>${profiles[i]['e-mail']}</span>
+    <img src="img/icon plus.png" class="plus-icon" onclick="selectUser(${i})"/>
+    <span id="name-container"></span>
+</div>
+`  
+  }
+
+}
+
+function selectUser(index){
+  let user = {
+    "id": index,
+    "name": `${profiles[index].name}`,
+    "e-mail": `${profiles[index]['e-mail']}`
+  }
+  userCache.push(user);
+  console.log(user);
+  saveCreatedProfiles();
+  getProfileInfo();
+
+ 
 }
 
 function addTask(event) {
@@ -55,7 +86,6 @@ function addTask(event) {
   document.forms['addTask-form'].reset();
   document.getElementById('name-selection').classList.add('d-none');
   document.getElementById('profile').style.justifyContent = "flex-start";
-
 }
 
 // function changeUrgency(){
