@@ -11,6 +11,9 @@ form {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+span{
+  font-size: 14px;
+}
 
 .addTask {
   margin-top: 30px;
@@ -125,17 +128,23 @@ textarea::-webkit-input-placeholder {
 }
 
 .task-profile-pic {
-  height: 65px !important;
-  width: 65px !important;
+  height: 45px !important;
+  width: 45px !important;
   border-radius: 50%;
-  margin-right: 20px;
+  margin-right: 15px;
   object-fit: cover;
   object-position: top;
+}
+
+.selected-user-box{
+  background-color: rgb(39, 39, 185);
+  color: white !important;
 }
 
 .plus-icon {
   height: 30px;
   width: 30px;
+  margin-left: 5px;
   transition: transform 0.15s;
 }
 
@@ -147,7 +156,7 @@ textarea::-webkit-input-placeholder {
 .assignment-box-assets {
   height: 200px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-around;
 }
 
