@@ -1,0 +1,277 @@
+form {
+  height: 100%;
+  max-width: 800px;
+  background-color: rgba(0, 0, 255, 0.062);
+  padding: 45px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 153px;
+  margin-right: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.addTask {
+  margin-top: 30px;
+  margin-bottom: 4px;
+  margin-left: 153px;
+  font-size: 27px;
+  color: rgba(0, 0, 0, 0.781);
+}
+
+h2 {
+  color: rgb(8, 8, 110);
+  opacity: 0.5;
+  font-size: 12px !important;
+  margin-left: 153px;
+  margin-right: 0px;
+  margin-top: 0px !important;
+  margin-bottom: 0px;
+}
+
+h3 {
+  color: rgb(39, 39, 185);
+  margin-bottom: 8px;
+}
+
+input {
+  width: 99%;
+  height: 30px;
+  font-size: 15px;
+  font-family: "PT Sans", sans-serif;
+  margin-bottom: 20px;
+}
+
+.left {
+  margin-left: 200px;
+}
+
+.category-field-box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  width: 235px;
+  height: 30px !important;
+  border: 0.2px solid grey;
+}
+
+.form-control {
+  width: 100%;
+  height: 30px;
+  font-family: "PT Sans", sans-serif;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.urgency-content {
+  position: absolute;
+  min-width: 230px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  margin-top: 31px;
+  padding-left: 5px;
+  z-index: 1;
+}
+
+.urgency-content:hover .urgency-content {
+  display: flex !important;
+}
+
+.urgency-status:hover {
+  cursor: pointer;
+}
+
+.category-field-box img {
+  height: 26px;
+  width: 23px;
+  border-left: 0.3px solid grey;
+  padding: 2px;
+  object-fit: contain;
+}
+
+.category-field-box img:hover {
+  cursor: pointer;
+}
+
+.category {
+  margin-right: 5px;
+  padding-left: 5px;
+  align-self: center;
+  font-family: "PT Sans", sans-serif;
+  font-size: 15px;
+}
+
+textarea {
+  width: 230px;
+  height: 200px;
+  text-align: left;
+  font-family: "PT Sans", sans-serif;
+  font-size: 15px;
+  padding-left: 5px;
+  resize: none;
+}
+
+textarea::-webkit-input-placeholder {
+  font-family: "PT Sans", sans-serif;
+  font-size: 15px;
+  color: black;
+}
+
+.profile-box {
+  display: flex;
+  align-items: center;
+}
+
+.task-profile-pic {
+  height: 65px !important;
+  width: 65px !important;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.plus-icon {
+  height: 30px;
+  width: 30px;
+  transition: transform 0.15s;
+}
+
+.plus-icon:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+}
+
+.assignment-box-assets {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.create-button {
+  width: 125px;
+  height: 40px;
+  border-radius: 10%;
+  background-color: rgb(39, 39, 185);
+  color: white;
+  font-family: "PT Sans", sans-serif;
+  font-size: 1.17em;
+}
+
+.cancel-button {
+  width: 120px;
+  height: 40px;
+  border: none;
+  padding: 0;
+  background: none;
+  background-color: none;
+  color: rgb(39, 39, 185);
+  font-weight: bold;
+  font-family: "PT Sans", sans-serif;
+  font-size: 1.17em;
+}
+
+.cancel-button:hover {
+  cursor: pointer;
+  color: rgb(85, 85, 207);
+}
+
+.create-button:hover {
+  cursor: pointer;
+  background-color: rgb(85, 85, 207);
+}
+
+@media(max-width:850px) {
+  form {
+    flex-direction: column;
+    max-width: 100vw;
+    margin-left: calc(3% + 130px);
+    margin-right: 3%;
+  }
+  .profile-box {
+    justify-content: center;
+  }
+  textarea {
+    width: 180px;
+  }
+  .form-right {
+    width: 180px;
+  }
+  .task-profile-pic {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .button-box {
+    display: flex;
+  }
+  .create-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+  .cancel-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+}
+
+@media(max-width: 780px) {
+  form {
+    margin-left: 3%;
+    margin-top: 22px;
+  }
+  .addTask {
+    margin-left: 3%;
+    margin-top: 87px;
+  }
+}
+
+@media(max-width:550px) {
+  h3 {
+    font-size: 16px;
+  }
+  input {
+    font-size: 13px;
+  }
+  .form-control {
+    font-size: 13px;
+  }
+  .task-profile-pic {
+    width: 55px !important;
+    height: 55px !important;
+  }
+  .button-box {
+    display: flex;
+  }
+  .create-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+  .cancel-button {
+    width: 110px;
+    height: 35px;
+    font-size: 13px;
+  }
+}
+
+@media(max-width:465px) {
+  h1 {
+    font-size: 22px !important;
+  }
+  h2 {
+    font-size: 12px !important;
+  }
+  @media(max-width:410px) {
+    textarea {
+      width: 145px;
+    }
+    .form-right {
+      width: 145px;
+    }
+  }
+}
