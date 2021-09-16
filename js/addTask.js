@@ -10,9 +10,8 @@ async function initAddTask() {
   renderUserProfiles();
 }
 
-function deleteUser() {
-  backend.deleteItem("allTasks");
-}
+
+
 
 function renderUserProfiles() {
   for (let i = 0; i < allRegisteredUsers.length; i++) {
@@ -23,13 +22,24 @@ function renderUserProfiles() {
         <img src="img/icon plus.png" class="plus-icon" onclick="saveSelectedUser(${i})"/>
         <span id="name-container"></span>
     </div>
+  
 `;
   }
 }
 function saveSelectedUser(indexOfselectedUser) {
+  document.getElementById('assigned-to').innerHTML = "";
+  document.getElementById('assigned-to').innerHTML = `   
+  <span>${allRegisteredUsers[indexOfselectedUser].userData[0].firstName}</span>
+  <span>${allRegisteredUsers[indexOfselectedUser].userData[0].lastName}</span>
+  `
   index = indexOfselectedUser;
   return index;
 }
+
+function clearSelectedUser(){
+  document.getElementById('assigned-to').innerHTML = "";
+}
+
 
 function addTask(event) {
   event.preventDefault();
@@ -65,6 +75,9 @@ function addTask(event) {
   saveAllTasks();
   console.log("alltasks", allTasks);
   document.forms['addTask-form'].reset();
+  clearSelectedUser();
+  alert('Task has been created');
+ 
   // document.getElementById('name-selection').classList.add('d-none');
   // document.getElementById('profile').style.justifyContent = "flex-start";
 }

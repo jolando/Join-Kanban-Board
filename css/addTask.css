@@ -1,12 +1,12 @@
 form {
   height: 100%;
-  max-width: 800px;
+  width: 80vw;
   background-color: rgba(0, 0, 255, 0.062);
   padding: 45px 0px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-left: 153px;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-left: calc(3% + 130px);
   margin-right: 50px;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -15,7 +15,7 @@ form {
 .addTask {
   margin-top: 30px;
   margin-bottom: 4px;
-  margin-left: 153px;
+  margin-left: calc(3% + 130px);
   font-size: 27px;
   color: rgba(0, 0, 0, 0.781);
 }
@@ -119,9 +119,22 @@ textarea::-webkit-input-placeholder {
   color: black;
 }
 
+.assigned-to{
+  height: 51px;
+  border-radius: 10%;
+  border:3px solid white;
+  color: rgb(85, 85, 207);
+  font-family: "PT Sans", sans-serif;
+  font-size: 1.17em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .profile-box {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .task-profile-pic {
@@ -147,7 +160,7 @@ textarea::-webkit-input-placeholder {
 .assignment-box-assets {
   height: 200px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-around;
 }
 
@@ -187,18 +200,24 @@ textarea::-webkit-input-placeholder {
 @media(max-width:850px) {
   form {
     flex-direction: column;
-    max-width: 100vw;
     margin-left: calc(3% + 130px);
-    margin-right: 3%;
+    margin-right: 3% !important;
+    width: 77vw;
+    align-items: center;
   }
+  
   .profile-box {
     justify-content: center;
   }
   textarea {
-    width: 180px;
+    width: 250px;
+    height: 150px;
   }
   .form-right {
-    width: 180px;
+    width: 60vw;
+  }
+  .form-left {
+    width: 60vw;
   }
   .task-profile-pic {
     width: 50px !important;
@@ -223,6 +242,8 @@ textarea::-webkit-input-placeholder {
   form {
     margin-left: 3%;
     margin-top: 22px;
+    margin-right: 3% !important;
+    width: 94%;
   }
   .addTask {
     margin-left: 3%;
@@ -270,8 +291,6 @@ textarea::-webkit-input-placeholder {
     textarea {
       width: 145px;
     }
-    .form-right {
-      width: 145px;
-    }
+   
   }
 }
