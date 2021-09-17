@@ -17,10 +17,10 @@ function renderTaskInfo() {
         <span class="task-title" id="description-container" class="description-container"> ${allTasks[i].title}</span>
         <span id="task-title" > ${allTasks[i].description}</span>
         <div class="info-container">
-          <span class="extra-info"><span class="${categoryColor}">Sales</span></span>
+          <span><span class="${categoryColor} extra-info">${cardCategory}</span></span>
           <span class="extra-info"><span class="">01.12.19</span></span>
           <span class="extra-info" >High</span>
-          <span class="extra-info" ></span>
+          
         </div>
         <img onclick="deleteBoardCard(${i})" class="delete-icon" src="img/close-board.png">
     </div>

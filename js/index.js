@@ -52,7 +52,7 @@ function register() {
   }
 }
 
-function registerNewUser() {
+async function registerNewUser() {
   let v = registerInputValues()
   for (let i = 0; i < v.length; i++) {
     user = {
@@ -70,9 +70,8 @@ function registerNewUser() {
     };
   }
   allRegisteredUsers.push(user);
-  // console.log("filled user-object", user);
-  // console.log("values in returnRegisterFormInput:", data);
-  saveRegisterRequest();
+  await saveRegisterRequest();
+  await loadRegisterRequest()
   deleteRegisterInput();
   console.log('user', user)
 }

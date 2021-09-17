@@ -3,7 +3,7 @@
 
 
 <head>
-    
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
     <script src="js/addTask.js"></script>
     <script src="js/overall.js"></script>
     <script src="js/mini_backend.js"></script>
-    
+
 </head>
 
 
@@ -34,11 +34,11 @@
         <div class="form-left">
             <div class="title-box">
                 <h3>TITLE</h3>
-                <input type="text" class="title-input" id="title-field" placeholder="Create a title" minlength="3" />
+                <input type="text" class="title-input" id="title-field" placeholder="Create a title" minlength="3" required/>
             </div>
             <div class="category-box">
                 <h3>CATEGORY</h3>
-                <select id="task-category" class="form-control">
+                <select id="task-category" class="form-control" required>
                     <option selected>Management</option>
                     <option>Marketing</option>
                     <option>Product</option>
@@ -47,18 +47,17 @@
             </div>
             <div class="description-box">
                 <h3>DESCRIPTION</h3>
-                <textarea type="text" class="longInput" id="description-field" cols="30" rows="10"
-                    minlength="5"></textarea>
+                <textarea type="text" class="longInput" id="description-field" cols="30" rows="10" minlength="5" required></textarea>
             </div>
         </div>
         <div class="form-right">
             <div class="date-box">
                 <h3>DUE DATE</h3>
-                <input type="date" id="date-field" />
+                <input type="date" id="date-field" required/>
             </div>
             <div class="urgency-box">
                 <h3>URGENCY</h3>
-                <select id="urgency-category" class="form-control">
+                <select id="urgency-category" class="form-control" required>
                     <option selected>High</option>
                     <option>Medium</option>
                     <option>Low</option>
@@ -74,7 +73,7 @@
                         <button type="submit" class="create-button">CREATE TASK</button>
                     </div>
                 </div>
-        </div>
+            </div>
     </form>
     <div w3-include-html="templates/footer.html"></div>
 </body>

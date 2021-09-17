@@ -32,11 +32,11 @@ h2 {
 }
 
 .delete-icon {
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 24;
-	width: 24;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 24;
+  width: 24;
 }
 
 @media screen and (max-width: 1120px) {
@@ -44,18 +44,18 @@ h2 {
     flex-direction: column;
     margin: 0;
     margin-top: 40px;
-	
+
     min-width: 96%;
     /* height: 100vh; */
   }
   .board-box {
     height: 100%;
-	min-height: 15vh;
-	/* margin-bottom: 100px; */
+    min-height: 15vh;
+    /* margin-bottom: 100px; */
     /* margin: 100px 0; */
   }
   .mt {
-	margin-top: 40px;
+    margin-top: 40px;
   }
 }
 
@@ -70,11 +70,14 @@ h2 {
     inset 1px 1px 1px rgba(0, 0, 0, 0.5);
   border-radius: 4px;
   margin: 10px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 10px;
   height: 100%;
   max-height: 100px;
   cursor: pointer;
   overflow: auto;
+  word-break: break-all;
 }
 
 .task-container {
@@ -84,16 +87,25 @@ h2 {
 }
 .extra-info {
   font-size: 14px;
+  padding: 4px 4px;
+}
+
+.task-title {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .info-container {
   position: absolute;
   bottom: 0;
   right: 0;
-  left: 20px;
-  margin: 10px;
+  left: 0px;
+  padding: 1px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  border-top: 1px solid black;
+  width: 100%;
+  z-index: 1;
 }
