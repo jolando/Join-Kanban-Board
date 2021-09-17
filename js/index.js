@@ -81,7 +81,13 @@ function deleteRegisterInput() {
   document.forms['register-form'].reset();
 }
 
+function openRegisterWindow() {
+  document.getElementById('register-window').style.display = 'flex';
+}
 
+function closeRegisterWindow() {
+  document.getElementById('register-window').style.display = 'none';
+}
 
 
 /**
