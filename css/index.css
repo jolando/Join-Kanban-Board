@@ -13,13 +13,17 @@
   position: relative;
   height: 80%;
   width: 100%;
+
+  background-image: url("../img/bg.png");
+
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
   margin: 15%;
   box-shadow: 0px 10px 13px -7px #000000,
     -2px 30px 86px 2px rgba(0, 0, 0, 0.582);
-  background-image: url("../img/bg.png");
+
+
 }
 
 .login-form-content {
@@ -31,6 +35,7 @@
   place-items: center;
   height: 100%;
   color: rgba(255, 255, 255, 0.445);
+
   font-family: "Varela Round", sans-serif;
 }
 
@@ -70,8 +75,8 @@
   background-color: rgba(0, 0, 0, 0.055);
   border-left: 1px solid rgba(0, 0, 0, 0.356);
   border-bottom: 1px solid rgba(0, 0, 0, 0.356);
-  font-size: 13px;
   padding: 10px;
+  font-size: 13px;
 }
 
 .copy {
@@ -190,7 +195,7 @@
   text-align: center;
   margin-bottom: 15px;
   font-size: 30px;
- 
+
 }
 
 .form-submit-btn {
@@ -215,6 +220,7 @@
   flex-direction: column;
 }
 
+
 .form-end {
   display: flex;
   flex-direction: column;
@@ -224,6 +230,7 @@
   color: orange;
   margin-top: 20px;
 }
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
@@ -236,6 +243,7 @@
   right: 0;
   bottom: 0;
   opacity: 1;
+
   background-color: rgb(255, 255, 255);
 }
 
@@ -259,6 +267,7 @@
 .close-icon:hover {
   transform: scale(1.04);
 }
+
 
 .register-end {
   margin-top: 20px;
