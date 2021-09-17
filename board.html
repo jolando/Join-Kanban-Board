@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join</title>
-    <!--CSS-FILES-->
-    <link rel="stylesheet" href="css/nav.css" />
-    <link rel="stylesheet" href="css/board.css" />
-    <link rel="stylesheet" href="css/overall.css" />
-    <link rel="stylesheet" href="css/footer.css">
-    <!--JS-FILES-->
-    <script src="js/include.js"></script>
-    <script src="js/board.js"></script>
-    <script src="js/overall.js"></script>
-    <script src="js/mini_backend.js"></script>
-    
-  </head>
 
-  <body onload="initBoard()">
-    <div w3-include-html="templates/nav.html"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
+  <!--CSS-FILES-->
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/board.css" />
+  <link rel="stylesheet" href="css/overall.css" />
+  <link rel="stylesheet" href="css/footer.css">
+  <!--JS-FILES-->
+  <script src="js/include.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/overall.js"></script>
+  <script src="js/mini_backend.js"></script>
 
-    <div class="board-container">
-      <div>
-        <h2>Todo</h2>
-        <div class="board-box" id="todo-container"></div>
-      </div>
-      <div>
-        <h2>In Progress</h2>
-        <div class="board-box"></div>
-      </div>
-      <div>
-        <h2>Testing</h2>
-        <div class="board-box"></div>
-      </div>
-      <div>
-        <h2>Done</h2>
-        <div class="board-box"></div>
-      </div>
+</head>
+
+<body onload="initBoard()">
+  <div w3-include-html="templates/nav.html"></div>
+
+  <div class="board-container">
+    <div class="mt">
+      <h2>Todo</h2>
+      <div class="board-box" id="todo-container"></div>
     </div>
-    <div w3-include-html="templates/footer.html"></div>
-  </body>
+    <div class="mt">
+      <h2>In Progress</h2>
+      <div class="board-box"></div>
+    </div>
+    <div class="mt">
+      <h2>Testing</h2>
+      <div class="board-box"></div>
+    </div>
+    <div class="mt">
+      <h2>Done</h2>
+      <div class="board-box"></div>
+    </div>
+  </div>
+  </div>
+  <div w3-include-html="templates/footer.html"></div>
+</body>
+
 </html>

@@ -1,6 +1,3 @@
-/* body {
-  background-color: rgba(112, 111, 114, 0.37);
-}
 
 
 .index-container {
@@ -11,17 +8,28 @@
   width: 100%;
   background-color: rgba(0, 0, 255, 0);
   border-radius: 10px;
-  
 }
 
-.overlay {
+/* .overlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
   width: 40%;
   filter: blur(2px);
-  background: linear-gradient(77deg, rgba(41,44,97,0.6362920168067228) 12%, rgba(23,31,166,0.47102591036414565) 29%, rgba(43,50,167,0.38699229691876746) 40%, rgba(23,28,170,0.3617822128851541) 51%, rgba(29,30,112,0.41220238095238093) 60%, rgba(23,24,174,0.3393732492997199) 66%, rgba(67,66,164,0.41220238095238093) 77%, rgba(23,20,179,0.35057773109243695) 88%, rgba(23,18,182,0.3897934173669467) 94%);}
+  background: linear-gradient(
+    77deg,
+    rgba(41, 44, 97, 0.6362920168067228) 12%,
+    rgba(23, 31, 166, 0.47102591036414565) 29%,
+    rgba(43, 50, 167, 0.38699229691876746) 40%,
+    rgba(23, 28, 170, 0.3617822128851541) 51%,
+    rgba(29, 30, 112, 0.41220238095238093) 60%,
+    rgba(23, 24, 174, 0.3393732492997199) 66%,
+    rgba(67, 66, 164, 0.41220238095238093) 77%,
+    rgba(23, 20, 179, 0.35057773109243695) 88%,
+    rgba(23, 18, 182, 0.3897934173669467) 94%
+  );
+} */
 
 .login-container {
   display: flex;
@@ -36,19 +44,23 @@
 }
 
 .login-form-content {
+  display: grid;
+  place-items: center;
   height: 100%;
   width: 33.3%;
 }
 
 .content-container {
-  display: grid;
-  place-content: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
   height: 100%;
   color: rgba(255, 255, 255, 0.445);
   text-align: center;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.233);
+  /* border: 1px solid rgba(255, 255, 255, 0.233); */
 }
 
 .content-title {
@@ -85,7 +97,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* height: 100%; */
+  height: 100%;
   height: 400px;
   width: 70%;
 }
@@ -109,7 +121,7 @@
 }
 
 .single-input {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .form-submit-btn {
@@ -127,7 +139,7 @@
 }
 
 .form-submit-btn:hover {
-    background-color: rgb(5, 6, 65);
+  background-color: rgb(5, 6, 65);
 }
 
 .link-container {
@@ -170,13 +182,13 @@
     border: 1px solid rgba(255, 255, 255, 0.281);
     border-radius: 50px;
   }
-  .login-title{
-      margin-top: 100px;
+  .login-title {
+    margin-top: 100px;
   }
-  .input{
-      border-radius: 50px;
-      
-      background-color: rgba(255, 255, 255, 0.788);
-      padding: 5px;
+  .input {
+    border-radius: 50px;
+
+    background-color: rgba(255, 255, 255, 0.788);
+    padding: 5px;
   }
-} */
+}

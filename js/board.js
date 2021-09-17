@@ -1,31 +1,36 @@
 async function initBoard() {
   includeHTML();
-  setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master')
+  setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
   await loadRegisterRequest();
   renderTaskInfo();
-  
-  // loadAllTask();
 }
-
-// async function getTaskInfo() {
-//     let allTasksAsString = localStorage.getItem('allTasks');
-//     allTasks2 = JSON.parse(allTasksAsString);
-//     console.log(allTasks);
-// }
 
 function renderTaskInfo() {
   for (let i = 0; i < allTasks.length; i++) {
+    let cardCategory = allTasks[i].category;
+    let categoryColor = getRightCategoryColor(cardCategory);
+
     document.getElementById("todo-container").innerHTML += `
-            <div class="task-unit">
-                <div class="task-container">
-                    <span class="task-title" id="description-container" class="description-container"><b>Title:</b> ${allTasks[i].title}</span>
-                    <span id="task-title" ><b>Description:</b>  ${allTasks[i].description}</span>
-                    <span id="category-container" class="extra-info" ><b>Category:</b>  ${allTasks[i].category}</span>
-                    <span id="date-container" class="extra-info"><b>Date: </b>${allTasks[i].date}</span>
-                    <span id="urgency-container" class="extra-info" ><b>Urgency: </b>${allTasks[i].urgency}</span>
-                    <span id="assigned-container" class="extra-info" ></span>
-                </div>
-            </div>`;
+    <div id="task-unit${i}" class="task-unit">
+    <div class="task-container">
+        <span class="task-title" id="description-container" class="description-container"> ${allTasks[i].title}</span>
+        <span id="task-title" > ${allTasks[i].description}</span>
+        <div class="info-container">
+          <span class="extra-info"><span class="${categoryColor}">Sales</span></span>
+          <span class="extra-info"><span class="">01.12.19</span></span>
+          <span class="extra-info" >High</span>
+          <span class="extra-info" ></span>
+        </div>
+        <img onclick="deleteBoardCard(${i})" class="delete-icon" src="img/close-board.png">
+    </div>
+  </div>`;
   }
+}
+
+function deleteBoardCard(allTasksIndex) {
+  allTasks.splice(allTasksIndex, 1);
+  saveAllTasks();
+  loadAllTasks();
+  document.getElementById("task-unit" + allTasksIndex).style = "display: none;";
 }

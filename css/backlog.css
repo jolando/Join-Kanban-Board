@@ -73,6 +73,8 @@ body {
 
 .user-profile {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-picture {
@@ -139,24 +141,11 @@ body {
   margin-right: 5px;
 }
 
-.sales-color {
-  background-color: rgba(29, 189, 29, 0.308);
-}
-.product-color {
-  background-color: rgba(59, 59, 187, 0.329);
-}
 
-.management-color {
-  background-color: #ee8f125b;
-}
-
-.marketing-color {
-  background-color: rgba(233, 20, 20, 0.37);
-}
-
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1120px) {
   .backlog-container {
-    margin: 110px 3%;
+    text-align: center;
+    margin: 60px 3%;
   }
   .backlog-subtitle {
     margin-bottom: 10px;

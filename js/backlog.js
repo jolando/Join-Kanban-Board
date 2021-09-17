@@ -1,4 +1,5 @@
 window.onresize = checkBacklogContainer;
+const ISWINDOW_WIDTH = 1120;
 
 /**
  * will be executed when the backlog page is refreshed
@@ -64,10 +65,10 @@ function executeRenderFunction() {
  * @param {String} description descrption text
  */
 function renderBacklogCard(index, color, category, description) {
-  if (window.innerWidth > 780) {
+  if (window.innerWidth > ISWINDOW_WIDTH) {
     returnNormalCard(index, color, category, description);
   } else {
-    returnResponsiveCard(index, color, category, description);
+    returnResponsiveCard(index, color, description);
   }
 }
 
@@ -79,7 +80,7 @@ function renderBacklogCard(index, color, category, description) {
  * @param {String} description descrption text
  * @returns {String} normal card
  */
-const returnResponsiveCard = (index, colorClass, description) => {
+const returnResponsiveCard = (index, colorClass, description,) => {
   document.getElementById("backlog").innerHTML += `
   <div id="backlog-unit${index}" class="backlog-unit ${colorClass}">
           <span id="category-color" class="category-color ${colorClass}"></span>
@@ -88,14 +89,14 @@ const returnResponsiveCard = (index, colorClass, description) => {
                    <div class="user-profile">
                       <img class="profile-picture" src="img/profile.png">
                       <div class="user-information">
-                          <span class="backlog-unit-name">${allTasks[index].firstName}</span>
-                          <span class="backlog-unit-name">${allTasks[index].lastName}</span>
+                          <span class="backlog-unit-name">${allTasks[index].fName}</span>
+                          <span class="backlog-unit-name">${allTasks[index].lName}</span>
                           <a href="email" class="backlog-unit-email">contact@darrin.com</a>
                       </div> 
                   </div>
                   <div class="tast-information">
-                      
-                      <span id="description${index}" class="backlog-details">${description}</span>
+                  
+                  <span id="description${index}" class="backlog-details">${description}</span>
                   </div>
                   <div class="delete-icon">
                       <img onclick="deleteTask(${index})" src="img/trash2.png"> 
@@ -151,7 +152,7 @@ const returnNormalCard = (index, colorClass, category, description) => {
  */
 function deleteTask(allTasksIndex) {
   allTasks.splice(allTasksIndex, 1);
-  allRegisteredUsers.splice(allTasksIndex, 1);
+  // allRegisteredUsers.splice(allTasksIndex, 1);
   saveAllTasks();
   saveRegisterRequest();
   loadAllTasks();
@@ -176,23 +177,4 @@ let checkDescription = (rightDescription) => {
   }
 };
 
-/**
- * checks which department the task is intended for
- *
- * @param {String} category is one of 4 different departments
- * @returns {String} retrun the right classname
- */
-let getRightCategoryColor = (category) => {
-  if (category == "Management") {
-    return "management-color";
-  }
-  if (category == "Marketing") {
-    return "marketing-color";
-  }
-  if (category == "Product") {
-    return "product-color";
-  }
-  if (category == "Sales") {
-    return "sales-color";
-  }
-};
+
