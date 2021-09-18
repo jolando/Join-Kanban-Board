@@ -16,10 +16,14 @@
   margin: 15%;
   box-shadow: 0px 10px 13px -7px #000000,
     -2px 30px 86px 2px rgba(0, 0, 0, 0.582);
+    background-image: url("../img/bg.png");
+    background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-size: cover;
 }
 
 .login-form-content {
-  width: 33.3%;
+  width: 33%;
 }
 
 .content-container {
@@ -27,11 +31,12 @@
   place-items: center;
   height: 100%;
   color: rgba(255, 255, 255, 0.445);
-  background-image: url("../img/bg.png");
+  
   background-repeat: no-repeat;
   background-position-y: bottom;
   background-size: cover;
   font-family: "Varela Round", sans-serif;
+  
 }
 
 .login-form-container {
