@@ -1,7 +1,7 @@
-//setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master')
 
 let allRegisteredUsers = [];
 let allTasks = [];
+let index;
 
 async function saveRegisterRequest() {
   await backend.setItem("registeredUser", JSON.stringify(allRegisteredUsers));

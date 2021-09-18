@@ -1,17 +1,10 @@
-let selectedUser = [];
-let index;
-
 async function initAddTask() {
   includeHTML();
-
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
   await loadRegisterRequest();
   renderUserProfiles();
 }
-
-
-
 
 function renderUserProfiles() {
   for (let i = 0; i < allRegisteredUsers.length; i++) {
@@ -19,69 +12,70 @@ function renderUserProfiles() {
     <div class="profile-box" id="profile${i}">
         <span>${allRegisteredUsers[i].userData[0].firstName}</span>
         <span>${allRegisteredUsers[i].userData[0].lastName}</span>
-        <img src="img/icon plus.png" class="plus-icon" onclick="saveSelectedUser(${i})"/>
+        <img src="img/icon plus.png" class="plus-icon" onclick="saveSelectedUser(${i}), addSelectedUser();"/>
         <span id="name-container"></span>
     </div>
-  
-`;
+    `;
   }
 }
+
 function saveSelectedUser(indexOfselectedUser) {
-  document.getElementById('assigned-to').innerHTML = "";
-  document.getElementById('assigned-to').innerHTML = `   
-  <span>${allRegisteredUsers[indexOfselectedUser].userData[0].firstName}</span>
-  <span>${allRegisteredUsers[indexOfselectedUser].userData[0].lastName}</span>
-  `
   index = indexOfselectedUser;
   return index;
 }
 
-function clearSelectedUser(){
-  document.getElementById('assigned-to').innerHTML = "";
+function addSelectedUser() {
+  document.getElementById("assigned-to").innerHTML = "";
+  document.getElementById("assigned-to").innerHTML = `   
+  <span>${allRegisteredUsers[index].userData[0].firstName}</span>
+  <span>${allRegisteredUsers[index].userData[0].lastName}</span>
+  `;
 }
 
+function clearSelectedUser() {
+  document.getElementById("assigned-to").innerHTML = "";
+}
 
-function addTask(event) {
-  event.preventDefault();
-
+function getInputValues() {
   let title = document.getElementById("title-field").value;
   let description = document.getElementById("description-field").value;
   let date = document.getElementById("date-field").value;
   let urgency = document.getElementById("urgency-category").value;
   let category = document.getElementById("task-category").value;
-  
+  let fName = allRegisteredUsers[saveSelectedUser(index)].userData[0].firstName;
+  let lName = allRegisteredUsers[saveSelectedUser(index)].userData[0].lastName;
+  let img = allRegisteredUsers[saveSelectedUser(index)].userData[0].profileImg;
+  let email = allRegisteredUsers[saveSelectedUser(index)].userData[0].email;
+  let allInputValues = [title, description, date, urgency, category, fName, lName, img ,email,];
+  return allInputValues;
+}
+
+function addTask(event) {
+  event.preventDefault();
+  let allInputValues = getInputValues();
   let task = {
-    title: title,
-    description: description,
-    category: category,
-    date: date,
-    urgency: urgency,
-    fName: `${
-      allRegisteredUsers[saveSelectedUser(index)].userData[0].firstName
-    }`,
-    lName: `${
-      allRegisteredUsers[saveSelectedUser(index)].userData[0].lastName
-    }`,
-    img: `${
-      allRegisteredUsers[saveSelectedUser(index)].userData[0].profileImg
-    }`,
-    email: `${allRegisteredUsers[saveSelectedUser(index)].userData[0].email}`,
-    status: 'todo',
+    title: allInputValues[0],
+    description: allInputValues[1],
+    date: allInputValues[2],
+    urgency: allInputValues[3],
+    category: allInputValues[4],
+    fName: allInputValues[5],
+    lName: allInputValues[6],
+    img: allInputValues[7],
+    email: allInputValues[8],
+    status: "todo",
   };
-
-  console.log(task);
-
   allTasks.push(task);
-
   saveAllTasks();
   console.log("alltasks", allTasks);
-  document.forms['addTask-form'].reset();
-  clearSelectedUser();
-  alert('Task has been created');
- 
-  // document.getElementById('name-selection').classList.add('d-none');
-  // document.getElementById('profile').style.justifyContent = "flex-start";
+  resetAddTask(); 
+  alert("Task has been created");
 }
+
+function resetAddTask() {
+  document.forms["addTask-form"].reset();
+}
+
 
 function NameSelector() {
   let nameSelection = document.getElementById("name-selection");
