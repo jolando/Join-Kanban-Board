@@ -12,7 +12,7 @@ function renderTaskInfo() {
     let categoryColor = getRightCategoryColor(cardCategory);
 
     document.getElementById("todo-container").innerHTML += `
-    <div id="task-unit${i}" class="task-unit">
+    <div id="task-unit${i}" draggable="true" ondragstart class="task-unit">
     <div class="task-container">
         <span class="task-title" id="description-container" class="description-container"> ${allTasks[i].title}</span>
         <span id="task-title" > ${allTasks[i].description}</span>

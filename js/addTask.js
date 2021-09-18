@@ -49,7 +49,7 @@ function addTask(event) {
   let date = document.getElementById("date-field").value;
   let urgency = document.getElementById("urgency-category").value;
   let category = document.getElementById("task-category").value;
-
+  
   let task = {
     title: title,
     description: description,
@@ -66,6 +66,7 @@ function addTask(event) {
       allRegisteredUsers[saveSelectedUser(index)].userData[0].profileImg
     }`,
     email: `${allRegisteredUsers[saveSelectedUser(index)].userData[0].email}`,
+    status: 'todo',
   };
 
   console.log(task);
