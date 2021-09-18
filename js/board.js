@@ -17,8 +17,8 @@ function renderTaskInfo() {
         <span class="task-title" id="description-container" class="description-container"> ${allTasks[i].title}</span>
         <span id="task-title" > ${allTasks[i].description}</span>
         <div class="info-container">
-          <span><span class="${categoryColor} extra-info">${cardCategory}</span></span>
-          <span class="extra-info"><span class="">01.12.19</span></span>
+          <span class="${categoryColor} extra-info">${cardCategory}</span>
+          <span class="extra-info">01.12.19</span></span>
           <span class="extra-info" >High</span>
           
         </div>

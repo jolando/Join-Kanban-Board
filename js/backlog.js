@@ -94,10 +94,10 @@ const returnResponsiveCard = (index, colorClass, description,) => {
                           <a href="email" class="backlog-unit-email">contact@darrin.com</a>
                       </div> 
                   </div>
-                  <div class="tast-information">
+                  
                   
                   <span id="description${index}" class="backlog-details">${description}</span>
-                  </div>
+                  
                   <div class="delete-icon">
                       <img onclick="deleteTask(${index})" src="img/trash2.png"> 
                   </div>

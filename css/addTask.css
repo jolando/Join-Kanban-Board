@@ -197,7 +197,7 @@ textarea::-webkit-input-placeholder {
   background-color: rgb(85, 85, 207);
 }
 
-@media(max-width:850px) {
+@media(max-width:1220px) {
   form {
     flex-direction: column;
     margin-left: calc(3% + 130px);
@@ -238,7 +238,7 @@ textarea::-webkit-input-placeholder {
   }
 }
 
-@media(max-width: 780px) {
+@media(max-width: 1120px) {
   form {
     margin-left: 3%;
     margin-top: 22px;
