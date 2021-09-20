@@ -23,6 +23,11 @@ let user = {
 //   backend.deleteItem("allTasks");
 // }
 
+/**
+ * get every input value of the register form
+ * 
+ * @returns an array with all register input values
+ */
 function provideRegisterValues() {
   let email = document.getElementById("register-email").value;
   let fName = document.getElementById("register-firstname").value;
@@ -33,6 +38,11 @@ function provideRegisterValues() {
   return userIunputData;
 }
 
+/**
+ * register a new user if the passwords are correct and the email does not exist yet
+ * 
+ * @param {*} ev event 
+ */
 function registerNewUser(ev) {
   ev.preventDefault();
   console.log(allRegisteredUsers);
@@ -43,7 +53,9 @@ function registerNewUser(ev) {
   }
 }
 
-
+/**
+ *  fill user-object with input values
+ */
  async function createUserObject() {
   eachValues = provideRegisterValues();
   let user = {
@@ -58,6 +70,9 @@ function registerNewUser(ev) {
   await loadRegisterRequest();
 }
 
+/**
+ * get all registered user emails and fills an empty array
+ */
 function getAllEmails() {
   for (let i = 0; i < allRegisteredUsers.length; i++) {
     const registeredUserEmail = allRegisteredUsers[i].email;
@@ -67,6 +82,11 @@ function getAllEmails() {
   }
 }
 
+/**
+ * checks if the user email already exists
+ * 
+ * @returns 
+ */
 function emailExists() {
   email = provideRegisterValues();
   let checkEmail = allUsersEmail.includes(email[0]) 
@@ -74,9 +94,15 @@ function emailExists() {
 }
   
 
-
+/**
+ * compare passwords
+ * 
+ * @returns {Boolean} true or false
+ */
 function equalPw() {
   eachValues = provideRegisterValues();
+  // equalPw = (eachValues[3] == eachValues[4]) ? true : false;
+
   if (eachValues[3] == eachValues[4]) {
     return true;
   } else {
@@ -84,16 +110,25 @@ function equalPw() {
   }
 }
 
+/**
+ * reset input fields
+ */
 function deleteRegisterInput() {
   document.forms["register-form"].reset();
 }
 
-function openRegisterWindow(ev) {
+/**
+ * show register form
+ */
+function openRegisterWindow() {
   ev.preventDefault();
   document.getElementById("register-window").style.zIndex = "1";
 }
 
-function closeRegisterWindow(ev) {
+/**
+ * hide register form
+ */
+function closeRegisterWindow() {
   ev.preventDefault();
   document.getElementById("register-window").style.zIndex = "-1";
 }
