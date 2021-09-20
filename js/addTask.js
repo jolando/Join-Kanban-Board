@@ -7,6 +7,9 @@ async function initAddTask() {
   renderUserProfiles();
 }
 
+/**
+ * This function displays the users who are saved in the backend
+ */
 function renderUserProfiles() {
   for (let i = 0; i < allRegisteredUsers.length; i++) {
     document.getElementById("assignment-box").innerHTML += `
@@ -20,11 +23,21 @@ function renderUserProfiles() {
   }
 }
 
+/**
+ * 
+ * @param {integer} indexOfselectedUser - stands for the index of the selected users
+ * @returns 
+ * this function saves the index of the selected users into the global variable index
+ */
+
 function saveSelectedUser(indexOfselectedUser) {
   index = indexOfselectedUser;
   return index;
 }
 
+/**
+ * this function adds the selected user to a separate box in order to highlight them
+ */
 function addSelectedUser() {
   document.getElementById("assigned-to").innerHTML = "";
   document.getElementById("assigned-to").innerHTML = `   
@@ -33,9 +46,17 @@ function addSelectedUser() {
   `;
 }
 
+/**
+ * this function removes the selected user from the separate box again
+ */
+
 function clearSelectedUser() {
   document.getElementById("assigned-to").innerHTML = "";
 }
+/**
+ * this function saves the values of the form input fields into variables
+ * @returns the input values of every form input field
+ */
 
 function getInputValues() {
   let title = document.getElementById("title-field").value;
@@ -49,6 +70,11 @@ function getInputValues() {
   let allInputValues = [title, description, date, urgency, category, fName, lName, email];
   return allInputValues;
 }
+
+/**
+ * This function pushes the input values of the form into a global array and informs the user that a task has been created
+ * @param {*} event -this is an onsubmit default event
+ */
 
 function addTask(event) {
   event.preventDefault();
@@ -72,53 +98,15 @@ function addTask(event) {
   alert("Task has been created");
 }
 
+/**
+ * This functions resets the entire form after submitting
+ */
+
 function resetAddTask() {
   document.forms["addTask-form"].reset();
 }
 
 
-function NameSelector() {
-  let nameSelection = document.getElementById("name-selection");
-  nameSelection.classList.remove("d-none");
-  document.getElementById("profile").style.justifyContent = "space-around";
-}
 
-// let profiles = [
-//   {
-//     "id": 0,
-//     "name": "Peter",
-//     "e-mail": "peter@t-online.de"
-//   },
-//   {
-//     "id": 1,
-//     "name": "Adilet",
-//     "e-mail": "Adilet@t-online.de"
-//   },
-//   {
-//     "id": 2,
-//     "name": "Sebastian",
-//     "e-mail": "sebastian@t-online.de"
-//   },
-// ]
 
-// function changeUrgency(){
-//     let urgency = document.getElementById('urgency-content');
-//     if (urgency.classList.contains('d-none')){
-//         urgency.classList.remove('d-none')
-//     } else {
-//         urgency.classList.add('d-none');
-//     }
-// }
 
-// function highUrgency(){
-//     document.getElementById('urgency-status-field').innerHTML = 'High';
-//     document.getElementById('urgency-content').classList.add('d-none');
-// }
-// function mediumUrgency(){
-//     document.getElementById('urgency-status-field').innerHTML = 'Medium';
-//     document.getElementById('urgency-content').classList.add('d-none');
-// }
-// function lowUrgency(){
-//     document.getElementById('urgency-status-field').innerHTML = 'Low';
-//     document.getElementById('urgency-content').classList.add('d-none');
-// }
