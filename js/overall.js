@@ -1,5 +1,12 @@
 
-let allRegisteredUsers = [];
+let allRegisteredUsers = [{
+  userPassword: '123123123',
+  validatePassword: '123123123',
+  firstName: 'Jochen',
+  lastName: 'Koch',
+  email: '123@gmail.com'
+},
+];
 let allTasks = [];
 let index;
 

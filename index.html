@@ -40,79 +40,78 @@
 
         <form id="login-form" onsubmit="" action="">
 
-          <div class="login-cointainer">
-            <div>
-              <h2 class="content-title">Login into JOIN</h2>
-              <span class="gray-look sub-title">Enter your login details blow.</span>
+
+          <div>
+            <h2 class="content-title">Login into JOIN</h2>
+            <span class="gray-look sub-title">Enter your login details blow.</span>
+          </div>
+          <div class="login-input-group">
+            <div class="single-input">
+              <span class="gray-look">EMAIL-ADDRESS</span>
+              <input id="login-email" class="index-input-style1" type="email" placeholder="example@join.com" /><br />
             </div>
-            <div class="login-input-group">
-              <div class="single-input">
-                <span class="gray-look">EMAIL-ADDRESS</span>
-                <input id="login-email" class="index-input-style1" type="email" placeholder="example@join.com" /><br />
-              </div>
-              <div class="single-input">
-                <span class="gray-look">PASSWORD</span>
-                <input id="login-password" class="index-input-style2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                  style="-webkit-text-security: square" type="password" placeholder="Enter your password" />
-              </div>
-            </div>
-
-            <div class="form-end">
-              <button onclick="checkLogin()" class="login-submit-btn" type="submit">Sign in</button>
-              <a class="without-login" href="board.html">without login</a>
-            </div>
-
-            <div class="create-account">
-              <span class="gray-look sub-title">Don't have an account?</span>
-              <button onclick="openRegisterWindow()" class="create-account-btn gray-look">Create Account</button>
-            </div>
-            <span class="copy">© 2021 gruppe-99.developerakademie.com</span>
-            <div id="register-window" class="overlay">
-              <form id="register-form" onsubmit="register()" action="">
-                <div class="register-form-container">
-                  <h3 class="content-title">Register</h3>
-                  <span class="gray-look sub-title">Enter your login details blow.</span>
-                  <div class="login-input-group">
-                    <span class="gray-look">EMAIL-ADDRESS</span>
-                    <input id="register-email" class="index-input-style1" type="email" placeholder="example@join.com"
-                      required />
-                  </div>
-                  <div class="login-input-group">
-                    <span class="gray-look">FIRST NAME</span>
-                    <input id="register-firstname" minlength="3" maxlength="10"
-                      onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
-                      class="index-input-style2" type="text" placeholder="First Name" required />
-                  </div>
-                  <div class="login-input-group">
-                    <span class="gray-look">LAST NAME</span>
-                    <input id="register-lastname" minlength="3" maxlength="10"
-                      onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
-                      class="index-input-style1" type="text" placeholder="Last Name" required />
-                  </div>
-                  <div class="login-input-group">
-                    <span class="gray-look">PASSWORD</span>
-                    <input id="register-password" class="index-input-style1" type="password" minlength="8"
-                      maxlength="100" placeholder="Enter your password" required />
-                  </div>
-                  <div class="login-input-group">
-                    <span class="gray-look">CONFIRM PASSWORD</span>
-                    <input id="register-confirmed" class="index-input-style2" type="password" minlength="8"
-                      maxlength="100" placeholder=" Confirm Password" required />
-                  </div>
-                  <div class="login-input-group">
-                    <button type="submit" class="login-submit-btn" type="submit">Register</button>
-
-                    <p class="register-end gray-look">By clicking register, you agree to the privacy policy</p>
-
-                  </div>
-                  <img onclick="closeRegisterWindow()" class="close-icon" src="img/close.png">
-                  <span class="copy">© 2021 gruppe-99.developerakademie.com</span>
-                </div>
-
-              </form>
+            <div class="single-input">
+              <span class="gray-look">PASSWORD</span>
+              <input id="login-password" class="index-input-style2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                style="-webkit-text-security: square" type="password" placeholder="Enter your password" />
             </div>
           </div>
+
+          <div class="form-end">
+            <button onclick="checkLogin()" class="login-submit-btn" type="submit">Sign in</button>
+            <a class="without-login" href="board.html">without login</a>
+          </div>
+
+          <div class="create-account">
+            <span class="gray-look sub-title">Don't have an account?</span>
+            <button onclick="openRegisterWindow(event)" class="create-account-btn gray-look">Create Account</button>
+          </div>
+          <span class="copy">© 2021 gruppe-99.developerakademie.com</span>
+          <div id="register-window" class="overlay">
+            <form id="register-form" onsubmit="registerNewUser(event)" action="">
+              <div class="register-form-container">
+                <h3 class="content-title">Register</h3>
+                <span class="gray-look sub-title">Enter your login details blow.</span>
+                <div class="login-input-group">
+                  <span class="gray-look">EMAIL-ADDRESS</span>
+                  <input id="register-email" class="index-input-style1" type="email" placeholder="example@join.com" required/>
+                </div>
+                <div class="login-input-group">
+                  <span class="gray-look">FIRST NAME</span>
+                  <input id="register-firstname" minlength="3" maxlength="10"
+                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+                    class="index-input-style2" type="text" placeholder="First Name" required/>
+                </div>
+                <div class="login-input-group">
+                  <span class="gray-look">LAST NAME</span>
+                  <input id="register-lastname" minlength="3" maxlength="10"
+                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+                    class="index-input-style1" type="text" placeholder="Last Name" required/>
+                </div>
+                <div class="login-input-group">
+                  <span class="gray-look">PASSWORD</span>
+                  <input id="register-password" class="index-input-style1" type="password" minlength="8" maxlength="100"
+                    placeholder="Enter your password" required/>
+                </div>
+                <div class="login-input-group">
+                  <span class="gray-look">CONFIRM PASSWORD</span>
+                  <input id="register-confirmed" class="index-input-style2" type="password" minlength="8"
+                    maxlength="100" placeholder=" Confirm Password" required/>
+                </div>
+                <div class="login-input-group">
+                  <input type="submit"  class="login-submit-btn" value="Register">
+
+                  <p class="register-end gray-look">By clicking register, you agree to the privacy policy</p>
+
+                </div>
+                <img onclick="closeRegisterWindow(event)" class="close-icon" src="img/close.png">
+                <span class="copy">© 2021 gruppe-99.developerakademie.com</span>
+              </div>
+
+            </form>
+          </div>
+
         </form>
       </div>
     </div>

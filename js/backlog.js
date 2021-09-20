@@ -13,12 +13,6 @@ async function backlogInit() {
   console.log('tasks', allTasks);
 }
 
-// window.onload = () => {
-//   includeHTML();
-//   getTaskInfo();
-//   checkBacklogContainer();
-//   console.log(allTasks);
-// }
 
 /**
  * provides the necessary information for the cards and updates them when they are deleted
@@ -89,8 +83,8 @@ const returnResponsiveCard = (index, colorClass, description,) => {
                    <div class="user-profile">
                       <img class="profile-picture" src="img/profile.png">
                       <div class="user-information">
-                          <span class="backlog-unit-name">${allTasks[index].fName}</span>
-                          <span class="backlog-unit-name">${allTasks[index].lName}</span>
+                          <span class="backlog-unit-name">${allReg[index].firstName}</span>
+                          <span class="backlog-unit-name">${allTasks[index].lastName}</span>
                           <a href="email" class="backlog-unit-email">contact@darrin.com</a>
                       </div> 
                   </div>

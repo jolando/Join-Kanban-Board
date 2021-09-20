@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 * {
   font-family: 'Varela Round', sans-serif;
@@ -51,4 +50,26 @@
 
 .marketing-color {
   background-color: rgba(233, 20, 20, 0.37);
+}
+
+.container {
+  margin: 100px 200px;
+}
+
+.help-section {
+  margin: 100px 0;
+}
+
+.help-img{
+  max-width: 1200px;
+  width: 100%;
+}
+
+
+@media  screen and (max-width: 1120px) {
+  .container {
+    margin: 100px 3%;
+    text-align: center;
+  }
+  
 }
