@@ -130,6 +130,7 @@ textarea::-webkit-input-placeholder {
   font-family: "PT Sans", sans-serif;
   font-size: 1.17em;
   display: flex;
+  
   align-items: center;
   justify-content: space-around;
 }
@@ -178,6 +179,7 @@ textarea::-webkit-input-placeholder {
   align-items: flex-start;
   overflow-y: auto;
   height: 200px;
+  margin: 10px 0;
 }
 
 .create-button {

@@ -7,6 +7,9 @@ const lName = document.getElementById("register-lastname");
 const pw = document.getElementById("register-password");
 const confirmedPw = document.getElementById("register-confirmed");
 // variables for login-form
+const loginForm = document.getElementById('login-form');
+const loginEmail = document.getElementById('login-email');
+const loginPw = document.getElementById('login-password');
 
 
 allRegisteredEmails = [];
@@ -23,6 +26,26 @@ async function initIndex() {
 // function deleteUser() {
 //   backend.deleteItem("registeredUser");
 // }
+
+loginForm.addEventListener('submit', (event) =>{
+  event.preventDefault();
+  let loginEmailVal = loginEmail.value;
+  let loginPwVal = loginPw.value;
+  let registeredPw = allRegisteredUsers.validatePassword.find((value) => value == loginPwVal);
+  if(loginEmailVal == emailExists(loginEmailVal) && loginPwVal == registeredPw) {
+    window.location.href = 'board.html';
+  } else {
+    alert('this user is not registered')
+  }
+});
+
+
+// const loginProcess = (currentLoginEmail) => {
+  const loginEm = allRegisteredEmails.find((value) => value == currentLoginEmail);
+  const result = allRegisteredEmails.find((value) => value == currentEmail);
+
+// }
+
 
 registerForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -41,11 +64,7 @@ registerForm.addEventListener("submit", (event) => {
 });
 
 
-// const loginProcess = (currentLoginEmail) => {
-//   const loginEmail = allRegisteredEmails.find((value) => value == currentLoginEmail);
-//   const result = allRegisteredEmails.find((value) => value == currentEmail);
 
-// }
 
 
 
