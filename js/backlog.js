@@ -83,9 +83,9 @@ const returnResponsiveCard = (index, colorClass, description,) => {
                    <div class="user-profile">
                       <img class="profile-picture" src="img/profile.png">
                       <div class="user-information">
-                          <span class="backlog-unit-name">${allTasks[index].firstName}</span>
-                          <span class="backlog-unit-name">${allTasks[index].lastName}</span>
-                          <a href="email" class="backlog-unit-email">${allTasks[index].email}</a>
+                          <span class="backlog-unit-name">${allRegisteredUsers[index].firstName}</span>
+                          <span class="backlog-unit-name">${allRegisteredUsers[index].lastName}</span>
+                          <a href="email" class="backlog-unit-email">${allRegisteredUsers[index].email}</a>
                       </div> 
                   </div>
                   
@@ -120,9 +120,9 @@ const returnNormalCard = (index, colorClass, category, description) => {
                    <div class="user-profile">
                       <img class="profile-picture" src="img/profile.png">
                       <div class="user-information">
-                          <span class="backlog-unit-name">${allTasks[index].fName}</span>
-                          <span class="backlog-unit-name">${allTasks[index].lName}</span>
-                          <a href="email" class="backlog-unit-email">${allTasks[index].email}</a>
+                          <span class="backlog-unit-name">${allRegisteredUsers[index].firstName}</span>
+                          <span class="backlog-unit-name">${allRegisteredUsers[index].lastName}</span>
+                          <a href="email" class="backlog-unit-email">${allRegisteredUsers[index].email}</a>
                       </div> 
                   </div>
                   <div class="tast-information">
