@@ -1,6 +1,5 @@
 form {
   height: 100%;
-  
   background-color: rgba(0, 0, 255, 0.062);
   padding: 45px 0px;
   display: flex;
@@ -12,7 +11,7 @@ form {
   margin-bottom: 25px;
 }
 
-.form-left{
+.form-left {
   width: 27%;
 }
 
@@ -21,7 +20,7 @@ form {
   margin-bottom: 4px;
   margin-left: calc(3% + 130px);
   font-size: 27px;
-  color: rgba(0, 0, 0, 0.781);
+  color: rgb(8, 8, 110);
 }
 
 h2 {
@@ -122,32 +121,37 @@ textarea::-webkit-input-placeholder {
   color: black;
 }
 
-.assigned-to{
+.assigned-to {
   height: 51px;
   border-radius: 10%;
-  border:3px solid white;
+  border: 3px solid white;
   color: rgb(85, 85, 207);
   font-family: "PT Sans", sans-serif;
   font-size: 1.17em;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.assigned-to span {
+  margin-right: 10px;
 }
 
 .profile-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   margin-bottom: 5px;
   margin-top: 5px;
-
 }
 
-
-.profile-box img{
- 
+.profile-box img {
   object-fit: contain;
+}
+
+.profile-box span {
+  min-width: 17%;
 }
 
 .task-profile-pic {
@@ -171,13 +175,14 @@ textarea::-webkit-input-placeholder {
 }
 
 .assignment-box-assets {
-  
   display: flex;
   flex-direction: column-reverse;
-  justify-content: space-around;
+  justify-content: start;
   align-items: flex-start;
   overflow-y: auto;
-  height: 200px;
+  height: 100px;
+  margin-top: 10px;
+
 }
 
 .create-button {
@@ -221,12 +226,10 @@ textarea::-webkit-input-placeholder {
     width: 77vw;
     align-items: center;
   }
-  
   /* .profile-box {
     justify-content: center;
   } */
   textarea {
-    
     height: 150px;
   }
   .form-right {
