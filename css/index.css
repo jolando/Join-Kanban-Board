@@ -3,9 +3,24 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url("img/8048.png");
   width: 100%;
   background-color: rgba(42, 42, 187, 0.856);
+}
+
+.login-input-group small {
+  visibility: hidden;
+}
+
+
+.error {
+  background-color: rgba(167, 29, 29, 0.157) !important;
+  border: 3px solid  rgb(94, 6, 6) !important;
+  
+}
+
+.success {
+  background-color: rgba(55, 211, 76, 0.377) !important;
+  border: 2px solid  rgba(5, 97, 25, 0.452) !important;  
 }
 
 .login-container {
@@ -48,7 +63,7 @@
 }
 
 .index-input-style1 {
-  background: url("img/email.png");
+
   width: 100%;
   outline: none;
   border: none;
@@ -61,7 +76,6 @@
 }
 
 .index-input-style2 {
-  background: url("img/email.png");
   width: 100%;
   outline: none;
   border: none;
@@ -85,7 +99,7 @@
 
 .login-input-group {
   width: 100%;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .login-submit-btn {
@@ -97,6 +111,8 @@
   max-height: 40px;
   color: rgb(240, 248, 255);
   cursor: pointer;
+  text-align: center;
+  outline: none;
 }
 
 .login-submit-btn:hover {
@@ -132,7 +148,7 @@
 }
 
 .single-input {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .create-account-btn:hover {
@@ -190,19 +206,6 @@
   font-size: 30px;
 }
 
-.form-submit-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 25px;
-  color: white;
-  background-color: rgb(11, 30, 107);
-  border: none;
-  padding: 16px 0;
-  font-size: 20px;
-  margin-top: 20px;
-}
-
 .form-submit-btn:hover {
   background-color: rgb(5, 6, 65);
 }
@@ -235,6 +238,7 @@
   opacity: 1;
   background-color: rgb(255, 255, 255);
   z-index: -1;
+  box-sizing: border-box;
 }
 
 .login-input-container {
@@ -244,7 +248,8 @@
 
 .register-form-container {
   max-width: 500px;
-  margin-left: 7%;
+  margin-left: 17%;
+  color: #000000;
 }
 
 .close-icon {
@@ -264,25 +269,30 @@
 
 @media screen and (max-width: 1100px) {
   .index-container {
-    display: block;
     justify-content: center;
     align-items: center;
   }
   .login-container {
     text-align: center;
-    color: white;
-    /* height: 100%; */
 
+    height: 100%;
+    width: 100vw;
+    margin: 0;
     margin-left: 0 !important;
   }
   #login-form {
     height: 400px;
     margin: 0;
   }
+  .content-title {
+    margin-bottom: 40px;
+  }
+
   .index-input-style1,
   .index-input-style2 {
-    color: white;
-    background-color: white;
+    
+    background-color: rgba(139, 139, 139, 0.151);
+    padding: 10px 0;
   }
   .login-form-container {
     display: flex;
@@ -294,7 +304,6 @@
     bottom: 0;
     /* height: 100vh; */
     width: 100%;
-    color: white;
   }
   .register-form-container {
     justify-content: center;
@@ -311,12 +320,15 @@
   .login-form {
     height: 80%;
     width: 90%;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
   }
-  .form-submit-btn {
-    border: 1px solid rgba(255, 255, 255, 0.281);
+  .login-submit-btn {
+    border: 1px solid rgba(119, 22, 22, 0.281);
     border-radius: 50px;
+    padding: 10px 100px;
+    max-width: 100%;
+    text-align: center;
   }
   .login-title {
     margin-top: 100px;
@@ -325,5 +337,12 @@
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.788);
     padding: 5px;
+  }
+  .form-end {
+    align-items: center;
+    margin-top: 130px;
+  }
+  .copy {
+    text-align: center;
   }
 }

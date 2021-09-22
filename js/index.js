@@ -1,114 +1,67 @@
-let eachValues;
-let allUsersEmail = [];
+
+// variables for register-form
+const registerForm = document.getElementById("register-form");
+const registersEmail = document.getElementById("register-email");
+const fName = document.getElementById("register-firstname");
+const lName = document.getElementById("register-lastname");
+const pw = document.getElementById("register-password");
+const confirmedPw = document.getElementById("register-confirmed");
+// variables for login-form
+
+
+allRegisteredEmails = [];
 
 async function initIndex() {
   includeHTML();
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
-  await saveRegisterRequest();
   await loadRegisterRequest();
   getAllEmails();
   // deleteUser();
 }
 
-let user = {
-  userPassword: '123123123',
-  validatePassword: '123123123',
-  firstName: 'Jochen',
-  lastName: 'Koch',
-  email: '123@gmail.com',
-};
-
 // function deleteUser() {
-//   backend.deleteItem("allTasks");
+//   backend.deleteItem("registeredUser");
 // }
 
-/**
- * get every input value of the register form
- * 
- * @returns an array with all register input values
- */
-function provideRegisterValues() {
-  let email = document.getElementById("register-email").value;
-  let fName = document.getElementById("register-firstname").value;
-  let lName = document.getElementById("register-lastname").value;
-  let pw = document.getElementById("register-password").value;
-  let confirmedpw = document.getElementById("register-confirmed").value;
-  let userIunputData = [email, fName, lName, pw, confirmedpw];
-  return userIunputData;
-}
-
-/**
- * register a new user if the passwords are correct and the email does not exist yet
- * 
- * @param {*} ev event 
- */
-function registerNewUser(ev) {
-  ev.preventDefault();
-  console.log(allRegisteredUsers);
-  if (!emailExists() && equalPw() == true) {
-    createUserObject();
+registerForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (checkFirstName() && checkLastName() && checkEmail() && checkPw() && checkConfPw() == true) {
+    if(!emailExists(registersEmail.value)) {
+      createUserObject();    
+      resetClassName();
+      deleteRegisterInput();
+    } else {
+      console.log('already registered');
+      outputError(registersEmail, 'this email already exists');
+    } 
   } else {
-    alert('the email already exists or the password does not match')
+    console.log("no way");
   }
-}
+});
 
-/**
- *  fill user-object with input values
- */
- async function createUserObject() {
-  eachValues = provideRegisterValues();
-  let user = {
-    userPassword: `${eachValues[3]}`,
-    validatePassword: `${eachValues[4]}`,
-    firstName: `${eachValues[1]}`,
-    lastName: `${eachValues[2]}`,
-    email: `${eachValues[0]}`,
-  };
-  allRegisteredUsers.push(user);
-  await saveRegisterRequest();
-  await loadRegisterRequest();
-}
 
-/**
- * get all registered user emails and fills an empty array
- */
+// const loginProcess = (currentLoginEmail) => {
+//   const loginEmail = allRegisteredEmails.find((value) => value == currentLoginEmail);
+//   const result = allRegisteredEmails.find((value) => value == currentEmail);
+
+// }
+
+
+
 function getAllEmails() {
   for (let i = 0; i < allRegisteredUsers.length; i++) {
-    const registeredUserEmail = allRegisteredUsers[i].email;
-    console.log(registeredUserEmail);
-    allUsersEmail.push(registeredUserEmail);
-    console.log("arr", allUsersEmail);
+    const email = allRegisteredUsers[i].email;
+    console.log(email);
+    allRegisteredEmails.push(email);
   }
 }
 
-/**
- * checks if the user email already exists
- * 
- * @returns 
- */
-function emailExists() {
-  email = provideRegisterValues();
-  let checkEmail = allUsersEmail.includes(email[0]) 
-  return checkEmail;
-}
-  
-
-/**
- * compare passwords
- * 
- * @returns {Boolean} true or false
- */
-function equalPw() {
-  eachValues = provideRegisterValues();
-  // equalPw = (eachValues[3] == eachValues[4]) ? true : false;
-
-  if (eachValues[3] == eachValues[4]) {
-    return true;
-  } else {
-    return false;
-  }
-}
+const emailExists = (currentEmail) => {
+  const result = allRegisteredEmails.find((value) => value == currentEmail);
+  console.log(result);
+  return result;
+};
 
 /**
  * reset input fields
@@ -117,11 +70,129 @@ function deleteRegisterInput() {
   document.forms["register-form"].reset();
 }
 
+async function createUserObject() {
+  let user = {
+    userPassword: `${pw.value}`,
+    validatePassword: `${confirmedPw.value}`,
+    firstName: `${fName.value}`,
+    lastName: `${lName.value}`,
+    email: `${registersEmail.value}`,
+  };
+  allRegisteredUsers.push(user);
+  await saveRegisterRequest();
+  alert("Regestration succesful");
+}
+
+function outputError(input, errorMsg) {
+  const formErrElement = input.parentElement;
+  const inputElement = input;
+  const small = formErrElement.querySelector("small");
+  inputElement.classList.add("error");
+  inputElement.classList.remove("success");
+  small.style = "visibility: visible;";
+  small.innerText = errorMsg;
+}
+
+function outputSuccess(input, errorMsg) {
+  const formErrElement = input.parentElement;
+  const inputElement = input;
+  const small = formErrElement.querySelector("small");
+  inputElement.classList.add("success");
+  inputElement.classList.remove("error");
+  small.style = "visibility: visible;";
+  small.innerText = errorMsg;
+}
+
+const checkFirstName = () => {
+  if (fName.value == "") {
+    outputError(fName, "Fname can not be blank");
+    return false;
+  } else if (fName.value.length < 4) {
+    outputError(fName, "Fname min 3 chars");
+    return false;
+  } else {
+    outputSuccess(fName, "Correct!");
+    return true;
+  }
+};
+
+const checkLastName = () => {
+  if (lName.value == "") {
+    outputError(lName, "Lname can not be blank");
+    return false;
+  } else if (lName.value.length < 4) {
+    outputError(lName, "Lname min 3 chars");
+    return false;
+  } else {
+    outputSuccess(lName, "Correct!");
+    return true;
+  }
+};
+
+const checkEmail = () => {
+  if (registersEmail.value == "") {
+    outputError(registersEmail, "email can not be blank");
+    return false;
+  } else if (!isEmail(registersEmail.value)) {
+    outputError(registersEmail, "not valid");
+    return false;
+  } else {
+    outputSuccess(registersEmail, "Correct!");
+    return true;
+  }
+};
+
+const checkPw = () => {
+  if (pw.value == "") {
+    outputError(pw, "pq can not be blank");
+    return false;
+  } else if (pw.value.length <= 5) {
+    outputError(pw, "pw min 6 chars");
+    return false;
+  } else {
+    outputSuccess(pw, "Correct!");
+    return true;
+  }
+};
+
+const checkConfPw = () => {
+  if (confirmedPw.value == "") {
+    outputError(confirmedPw, "conpw can not be blank");
+    return false;
+  } else if (pw.value !== confirmedPw.value) {
+    outputError(confirmedPw, "pws are not matching");
+    return false;
+  } else {
+    outputSuccess(confirmedPw, "Correct!");
+    return true;
+  }
+};
+
+const isEmail = (email) => {
+  let atSymbol = email.indexOf("@");
+
+  if (atSymbol < 1) return false;
+  let dot = email.lastIndexOf(".");
+
+  if (dot < atSymbol + 2) return false;
+  if (dot == email.length - 1) return false;
+  return true;
+};
+
+const resetClassName = () => {
+  let classNames = document.getElementsByClassName("validation");
+  setTimeout(() => {
+    for (let i = 0; i < classNames.length; i++) {
+      classNames[i].classList.remove("success");
+    }
+    closeRegisterWindow();
+  }, 2000);
+};
+
 /**
  * show register form
  */
 function openRegisterWindow() {
-  ev.preventDefault();
   document.getElementById("register-window").style.zIndex = "1";
 }
 
@@ -129,6 +200,5 @@ function openRegisterWindow() {
  * hide register form
  */
 function closeRegisterWindow() {
-  ev.preventDefault();
   document.getElementById("register-window").style.zIndex = "-1";
 }

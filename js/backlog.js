@@ -21,7 +21,7 @@ function checkBacklogContainer() {
   if (allTasks.length <= 0) { 
     showEmptyBacklog();
   } else {
-   executeRenderFunction();
+   executeRender();
   }
 }
 
@@ -37,7 +37,7 @@ function showEmptyBacklog() {
 /**
  * if allTasks contains more than zero tasks execute render-function
  */
-function executeRenderFunction() {
+function executeRender() {
   document.getElementById("backlog").innerHTML = "";
   for (let i = 0; i < allTasks.length; i++) {
 
@@ -83,9 +83,9 @@ const returnResponsiveCard = (index, colorClass, description,) => {
                    <div class="user-profile">
                       <img class="profile-picture" src="img/profile.png">
                       <div class="user-information">
-                          <span class="backlog-unit-name">${allReg[index].firstName}</span>
+                          <span class="backlog-unit-name">${allTasks[index].firstName}</span>
                           <span class="backlog-unit-name">${allTasks[index].lastName}</span>
-                          <a href="email" class="backlog-unit-email">contact@darrin.com</a>
+                          <a href="email" class="backlog-unit-email">${allTasks[index].email}</a>
                       </div> 
                   </div>
                   
@@ -139,6 +139,15 @@ const returnNormalCard = (index, colorClass, category, description) => {
   return;
 };
 
+
+function returnallTaskInfo(params) {
+  for (let i = 0; i < allTasks.length; i++) {
+    const task = allTasks[i];
+    
+  }
+  
+}
+
 /**
  * clear selected task and load the rest tasks again
  *
@@ -146,13 +155,9 @@ const returnNormalCard = (index, colorClass, category, description) => {
  */
 function deleteTask(allTasksIndex) {
   allTasks.splice(allTasksIndex, 1);
-  // allRegisteredUsers.splice(allTasksIndex, 1);
   saveAllTasks();
-  saveRegisterRequest();
-  loadAllTasks();
-  loadRegisterRequest();
-  document.getElementById("backlog-unit" + allTasksIndex).style =
-    "display: none;";
+  saveRegisterRequest(); 
+  document.getElementById("backlog-unit" + allTasksIndex).style = "display: none;";
   console.log(allTasksIndex);
   checkBacklogContainer();
 }

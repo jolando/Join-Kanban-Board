@@ -1,8 +1,16 @@
+const title = document.getElementById("title-field");
+const description = document.getElementById("description-field");
+const date = document.getElementById("date-field");
+const urgency = document.getElementById("urgency-category");
+const category = document.getElementById("task-category");
+// const fName = allRegisteredUsers[saveSelectedUser(index)].fName;
+// const lName = allRegisteredUsers[saveSelectedUser(index)].lName;
+// const email = allRegisteredUsers[saveSelectedUser(index)].email;
+
 async function initAddTask() {
   includeHTML();
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
-  await saveRegisterRequest();
   await loadRegisterRequest();
   renderUserProfiles();
 }
@@ -24,9 +32,9 @@ function renderUserProfiles() {
 }
 
 /**
- * 
+ *
  * @param {integer} indexOfselectedUser - stands for the index of the selected users
- * @returns 
+ * @returns
  * this function saves the index of the selected users into the global variable index
  */
 
@@ -59,16 +67,18 @@ function clearSelectedUser() {
  */
 
 function getInputValues() {
-  let title = document.getElementById("title-field").value;
-  let description = document.getElementById("description-field").value;
-  let date = document.getElementById("date-field").value;
-  let urgency = document.getElementById("urgency-category").value;
-  let category = document.getElementById("task-category").value;
-  let fName = allRegisteredUsers[saveSelectedUser(index)].fName;
-  let lName = allRegisteredUsers[saveSelectedUser(index)].lName;
-  let email = allRegisteredUsers[saveSelectedUser(index)].email;
-  let allInputValues = [title, description, date, urgency, category, fName, lName, email];
-  return allInputValues;
+  return {
+    id: `${(Math.random() * 99999).toFixed()}`,
+    title: document.getElementById("title-field").value,
+    description: document.getElementById("description-field").value,
+    date: document.getElementById("date-field").value,
+    urgency: document.getElementById("urgency-category").value,
+    category: document.getElementById("task-category").value,
+    // fName: `${fName.value}`,
+    // lName: `${lName.value}`,
+    email: allRegisteredUsers[saveSelectedUser(index)].email,
+    status: "todo",
+  };
 }
 
 /**
@@ -78,24 +88,13 @@ function getInputValues() {
 
 function addTask(event) {
   event.preventDefault();
-  let allInputValues = getInputValues();
-  let task = {
-    id: `${(Math.random() * 99999).toFixed()}`,
-    title: allInputValues[0],
-    description: allInputValues[1],
-    date: allInputValues[2],
-    urgency: allInputValues[3],
-    category: allInputValues[4],
-    fName: allInputValues[5],
-    lName: allInputValues[6],
-    email: allInputValues[8],
-    status: "todo",
-  };
+  let task = getInputValues();
   allTasks.push(task);
   saveAllTasks();
   console.log("alltasks", allTasks);
-  resetAddTask(); 
-  alert("Task has been created");
+  // resetAddTask();
+  // alert("Task has been created");
+  console.log("Task has been created");
 }
 
 /**
@@ -105,8 +104,3 @@ function addTask(event) {
 function resetAddTask() {
   document.forms["addTask-form"].reset();
 }
-
-
-
-
-

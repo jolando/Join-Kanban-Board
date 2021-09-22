@@ -5,8 +5,6 @@ let progressArr;
 let testingArr;
 let doneArr;
 
-let allTasksIndex;
-
 /**
  * load tasks from backend
  */
@@ -14,7 +12,6 @@ async function initBoard() {
   includeHTML();
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
-  await saveRegisterRequest();
   await loadRegisterRequest();
 
   renderTaskInfo();
@@ -25,7 +22,7 @@ async function initBoard() {
  */
 function renderTaskInfo() {
   filterAllTasks();
-  renderTasks(); 
+  renderTasks();
 }
 
 /**
@@ -48,11 +45,10 @@ function renderTasks() {
   renderTask(doneArr, "done-container");
 }
 
-
 /**
  * get the ids of the elements and save it in a global variable
- * 
- * @param {number} id of every task 
+ *
+ * @param {number} id of every task
  */
 function onDragTask(id) {
   allTasks.forEach((task) => {
@@ -64,7 +60,7 @@ function onDragTask(id) {
 
 /**
  * changes the task status after dropping the task into another container
- * 
+ *
  * @param {String} currentStatus equals the status in every container
  */
 function dropTask(currentStatus) {
@@ -74,7 +70,7 @@ function dropTask(currentStatus) {
 
 /**
  * render each container by task status
- * 
+ *
  * @param {Array} arr for each status
  * @param {String} containerId of the task container
  */
@@ -82,10 +78,7 @@ function renderTask(arr, containerId) {
   document.getElementById(containerId).innerHTML = "";
   for (let i = 0; i < arr.length; i++) {
     const taskObj = arr[i];
-    document.getElementById(containerId).innerHTML += returnTaskHTML(
-      i,
-      taskObj
-    );
+    document.getElementById(containerId).innerHTML += returnTaskHTML(taskObj);
     console.log(taskObj);
   }
   saveAllTasks();
@@ -94,7 +87,7 @@ function renderTask(arr, containerId) {
 
 /**
  * allow dropping
- * 
+ *
  * @param {Event} ev drop event
  */
 function allowDrop(ev) {
@@ -103,15 +96,15 @@ function allowDrop(ev) {
 
 /**
  * create a HMTL task element
- * 
- * @param {*} i 
- * @param {*} taskObj 
+ *
+ * @param {*} i
+ * @param {*} taskObj
  * @returns created task
  */
-function returnTaskHTML(i, taskObj) {
+function returnTaskHTML(taskObj) {
   let categoryColor = getRightCategoryColor(taskObj.category);
   return `
-      <div id="task-unit${currentElement}" draggable="true" ondragstart="onDragTask(${taskObj.id})" class="task-unit">
+      <div id="task-unit${taskObj.id}" draggable="true" ondragstart="onDragTask(${taskObj.id})" class="task-unit">
           <div class="task-container">
               <span class="task-title" id="description-container" class="description-container"> ${taskObj.title}</span>
               <span id="task-title" > ${taskObj.description}</span>
@@ -120,21 +113,23 @@ function returnTaskHTML(i, taskObj) {
                 <span class="extra-info">${taskObj.date}</span></span>
                 <span class="extra-info">${taskObj.urgency}</span>
               </div>
-              <img onclick="deleteBoardCard(${currentElement})" class="delete-icon" src="img/close-board.png">
+              <img onclick="deleteBoardCard(${taskObj.id})" class="delete-icon" src="img/close-board.png">
           </div>
       </div>`;
 }
 
-
 /**
  * delete current task
- * 
- * @param {Number} allTasksIndex 
+ *
+ * @param {Number} allTasksIndex
  */
-function deleteBoardCard(allTasksIndex) {
-  allTasks.splice(allTasksIndex, 1);
+function deleteBoardCard(taskId) {
+  let task = allTasks.find((task) => task.id == taskId);
+  let taskIndex = allTasks.indexOf(task);
+
+  allTasks.splice(taskIndex, 1);
   saveAllTasks();
-  loadAllTasks();
-  document.getElementById("task-unit" + allTasksIndex).style = "display: none;";
+
+  // document.getElementById("task-unit" + taskIndex).style = "display: none;";
   renderTaskInfo();
 }
