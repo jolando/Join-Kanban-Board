@@ -10,9 +10,6 @@ body {
 .empty-backlog-container {
   background-color: rgba(0, 0, 255, 0.233);
   padding: 10px;
-
-  /* height: 100px;
-  width: 100px; */
 }
 
 .backlog-unit-content {
@@ -20,7 +17,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* height: 100vh; */
   width: 100%;
 }
 
@@ -29,16 +25,6 @@ body {
   margin-bottom: 4px;
   font-size: 27px;
   color: rgba(0, 0, 0, 0.781);
-}
-
-.category-title {
-  margin-right: 140px;
-}
-
-.category {
-  margin-left: 180px;
-  min-width: 120px;
-  width: 100px;
 }
 
 .backlog-subtitle {
@@ -72,15 +58,16 @@ body {
 .category-color {
   width: 6px;
   min-height: 70px;
-
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
 }
 
 .user-profile {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  max-width: 300px;
+  min-width: 300px;
 }
 
 .profile-picture {
@@ -130,28 +117,30 @@ body {
   max-width: 390px;
   word-break: break-all;
   margin-left: 20px;
-
 }
 
 .category {
   color: white;
   padding: 2px 8px;
   border-radius: 50px;
-  min-width: 77px;
+  min-width: 50%;
   text-align: center;
+  /* margin-left: 170px; */
+  min-width: 120px;
+  width: 100px;
+}
+
+.category-title {
+  margin-right: 180px;
 }
 
 .delete-icon {
-  /* position: absolute;
-  right: 5px; */
   cursor: pointer;
   margin-right: 5px;
 }
 
-
 @media screen and (max-width: 1120px) {
   .backlog-container {
-    text-align: center;
     margin: 60px 3%;
   }
   .backlog-subtitle {

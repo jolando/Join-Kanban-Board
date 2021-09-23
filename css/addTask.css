@@ -124,13 +124,12 @@ textarea::-webkit-input-placeholder {
 
 .assigned-to{
   height: 51px;
-  border-radius: 10%;
+  
   border:3px solid white;
-  color: rgb(85, 85, 207);
+  background-color: rgba(139, 139, 139, 0.014);
   font-family: "PT Sans", sans-serif;
   font-size: 1.17em;
   display: flex;
-  
   align-items: center;
   justify-content: space-around;
 }
@@ -140,14 +139,20 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  /* margin-left: 130px; */
   margin-bottom: 5px;
   margin-top: 5px;
+  /* margin: auto; */
 
 }
-
+.profile-box span{
+  margin: auto;
+  min-width: 100px;
+  object-fit: contain;
+}
 
 .profile-box img{
- 
+ margin: auto;
   object-fit: contain;
 }
 
@@ -177,9 +182,8 @@ textarea::-webkit-input-placeholder {
   flex-direction: column-reverse;
   justify-content: space-around;
   align-items: flex-start;
-  overflow-y: auto;
-  height: 200px;
-  margin: 10px 0;
+  /* overflow-y: auto; */
+  width: 100%;
 }
 
 .create-button {

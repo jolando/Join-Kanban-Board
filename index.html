@@ -45,20 +45,19 @@
           <div class="login-input-group">
             <div class="single-input">
               <span class="gray-look">EMAIL-ADDRESS</span>
-              <input id="login-email" class="index-input-style1" type="email" placeholder="example@join.com" /><br />
+              <input id="login-email" class="validation index-input-style1" type="text" placeholder="example@join.com" /><br />
               <small>ErrMsg</small>
             </div>
             <div class="single-input">
               <span class="gray-look">PASSWORD</span>
-              <input id="login-password" class="index-input-style2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              <input id="login-password" class="validation index-input-style2" 
                 style="-webkit-text-security: square" type="password" placeholder="Enter your password" />
                 <small>ErrMsg</small>
             </div>
           </div>
 
           <div class="form-end">
-            <button onclick="checkLogin()" class="login-submit-btn" type="submit">Sign in</button>
+            <button  class="login-submit-btn" type="submit">Sign in</button>
             <a class="without-login" href="board.html">without login</a>
           </div>
         </form>
@@ -75,39 +74,39 @@
               
               <div class="login-input-group">
                 <span class="gray-look">FIRST NAME</span>
-                <input id="register-firstname" minlength="3" maxlength="10"
+                <input id="register-firstname" minlength="2" maxlength="10"
                   onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
                   class="validation index-input-style2" type="text" placeholder="First Name" />
                   <small>ErrMsg</small>
               </div>
               <div class="login-input-group">
                 <span class="gray-look">LAST NAME</span>
-                <input id="register-lastname" minlength="3" maxlength="10"
+                <input id="register-lastname" minlength="2" maxlength="10"
                   onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
                   class="validation index-input-style1" type="text" placeholder="Last Name" />
                   <small>ErrMsg</small>
               </div>
               <div class="login-input-group">
                 <span class="gray-look">EMAIL-ADDRESS</span>
-                <input id="register-email" class="validation index-input-style1" type="email" placeholder="example@join.com"
+                <input id="register-email" class="validation index-input-style1" type="text" placeholder="example@join.com"
                    />
                   <small>ErrMsg</small>
               </div>
               <div class="login-input-group">
                 <span class="gray-look">PASSWORD</span>
-                <input id="register-password" class="validation index-input-style1" type="password" minlength="8" maxlength="100"
+                <input id="register-password" class="validation index-input-style1" type="password" minlength="5" maxlength="100"
                   placeholder="Enter your password" />
                   <small>ErrMsg</small>
               </div>
               <div class="login-input-group">
                 <span class="gray-look">CONFIRM PASSWORD</span>
-                <input id="register-confirmed" class="validation index-input-style2" type="password" minlength="8" maxlength="100"
+                <input id="register-confirmed" class="validation index-input-style2" type="password" minlength="5" maxlength="100"
                   placeholder=" Confirm Password"/>
                   <small>ErrMsg</small>
               </div>
               <div class="login-input-group">
                 <input type="submit" class="login-submit-btn" value="Register">
-                <p class="register-end gray-look">By clicking register, you agree to the privacy policy</p>
+                <p class="register-end gray-look">By clicking register, you agree to the privacy policy : zero security</p>
               </div>
               <img onclick="closeRegisterWindow(event)" class="close-icon" src="img/close.png">
               <span class="copy">© 2021 gruppe-99.developerakademie.com</span>

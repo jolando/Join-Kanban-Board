@@ -13,7 +13,6 @@ async function initBoard() {
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
   await loadRegisterRequest();
-
   renderTaskInfo();
 }
 
@@ -126,10 +125,7 @@ function returnTaskHTML(taskObj) {
 function deleteBoardCard(taskId) {
   let task = allTasks.find((task) => task.id == taskId);
   let taskIndex = allTasks.indexOf(task);
-
   allTasks.splice(taskIndex, 1);
   saveAllTasks();
-
-  // document.getElementById("task-unit" + taskIndex).style = "display: none;";
   renderTaskInfo();
 }

@@ -25,7 +25,6 @@ function renderUserProfiles() {
         <span>${allRegisteredUsers[i].firstName}</span>
         <span>${allRegisteredUsers[i].lastName}</span>
         <img src="img/icon plus.png" class="plus-icon" onclick="saveSelectedUser(${i}), addSelectedUser();"/>
-        <span id="name-container"></span>
     </div>
     `;
   }
@@ -37,7 +36,6 @@ function renderUserProfiles() {
  * @returns
  * this function saves the index of the selected users into the global variable index
  */
-
 function saveSelectedUser(indexOfselectedUser) {
   index = indexOfselectedUser;
   return index;
@@ -57,15 +55,14 @@ function addSelectedUser() {
 /**
  * this function removes the selected user from the separate box again
  */
-
 function clearSelectedUser() {
   document.getElementById("assigned-to").innerHTML = "";
 }
+
 /**
  * this function saves the values of the form input fields into variables
  * @returns the input values of every form input field
  */
-
 function getInputValues() {
   return {
     id: `${(Math.random() * 99999).toFixed()}`,
@@ -74,18 +71,24 @@ function getInputValues() {
     date: document.getElementById("date-field").value,
     urgency: document.getElementById("urgency-category").value,
     category: document.getElementById("task-category").value,
-    // fName: `${fName.value}`,
-    // lName: `${lName.value}`,
+    fName: `${allRegisteredUsers[index].firstName}`,
+    lName: `${allRegisteredUsers[index].lastName}`,
     email: allRegisteredUsers[saveSelectedUser(index)].email,
     status: "todo",
   };
+}
+
+function deliverAllRegisteredInfo() {
+  for (let i = 0; i < allRegisteredUsers.length; i++) {
+    const user = allRegisteredUsers[i].mail;
+    
+  }
 }
 
 /**
  * This function pushes the input values of the form into a global array and informs the user that a task has been created
  * @param {*} event -this is an onsubmit default event
  */
-
 function addTask(event) {
   event.preventDefault();
   let task = getInputValues();
@@ -100,7 +103,6 @@ function addTask(event) {
 /**
  * This functions resets the entire form after submitting
  */
-
 function resetAddTask() {
   document.forms["addTask-form"].reset();
 }
