@@ -7,7 +7,9 @@ const category = document.getElementById("task-category");
 // const lName = allRegisteredUsers[saveSelectedUser(index)].lName;
 // const email = allRegisteredUsers[saveSelectedUser(index)].email;
 
-let idSelectedUser = 0;
+
+let taskId = getInputValues();
+
 
 async function initAddTask() {
   includeHTML();
@@ -17,6 +19,8 @@ async function initAddTask() {
 
   renderUserProfiles();
 }
+
+
 
 /**
  * this function saves the values of the form input fields into variables
@@ -47,6 +51,7 @@ async function addTask(event) {
   resetAddTask();
   document.getElementById("assigned-to").innerHTML = "";
   showAddSymbol();
+  await saveSelectedUser();
   alert("Task has been created");
   // deleteSelectedUser();
   // await loadSelcectedUser();
@@ -79,24 +84,27 @@ function renderUserProfiles() {
  * this function adds the selected user to a separate box in order to highlight them
  */
  function pushSelectedUser(id) {
-  let profile = {
-    id: `${id}`,
-    fName: `${allRegisteredUsers[id].firstName}`,
-    lName: `${allRegisteredUsers[id].lastName}`,
-    email: `${allRegisteredUsers[id].email}`,
-  };
-
- selectedUser.push(profile);
-
+  // let profile = {
+  //   id: `${id}`,
+  //   fName: `${allRegisteredUsers[id].firstName}`,
+  //   lName: `${allRegisteredUsers[id].lastName}`,
+  //   email: `${allRegisteredUsers[id].email}`,
+  // };
+  //  selectedUser.push(profile);
+  taskId.selectedId.push(id);
+  console.log('selectedIdArr', taskId.selectedId)
+  // console.log(id)
+  
   let addIcon = document.getElementById("plus" + id);
   addIcon.style = "opacity: 0.3; cursor: default;";
   addIcon.onclick = null;
   
-
+  // console.log(selectedUser);
   addSelectedUser(id);
 }
 
-function addSelectedUser(id) {
+
+function addSelectedUser() {
   document.getElementById("assigned-to").innerHTML = "";
   for (let i = 0; i < selectedUser.length; i++) {
     document.getElementById("assigned-to").innerHTML += `
@@ -111,44 +119,12 @@ function addSelectedUser(id) {
 
 
 function removeSelectedUser(index) {
-  
   selectedUser.splice(index, 1);
   // document.getElementById("plus" + index).style.visibility = "visible";
   console.log(selectedUser);
   addSelectedUser();
   renderUserProfiles();
 }
-
-/**
- * this function adds the selected user to a separate box in order to highlight them
- */
-// function addSelectedUser(i) {
-//   let profile = {
-//     id: `${idSelectedUser}`,
-//     fName: `${allRegisteredUsers[i].firstName}`,
-//     lName: `${allRegisteredUsers[i].lastName}`,
-//     email: `${allRegisteredUsers[i].email}`,
-//   };
-//   document.getElementById("plus" + i).style.visibility = "hidden";
-//   selectedUser.push(profile);
-//   idSelectedUser++;
-//   saveSelectedUser();
-//   addAssignedTo(i, profile.id);
-// }
-
-// function addAssignedTo(id) {
-//   document.getElementById("assigned-to").innerHTML = "";
-//   for (let i = 0; i < selectedUser.length; i++) {
-//     document.getElementById("assigned-to").innerHTML += `
-//     <div id="selected${i}" class="assigned-to-card">   
-//       <span>${selectedUser[i].fName}</span>
-//       <span>${selectedUser[i].lName}</span>
-//       <img onclick="removeSelectedUser(${id})" class="minus-icon" src="img/minus.png">
-//     <div>
-//    `;
-//   }
-// }
-
 
 
 function showAddSymbol() {

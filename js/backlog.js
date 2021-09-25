@@ -11,7 +11,6 @@ async function backlogInit() {
   await loadAllTasks();
   await loadSelcectedUser();
   checkBacklogContainer();
-  
 
   console.log("tasks", allTasks);
 }
@@ -45,16 +44,15 @@ function executeRender() {
     let switchDescription = checkDescription(taskDescription);
     let categoryColor = getRightCategoryColor(cardCategory);
     renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
-
-    for (let j = 0; j < selectedUser.length; j++) {
-      document.getElementById("user-information" + i).innerHTML += `
+  }
+  for (let j = 0; j < selectedUser.length; j++) {
+    document.getElementById("user-information").innerHTML += `
     <div class="underline">
       <span class='backlog-unit-name'>${selectedUser[j].fName}</span>
       <span class='backlog-unit-name'>${selectedUser[j].lName}</span>
       <a href='email' class='backlog-unit-email'>${selectedUser[j].email}</a>
-     </div> 
-    `;
-    }
+    </div> 
+  `;
   }
 }
 
@@ -101,7 +99,7 @@ const returnResponsiveCard = (index, colorClass, description) => {
           <div class='backlog-unit-content'>
               <div class='user-inforamtion-container'>
                    <div class='user-profile'>
-                      <div id='user-information${index}' class='user-information'>
+                      <div id='user-information' class='user-information'>
                           
                       </div> 
                   </div>
@@ -133,7 +131,7 @@ const returnNormalCard = (index, colorClass, category, description) => {
           <div class='backlog-unit-content'>
               <div class='user-inforamtion-container'>
                    <div class='user-profile'>
-                      <div id='user-information${index}' class='user-information'>
+                      <div id='user-information' class='user-information'>
                      
                       </div> 
                   </div>
