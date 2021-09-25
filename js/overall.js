@@ -8,6 +8,7 @@ let allRegisteredUsers = [
   },
 ];
 let allTasks = [];
+let selectedUser = [];
 let index;
 let isburgerMenuOpen = false;
 
@@ -31,11 +32,21 @@ async function loadAllTasks() {
   console.log("From Server AllTasks:", allTasks);
 }
 
+async function loadSelcectedUser() {
+  await downloadFromServer();
+  selectedUser = JSON.parse(backend.getItem("selectedUsers")) || [];
+  console.log("From Server selected:", selectedUser);
+}
+
 /**
  * converts the global allRegisteredUsers array into a string and stores it in the backend
  */
  async function saveRegisterRequest() {
   await backend.setItem("registeredUser", JSON.stringify(allRegisteredUsers));
+}
+
+async function saveSelectedUser() {
+  await backend.setItem("selectedUsers", JSON.stringify(selectedUser));
 }
 
 /**
@@ -79,3 +90,4 @@ let getRightCategoryColor = (category) => {
     return "sales-color";
   }
 };
+

@@ -13,8 +13,8 @@
 
 
 .error {
-  background-color: rgba(167, 29, 29, 0.157) !important;
-  border: 3px solid  rgb(94, 6, 6) !important;
+  background-color: rgba(197, 30, 30, 0.219) !important;
+  border: 2px solid  rgb(138, 10, 10) !important;
   
 }
 
@@ -99,7 +99,7 @@
 
 .login-input-group {
   width: 100%;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .login-submit-btn {
@@ -148,7 +148,7 @@
 }
 
 .single-input {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .create-account-btn:hover {

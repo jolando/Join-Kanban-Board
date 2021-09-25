@@ -5,6 +5,7 @@ body {
 .backlog-container {
   margin-left: 163px;
   margin-right: 20px;
+  margin-bottom: 100px;
 }
 
 .empty-backlog-container {
@@ -58,6 +59,7 @@ body {
 .category-color {
   width: 6px;
   min-height: 70px;
+  height: 90px;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
 }
@@ -101,10 +103,17 @@ body {
   margin-left: 20px;
 }
 
+.backlog-unit-name {
+  min-width: 200px;
+  width: 2000px;
+}
+
 .backlog-unit-email {
   color: rgba(0, 0, 255, 0.534);
   margin-top: 3px;
   text-decoration: none;
+  font-size: 10px;
+  min-width: 200px;
 }
 
 .backlog-unit-email:hover {
@@ -137,6 +146,10 @@ body {
 .delete-icon {
   cursor: pointer;
   margin-right: 5px;
+}
+
+.underline {
+  border-bottom: 1px solid rgba(105, 104, 104, 0.205);
 }
 
 @media screen and (max-width: 1120px) {

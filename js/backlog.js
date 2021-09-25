@@ -6,34 +6,32 @@ const ISWINDOW_WIDTH = 1120;
  */
 async function backlogInit() {
   includeHTML();
-  setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master')
+  setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadRegisterRequest();
   await loadAllTasks();
+  await loadSelcectedUser();
   checkBacklogContainer();
-  console.log('tasks', allTasks);
+  
+
+  console.log("tasks", allTasks);
 }
-
-
-
 
 /**
  * provides the necessary information for the cards and updates them when they are deleted
  */
 function checkBacklogContainer() {
-  if (allTasks.length <= 0) { 
+  if (allTasks.length <= 0) {
     showEmptyBacklog();
   } else {
-   executeRender();
+    executeRender();
   }
 }
 
 /**
- * if allTasks contains zero tasks show "No Tasks"
+ * if allTasks contains zero tasks show 'No Tasks'
  */
 function showEmptyBacklog() {
-  setTimeout(() => {
-    document.getElementById("empty-backlog").innerHTML = "No Tasks";
-  }, 1000);
+  document.getElementById("empty-backlog").innerHTML = "No Tasks";
 }
 
 /**
@@ -47,8 +45,30 @@ function executeRender() {
     let switchDescription = checkDescription(taskDescription);
     let categoryColor = getRightCategoryColor(cardCategory);
     renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
+
+    for (let j = 0; j < selectedUser.length; j++) {
+      document.getElementById("user-information" + i).innerHTML += `
+    <div class="underline">
+      <span class='backlog-unit-name'>${selectedUser[j].fName}</span>
+      <span class='backlog-unit-name'>${selectedUser[j].lName}</span>
+      <a href='email' class='backlog-unit-email'>${selectedUser[j].email}</a>
+     </div> 
+    `;
+    }
   }
 }
+
+// function getProfileInfo() {
+//   for (let i = 0; i < selectedUser.length; i++) {
+//      const profile = selectedUser[i];
+//      let temp = [];
+//     temp.push(profile);
+//    }
+//    document.getElementById("user-information" + i).innerHTML = '';
+
+//   }
+//  temp = [];
+// }
 
 /**
  * checks if you want to load responsive card or the normal one
@@ -74,26 +94,21 @@ function renderBacklogCard(index, color, category, description) {
  * @param {String} description descrption text
  * @returns {String} normal card
  */
-const returnResponsiveCard = (index, colorClass, description,) => {
+const returnResponsiveCard = (index, colorClass, description) => {
   document.getElementById("backlog").innerHTML += `
-  <div id="backlog-unit${index}" class="backlog-unit ${colorClass}">
-          <span id="category-color" class="category-color ${colorClass}"></span>
-          <div class="backlog-unit-content">
-              <div class="user-inforamtion-container">
-                   <div class="user-profile">
-                      <img class="profile-picture" src="img/profile.png">
-                      <div class="user-information">
-                          <span class="backlog-unit-name">${allRegisteredUsers[index].firstName}</span>
-                          <span class="backlog-unit-name">${allRegisteredUsers[index].lastName}</span>
-                          <a href="email" class="backlog-unit-email">${allRegisteredUsers[index].email}</a>
+  <div id='backlog-unit${index}' class='backlog-unit ${colorClass}'>
+          <span id='category-color' class='category-color ${colorClass}'></span>
+          <div class='backlog-unit-content'>
+              <div class='user-inforamtion-container'>
+                   <div class='user-profile'>
+                      <div id='user-information${index}' class='user-information'>
+                          
                       </div> 
                   </div>
+                  <span id='description${index}' class='backlog-details'>${description}</span>
                   
-                  
-                  <span id="description${index}" class="backlog-details">${description}</span>
-                  
-                  <div class="delete-icon">
-                      <img onclick="deleteTask(${index})" src="img/trash2.png"> 
+                  <div class='delete-icon'>
+                      <img onclick='deleteTask(${index})' src='img/trash2.png'> 
                   </div>
               </div>     
           </div>
@@ -113,24 +128,21 @@ const returnResponsiveCard = (index, colorClass, description,) => {
  */
 const returnNormalCard = (index, colorClass, category, description) => {
   document.getElementById("backlog").innerHTML += `
-  <div id="backlog-unit${index}" class="backlog-unit">
-          <span id="category-color" class="category-color ${colorClass}"></span>
-          <div class="backlog-unit-content">
-              <div class="user-inforamtion-container">
-                   <div class="user-profile">
-                      <img class="profile-picture" src="img/profile.png">
-                      <div class="user-information">
-                          <span class="backlog-unit-name">${allRegisteredUsers[index].firstName}</span>
-                          <span class="backlog-unit-name">${allRegisteredUsers[index].lastName}</span>
-                          <a href="email" class="backlog-unit-email">${allRegisteredUsers[index].email}</a>
+  <div id='backlog-unit${index}' class='backlog-unit'>
+          <span id='category-color' class='category-color ${colorClass}'></span>
+          <div class='backlog-unit-content'>
+              <div class='user-inforamtion-container'>
+                   <div class='user-profile'>
+                      <div id='user-information${index}' class='user-information'>
+                     
                       </div> 
                   </div>
-                  <div class="tast-information">
-                      <span class="category ${colorClass}">${category}</span>
-                      <span id="description${index}" class="backlog-details">${description}</span>
+                  <div class='tast-information'>
+                      <span class='category ${colorClass}'>${category}</span>
+                      <span id='description${index}' class='backlog-details'>${description}</span>
                   </div>
-                  <div class="delete-icon">
-                      <img onclick="deleteTask(${index})" src="img/trash.png"> 
+                  <div class='delete-icon'>
+                      <img onclick='deleteTask(${index})' src='img/trash.png'> 
                   </div>
               </div>     
           </div>
@@ -138,15 +150,6 @@ const returnNormalCard = (index, colorClass, category, description) => {
       `;
   return;
 };
-
-
-function returnallTaskInfo(params) {
-  for (let i = 0; i < allTasks.length; i++) {
-    const task = allTasks[i];
-    
-  }
-  
-}
 
 /**
  * clear selected task and load the rest tasks again
@@ -156,8 +159,9 @@ function returnallTaskInfo(params) {
 function deleteTask(allTasksIndex) {
   allTasks.splice(allTasksIndex, 1);
   saveAllTasks();
-  saveRegisterRequest(); 
-  document.getElementById("backlog-unit" + allTasksIndex).style = "display: none;";
+  saveRegisterRequest();
+  document.getElementById("backlog-unit" + allTasksIndex).style =
+    "display: none;";
   console.log(allTasksIndex);
   checkBacklogContainer();
 }
@@ -166,7 +170,7 @@ function deleteTask(allTasksIndex) {
  * checks if the description is empty or not
  *
  * @param {String} rightDescription
- * @returns {String} if the description is empty load "no description" otherwise load the actual description
+ * @returns {String} if the description is empty load 'no description' otherwise load the actual description
  */
 let checkDescription = (rightDescription) => {
   if (rightDescription == "") {
@@ -175,5 +179,3 @@ let checkDescription = (rightDescription) => {
     return rightDescription;
   }
 };
-
-

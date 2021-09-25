@@ -51,7 +51,7 @@ function renderTasks() {
  */
 function onDragTask(id) {
   allTasks.forEach((task) => {
-    if (task["id"] == id) {
+    if (task.id == id) {
       currentElement = allTasks.indexOf(task);
     }
   });

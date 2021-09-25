@@ -41,6 +41,8 @@ loginForm.addEventListener("submit", (event) => {
   if (emailValidation && pwValidation) {
     window.location.href = "board.html";
   } else if (emailValidation && !pwValidation) {
+    // checkLogin();
+    // checkLoginPw();
     outputError(loginPw, "worng password");
   } else if (!emailValidation && pwValidation) {
     outputError(loginEmail, "not registered");
@@ -50,8 +52,8 @@ loginForm.addEventListener("submit", (event) => {
 });
 
 /**
- * checks typical name characteristics 
- * 
+ * checks typical name characteristics
+ *
  * @returns {Boolean}
  */
 const checkLogin = () => {
@@ -68,8 +70,8 @@ const checkLogin = () => {
 };
 
 /**
- * checks typical name characteristics 
- * 
+ * checks typical name characteristics
+ *
  * @returns {Boolean}
  */
 const checkLoginPw = () => {
@@ -95,13 +97,18 @@ function clearInputFields() {
   deleteLoginInput();
 }
 
-
 /**
  * performs the register-form validation and determines which case occurs
  */
 registerForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (checkFirstName() &&checkLastName() &&checkEmail() &&checkPw() && checkConfPw() == true) {
+  if (
+    checkFirstName() &&
+    checkLastName() &&
+    checkEmail() &&
+    checkPw() &&
+    checkConfPw() == true
+  ) {
     if (!emailExists(registerEmail.value)) {
       createUserObject();
       resetClassName();
@@ -114,7 +121,6 @@ registerForm.addEventListener("submit", (event) => {
     console.log("no way");
   }
 });
-
 
 /**
  * separates pws
@@ -137,7 +143,7 @@ function getAllEmails() {
 
 /**
  * searches for a registered email
- * 
+ *
  * @param {String} currentEmail in input-field
  * @returns {Boolean} true if found undefined if not
  */
@@ -149,7 +155,7 @@ const emailExists = (currentEmail) => {
 
 /**
  * searches for a registered email
- * 
+ *
  * @param {String} currentEmail in input-field
  * @returns {Boolean} true if found undefined if not
  */
@@ -189,10 +195,9 @@ async function createUserObject() {
   alert("Regestration successful");
 }
 
-
 /**
  * show non valid feedback
- * 
+ *
  * @param {Element} input current HTML element
  * @param {String} errorMsg depends on the case which error message is displayed
  */
@@ -207,7 +212,7 @@ function outputError(input, errorMsg) {
 
 /**
  * show valid feedback
- * 
+ *
  * @param {Element} input current HTML element
  * @param {String} errorMsg depends on the case which error message is displayed
  */
@@ -221,12 +226,12 @@ function outputSuccess(input, errorMsg) {
 }
 
 /**
- * checks the email entered in the inputfield for email characteristics 
- * 
- * @param {String} email current emailvalue 
- * @returns {Boolean} 
+ * checks the email entered in the inputfield for email characteristics
+ *
+ * @param {String} email current emailvalue
+ * @returns {Boolean}
  */
- const isEmail = (email) => {
+const isEmail = (email) => {
   let atSymbol = email.indexOf("@");
   if (atSymbol < 1) return false;
   let dot = email.lastIndexOf(".");
@@ -234,7 +239,6 @@ function outputSuccess(input, errorMsg) {
   if (dot == email.length - 1) return false;
   return true;
 };
-
 
 /**
  * removes validation feedback
@@ -263,94 +267,77 @@ function closeRegisterWindow() {
   document.getElementById("register-window").style.zIndex = "-1";
 }
 
-
 /**
- * checks typical name characteristics 
- * 
+ * checks typical name characteristics
+ *
  * @returns {Boolean}
  */
 const checkFirstName = () => {
   if (fName.value == "") {
-    outputError(fName, "Fname can not be empty");
-    return false;
+    outputError(fName, "Fname can not be empty"); return false;
   } else if (fName.value.length < 3) {
-    outputError(fName, "Fname min 3 chars");
-    return false;
+    outputError(fName, "Fname min 3 chars"); return false;
   } else {
-    outputSuccess(fName, "Correct!");
-    return true;
+    outputSuccess(fName, "Correct!"); return true;
   }
 };
 
 /**
- * checks typical name characteristics 
- * 
+ * checks typical name characteristics
+ *
  * @returns {Boolean}
  */
 const checkLastName = () => {
   if (lName.value == "") {
-    outputError(lName, "Lname can not be empty");
-    return false;
+    outputError(lName, "Lname can not be empty"); return false;
   } else if (lName.value.length < 3) {
-    outputError(lName, "Lname min 3 chars");
-    return false;
+    outputError(lName, "Lname min 3 chars"); return false;
   } else {
-    outputSuccess(lName, "Correct!");
-    return true;
+    outputSuccess(lName, "Correct!"); return true;
   }
 };
 
 /**
- * checks typical email characteristics 
- * 
+ * checks typical email characteristics
+ *
  * @returns {Boolean}
  */
 const checkEmail = () => {
   if (registerEmail.value == "") {
-    outputError(registerEmail, "email can not be empty");
-    return false;
+    outputError(registerEmail, "email can not be empty"); return false;
   } else if (!isEmail(registerEmail.value)) {
-    outputError(registerEmail, "no vaild email");
-    return false;
+    outputError(registerEmail, "no vaild email"); return false;
   } else {
-    outputSuccess(registerEmail, "valid email");
-    return true;
+    outputSuccess(registerEmail, "valid email"); return true;
   }
 };
 
 /**
- * checks typical pw characteristics 
- * 
+ * checks typical pw characteristics
+ *
  * @returns {Boolean}
  */
 const checkPw = () => {
   if (pw.value == "") {
-    outputError(pw, "pw can not be empty");
-    return false;
+    outputError(pw, "pw can not be empty"); return false;
   } else if (pw.value.length <= 5) {
-    outputError(pw, "pw min 6 chars");
-    return false;
+    outputError(pw, "pw min 6 chars"); return false;
   } else {
-    outputSuccess(pw, "vaild pw");
-    return true;
+    outputSuccess(pw, "vaild pw"); return true;
   }
 };
 
 /**
- * checks typical pw characteristics  
- * 
+ * checks typical pw characteristics
+ *
  * @returns {Boolean}
  */
 const checkConfPw = () => {
   if (confirmedPw.value == "") {
-    outputError(confirmedPw, "confirmed pw can not be empty");
-    return false;
+    outputError(confirmedPw, "confirmed pw can not be empty"); return false;
   } else if (pw.value !== confirmedPw.value) {
-    outputError(confirmedPw, "the passwords do not match");
-    return false;
+    outputError(confirmedPw, "the passwords do not match"); return false;
   } else {
-    outputSuccess(confirmedPw, "Correct!");
-    return true;
+    outputSuccess(confirmedPw, "Correct!"); return true;
   }
 };
-

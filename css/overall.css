@@ -10,6 +10,14 @@
   display: none;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
 .dropDownMenu {
   background-color: #ebe9e967;
   position: absolute;
