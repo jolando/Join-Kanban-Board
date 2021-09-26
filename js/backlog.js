@@ -44,17 +44,20 @@ function executeRender() {
     let switchDescription = checkDescription(taskDescription);
     let categoryColor = getRightCategoryColor(cardCategory);
     renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
-  }
-  for (let j = 0; j < selectedUser.length; j++) {
-    document.getElementById("user-information").innerHTML += `
-    <div class="underline">
-      <span class='backlog-unit-name'>${selectedUser[j].fName}</span>
-      <span class='backlog-unit-name'>${selectedUser[j].lName}</span>
-      <a href='email' class='backlog-unit-email'>${selectedUser[j].email}</a>
-    </div> 
-  `;
+    for (let j = 0; j < allTasks[i].selectedUser.length; j++) {
+      document.getElementById('user-information' + i).innerHTML +=`
+      <div class="underline">
+                      <span class='backlog-unit-name'>${allTasks[i].selectedUser[j].fName}</span>
+                      <span class='backlog-unit-name'>${allTasks[i].selectedUser[j].lName}</span>
+                      <a href='email' class='backlog-unit-email'>${allTasks[i].selectedUser[j].email}</a>
+                     
+                    </div>`;
+      
+    }
   }
 }
+
+
 
 // function getProfileInfo() {
 //   for (let i = 0; i < selectedUser.length; i++) {
@@ -125,14 +128,15 @@ const returnResponsiveCard = (index, colorClass, description) => {
  * @returns {String} responsive card
  */
 const returnNormalCard = (index, colorClass, category, description) => {
+ 
   document.getElementById("backlog").innerHTML += `
   <div id='backlog-unit${index}' class='backlog-unit'>
           <span id='category-color' class='category-color ${colorClass}'></span>
           <div class='backlog-unit-content'>
               <div class='user-inforamtion-container'>
                    <div class='user-profile'>
-                      <div id='user-information' class='user-information'>
-                     
+                    <div id='user-information${index}' class='user-information'>
+                      
                       </div> 
                   </div>
                   <div class='tast-information'>
@@ -148,6 +152,7 @@ const returnNormalCard = (index, colorClass, category, description) => {
       `;
   return;
 };
+
 
 /**
  * clear selected task and load the rest tasks again
@@ -176,4 +181,4 @@ let checkDescription = (rightDescription) => {
   } else {
     return rightDescription;
   }
-};
+}

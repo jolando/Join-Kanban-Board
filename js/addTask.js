@@ -7,23 +7,16 @@ const category = document.getElementById("task-category");
 // const lName = allRegisteredUsers[saveSelectedUser(index)].lName;
 // const email = allRegisteredUsers[saveSelectedUser(index)].email;
 
-let task = getInputValues();
+
+
 
 async function initAddTask() {
   includeHTML();
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
   await loadRegisterRequest();
-
   renderUserProfiles();
-}
-
-/**
- * this function saves the values of the form input fields into variables
- * @returns the input values of every form input field
- */
-function getInputValues() {
-  return {
+  InputValues = {
     id: `${new Date().getTime()}`,
     title: document.getElementById("title-field").value,
     description: document.getElementById("description-field").value,
@@ -31,9 +24,16 @@ function getInputValues() {
     urgency: document.getElementById("urgency-category").value,
     category: document.getElementById("task-category").value,
     status: "todo",
-    selectedId: []
+    selectedUser: []
   };
 }
+
+/**
+ * this function saves the values of the form input fields into variables
+ * @returns the input values of every form input field
+ */
+
+
 
 /**
  * This function pushes the input values of the form into a global array and informs the user that a task has been created
@@ -41,35 +41,35 @@ function getInputValues() {
  */
 async function addTask(event) {
   event.preventDefault();
-  let task = getInputValues();
-  allTasks.push(task);
+
+  allTasks.push(InputValues);
   saveAllTasks();
   resetAddTask();
   document.getElementById("assigned-to").innerHTML = "";
   showAddSymbol();
   alert("Task has been created");
-  // deleteSelectedUser();
-  // await loadSelcectedUser();
+
 }
 
 /**
  * This function displays the users who are saved in the backend
  */
 function renderUserProfiles() {
+  
   document.getElementById("assignment-box").innerHTML = '';
   for (let i = 0; i < allRegisteredUsers.length; i++) {
     let fName = allRegisteredUsers[i].firstName;
     let lName = allRegisteredUsers[i].lastName;
-    // let v = '';
+    let v = '';
 
-    // if (selectedUser.find(user => user.id == i)) {
-    //   v = 'visible';
-    // }
+    if (selectedUser.find(user => user.id == allRegisteredUsers[i].id)) {
+     v = 'hidden';
+    }
     document.getElementById("assignment-box").innerHTML += `
     <div class="profile-box" id="profile${i}">
         <span>${fName}</span>
         <span>${lName}</span>
-        <img id="plus${i}" src="img/icon-plus.png" class="plus-icon" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
+        <img id="plus${i}" src="img/icon-plus.png" class="plus-icon ${v}" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
     </div>
     `;
   }
@@ -79,14 +79,16 @@ function renderUserProfiles() {
  * this function adds the selected user to a separate box in order to highlight them
  */
  function pushSelectedUser(id) {
+
+  
   let profile = {
     id: `${id}`,
     fName: `${allRegisteredUsers[id].firstName}`,
     lName: `${allRegisteredUsers[id].lastName}`,
     email: `${allRegisteredUsers[id].email}`,
   };
-  selectedUser.push(profile);
-
+  InputValues.selectedUser.push(profile);
+  saveSelectedUser();
   // task.selectedId.push(id);
 
   let addIcon = document.getElementById("plus" + id);
@@ -97,11 +99,11 @@ function renderUserProfiles() {
 
 function addSelectedUser() {
   document.getElementById("assigned-to").innerHTML = "";
-  for (let i = 0; i < selectedUser.length; i++) {
+  for (let i = 0; i < InputValues.selectedUser.length; i++) {
     document.getElementById("assigned-to").innerHTML += `
     <div id="selected${i}" class="assigned-to-card">   
-      <span>${selectedUser[i].fName}</span>
-      <span>${selectedUser[i].lName}</span>
+      <span>${InputValues.selectedUser[i].fName}</span>
+      <span>${InputValues.selectedUser[i].lName}</span>
       <img onclick="removeSelectedUser(${i})" class="minus-icon" src="img/minus.png">
     <div>
    `;
