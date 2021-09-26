@@ -45,20 +45,25 @@ function getInputValues() {
 }
 
 /**
+ * this function saves the values of the form input fields into variables
+ * @returns the input values of every form input field
+ */
+
+/**
  * This function pushes the input values of the form into a global array and informs the user that a task has been created
  * @param {*} event -this is an onsubmit default event
  */
 async function addTask(event) {
   event.preventDefault();
+
   // let task = getInputValues();
   allTasks.push(getInputValues());
+
   saveAllTasks();
   resetAddTask();
   document.getElementById("assigned-to").innerHTML = "";
   showAddSymbol();
   alert("Task has been created");
-  // deleteSelectedUser();
-  // await loadSelcectedUser();
 }
 
 /**
@@ -76,6 +81,7 @@ function renderUserProfiles() {
         <span>${allRegisteredUsers[i].firstName}</span>
         <span>${allRegisteredUsers[i].lastName}</span>
         <img id="plus${i}" src="img/icon-plus.png" class="plus-icon  ${v}" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
+
     </div>
     `;
   }
@@ -84,12 +90,14 @@ function renderUserProfiles() {
 /**
  * this function adds the selected user to a separate box in order to highlight them
  */
+
 function pushSelectedUser(id) {
   let profile = {
     fName: `${allRegisteredUsers[id].firstName}`,
     lName: `${allRegisteredUsers[id].lastName}`,
     email: `${allRegisteredUsers[id].email}`,
   };
+
   selectedUser.push(allRegisteredUsers[id]);
 
   getInputValues().selectedId.push(profile);
@@ -104,8 +112,10 @@ function addSelectedUser() {
   for (let i = 0; i < selectedUser.length; i++) {
     document.getElementById("assigned-to").innerHTML += `
     <div id="selected${i}" class="assigned-to-card">   
+
       <span>${selectedUser[i].firstName}</span>
       <span>${selectedUser[i].lastName}</span>
+
       <img onclick="removeSelectedUser(${i})" class="minus-icon" src="img/minus.png">
     <div>
    `;

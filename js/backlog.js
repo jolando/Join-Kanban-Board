@@ -52,10 +52,13 @@ function executeRender() {
             <span class='backlog-unit-name'>${allTasks[i].selectedId[j].lName}</span>
             <a href='email' class='backlog-unit-email'>${allTasks[i].selectedId[j].email}</a>
         </div>`;
+
       
     }
   }
 }
+
+
 
 // function getProfileInfo() {
 //   for (let i = 0; i < selectedUser.length; i++) {
@@ -126,14 +129,15 @@ const returnResponsiveCard = (index, colorClass, description) => {
  * @returns {String} responsive card
  */
 const returnNormalCard = (index, colorClass, category, description) => {
+ 
   document.getElementById("backlog").innerHTML += `
   <div id='backlog-unit${index}' class='backlog-unit'>
           <span id='category-color' class='category-color ${colorClass}'></span>
           <div class='backlog-unit-content'>
               <div class='user-inforamtion-container'>
                    <div class='user-profile'>
-                      <div id='user-information' class='user-information'>
-                     
+                    <div id='user-information${index}' class='user-information'>
+                      
                       </div> 
                   </div>
                   <div class='tast-information'>
@@ -149,6 +153,7 @@ const returnNormalCard = (index, colorClass, category, description) => {
       `;
   return;
 };
+
 
 /**
  * clear selected task and load the rest tasks again
@@ -177,4 +182,4 @@ let checkDescription = (rightDescription) => {
   } else {
     return rightDescription;
   }
-};
+}
