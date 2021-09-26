@@ -1,5 +1,5 @@
 window.onresize = checkBacklogContainer;
-const ISWINDOW_WIDTH = 1120;
+const ISWINDOW_WIDTH = 720;
 
 /**
  * will be executed when the backlog page is refreshed
@@ -11,8 +11,6 @@ async function backlogInit() {
   await loadAllTasks();
   await loadSelcectedUser();
   checkBacklogContainer();
-
-  console.log("tasks", allTasks);
 }
 
 /**
@@ -52,25 +50,9 @@ function executeRender() {
             <span class='backlog-unit-name'>${allTasks[i].selectedId[j].lName}</span>
             <a href='email' class='backlog-unit-email'>${allTasks[i].selectedId[j].email}</a>
         </div>`;
-
-      
     }
   }
 }
-
-
-
-// function getProfileInfo() {
-//   for (let i = 0; i < selectedUser.length; i++) {
-//      const profile = selectedUser[i];
-//      let temp = [];
-//     temp.push(profile);
-//    }
-//    document.getElementById("user-information" + i).innerHTML = '';
-
-//   }
-//  temp = [];
-// }
 
 /**
  * checks if you want to load responsive card or the normal one
@@ -103,7 +85,7 @@ const returnResponsiveCard = (index, colorClass, description) => {
           <div class='backlog-unit-content'>
               <div class='user-inforamtion-container'>
                    <div class='user-profile'>
-                      <div id='user-information' class='user-information'>
+                      <div id='user-information${index}' class='user-information'>
                           
                       </div> 
                   </div>

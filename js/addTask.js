@@ -3,9 +3,7 @@ const description = document.getElementById("description-field");
 const date = document.getElementById("date-field");
 const urgency = document.getElementById("urgency-category");
 const category = document.getElementById("task-category");
-// const fName = allRegisteredUsers[saveSelectedUser(index)].fName;
-// const lName = allRegisteredUsers[saveSelectedUser(index)].lName;
-// const email = allRegisteredUsers[saveSelectedUser(index)].email;
+
 
 async function initAddTask() {
   includeHTML();
@@ -15,16 +13,7 @@ async function initAddTask() {
   getInputValues();
   renderUserProfiles();
 
-  taskkk = {
-    id: `${new Date().getTime()}`,
-    title: document.getElementById("title-field").value,
-    description: document.getElementById("description-field").value,
-    date: document.getElementById("date-field").value,
-    urgency: document.getElementById("urgency-category").value,
-    category: document.getElementById("task-category").value,
-    status: "todo",
-    selectedId: [],
-  };
+  
 }
 
 /**
@@ -32,7 +21,7 @@ async function initAddTask() {
  * @returns the input values of every form input field
  */
 function getInputValues() {
-  return {
+  taskk = {
     id: `${new Date().getTime()}`,
     title: document.getElementById("title-field").value,
     description: document.getElementById("description-field").value,
@@ -42,6 +31,7 @@ function getInputValues() {
     status: "todo",
     selectedId: [],
   };
+return taskk;
 }
 
 /**
@@ -57,7 +47,7 @@ async function addTask(event) {
   event.preventDefault();
 
   // let task = getInputValues();
-  allTasks.push(getInputValues());
+  allTasks.push(taskk);
 
   saveAllTasks();
   resetAddTask();
@@ -81,7 +71,6 @@ function renderUserProfiles() {
         <span>${allRegisteredUsers[i].firstName}</span>
         <span>${allRegisteredUsers[i].lastName}</span>
         <img id="plus${i}" src="img/icon-plus.png" class="plus-icon  ${v}" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
-
     </div>
     `;
   }
@@ -90,20 +79,15 @@ function renderUserProfiles() {
 /**
  * this function adds the selected user to a separate box in order to highlight them
  */
-
 function pushSelectedUser(id) {
   let profile = {
     fName: `${allRegisteredUsers[id].firstName}`,
     lName: `${allRegisteredUsers[id].lastName}`,
     email: `${allRegisteredUsers[id].email}`,
   };
-
   selectedUser.push(allRegisteredUsers[id]);
-
   getInputValues().selectedId.push(profile);
-
   document.getElementById("plus" + id).style = "visibility: hidden;";
-
   addSelectedUser();
 }
 
@@ -112,10 +96,8 @@ function addSelectedUser() {
   for (let i = 0; i < selectedUser.length; i++) {
     document.getElementById("assigned-to").innerHTML += `
     <div id="selected${i}" class="assigned-to-card">   
-
       <span>${selectedUser[i].firstName}</span>
       <span>${selectedUser[i].lastName}</span>
-
       <img onclick="removeSelectedUser(${i})" class="minus-icon" src="img/minus.png">
     <div>
    `;
@@ -124,7 +106,6 @@ function addSelectedUser() {
 
 function removeSelectedUser(index) {
   selectedUser.splice(index, 1);
-  // document.getElementById("plus" + index).style.visibility = "visible";
   console.log(selectedUser);
   addSelectedUser();
   renderUserProfiles();

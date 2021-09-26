@@ -39,7 +39,7 @@ function filterAllTasks() {
  */
 function renderTasks() {
   renderTask(todosArr, "todo-container");
-  renderTask(progressArr, "progress-cssssssssontainer");
+  renderTask(progressArr, "progress-container");
   renderTask(testingArr, "testing-container");
   renderTask(doneArr, "done-container");
 }
