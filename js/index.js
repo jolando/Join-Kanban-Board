@@ -27,7 +27,7 @@ async function initIndex() {
 }
 
 // function deleteUser() {
-//   backend.deleteItem("registeredUser");
+//   backend.deleteItem("allTasks");
 // }
 
 /**
@@ -58,7 +58,7 @@ loginForm.addEventListener("submit", (event) => {
  */
 const checkLogin = () => {
   if (loginEmail.value == "") {
-    outputError(loginEmail, "email can not be blank");
+    outputError(loginEmail, "email can not be empty");
     return false;
   } else if (!isEmail(loginEmail.value)) {
     outputError(loginEmail, "no valid email");
@@ -76,10 +76,10 @@ const checkLogin = () => {
  */
 const checkLoginPw = () => {
   if (loginPw.value == "") {
-    outputError(loginPw, "pw can not be blank");
+    outputError(loginPw, "pw can not be empty");
     return false;
   } else if (loginPw.value.length < 6) {
-    outputError(loginPw, "pw min 6 chars");
+    outputError(loginPw, "password min 6 chars");
     return false;
   } else {
     outputSuccess(loginPw, "valid pw");
@@ -115,7 +115,7 @@ registerForm.addEventListener("submit", (event) => {
       deleteRegisterInput();
     } else {
       console.log("already registered");
-      outputError(registerEmail, "this email is not registered");
+      outputError(registerEmail, "this email is already registered");
     }
   } else {
     console.log("no way");
@@ -184,6 +184,7 @@ function deleteLoginInput() {
  */
 async function createUserObject() {
   let user = {
+    id: new Date().getTime(),
     userPassword: `${pw.value}`,
     validatePassword: `${confirmedPw.value}`,
     firstName: `${fName.value}`,
@@ -274,9 +275,9 @@ function closeRegisterWindow() {
  */
 const checkFirstName = () => {
   if (fName.value == "") {
-    outputError(fName, "Fname can not be empty"); return false;
+    outputError(fName, "first name can not be empty"); return false;
   } else if (fName.value.length < 3) {
-    outputError(fName, "Fname min 3 chars"); return false;
+    outputError(fName, "last name min 3 chars"); return false;
   } else {
     outputSuccess(fName, "Correct!"); return true;
   }
@@ -289,9 +290,9 @@ const checkFirstName = () => {
  */
 const checkLastName = () => {
   if (lName.value == "") {
-    outputError(lName, "Lname can not be empty"); return false;
+    outputError(lName, "last name can not be empty"); return false;
   } else if (lName.value.length < 3) {
-    outputError(lName, "Lname min 3 chars"); return false;
+    outputError(lName, "last name min 3 chars"); return false;
   } else {
     outputSuccess(lName, "Correct!"); return true;
   }

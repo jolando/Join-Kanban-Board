@@ -44,15 +44,16 @@ function executeRender() {
     let switchDescription = checkDescription(taskDescription);
     let categoryColor = getRightCategoryColor(cardCategory);
     renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
-  }
-  for (let j = 0; j < selectedUser.length; j++) {
-    document.getElementById("user-information").innerHTML += `
-    <div class="underline">
-      <span class='backlog-unit-name'>${selectedUser[j].fName}</span>
-      <span class='backlog-unit-name'>${selectedUser[j].lName}</span>
-      <a href='email' class='backlog-unit-email'>${selectedUser[j].email}</a>
-    </div> 
-  `;
+
+    for (let j = 0; j < allTasks[i].selectedId.length; j++) {
+      document.getElementById('user-information' + i).innerHTML +=`
+        <div class="underline">
+            <span class='backlog-unit-name'>${allTasks[i].selectedId[j].fName}</span>
+            <span class='backlog-unit-name'>${allTasks[i].selectedId[j].lName}</span>
+            <a href='email' class='backlog-unit-email'>${allTasks[i].selectedId[j].email}</a>
+        </div>`;
+      
+    }
   }
 }
 

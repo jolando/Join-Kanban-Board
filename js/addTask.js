@@ -7,15 +7,24 @@ const category = document.getElementById("task-category");
 // const lName = allRegisteredUsers[saveSelectedUser(index)].lName;
 // const email = allRegisteredUsers[saveSelectedUser(index)].email;
 
-let task = getInputValues();
-
 async function initAddTask() {
   includeHTML();
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadAllTasks();
   await loadRegisterRequest();
-
+  getInputValues();
   renderUserProfiles();
+
+  taskkk = {
+    id: `${new Date().getTime()}`,
+    title: document.getElementById("title-field").value,
+    description: document.getElementById("description-field").value,
+    date: document.getElementById("date-field").value,
+    urgency: document.getElementById("urgency-category").value,
+    category: document.getElementById("task-category").value,
+    status: "todo",
+    selectedId: [],
+  };
 }
 
 /**
@@ -31,7 +40,7 @@ function getInputValues() {
     urgency: document.getElementById("urgency-category").value,
     category: document.getElementById("task-category").value,
     status: "todo",
-    selectedId: []
+    selectedId: [],
   };
 }
 
@@ -41,8 +50,8 @@ function getInputValues() {
  */
 async function addTask(event) {
   event.preventDefault();
-  let task = getInputValues();
-  allTasks.push(task);
+  // let task = getInputValues();
+  allTasks.push(getInputValues());
   saveAllTasks();
   resetAddTask();
   document.getElementById("assigned-to").innerHTML = "";
@@ -56,20 +65,17 @@ async function addTask(event) {
  * This function displays the users who are saved in the backend
  */
 function renderUserProfiles() {
-  document.getElementById("assignment-box").innerHTML = '';
+  document.getElementById("assignment-box").innerHTML = "";
   for (let i = 0; i < allRegisteredUsers.length; i++) {
-    let fName = allRegisteredUsers[i].firstName;
-    let lName = allRegisteredUsers[i].lastName;
-    // let v = '';
-
-    // if (selectedUser.find(user => user.id == i)) {
-    //   v = 'visible';
-    // }
+    let v = "";
+    if (selectedUser.find((user) => user.id == allRegisteredUsers[i].id)) {
+      v = "hidden";
+    }
     document.getElementById("assignment-box").innerHTML += `
     <div class="profile-box" id="profile${i}">
-        <span>${fName}</span>
-        <span>${lName}</span>
-        <img id="plus${i}" src="img/icon-plus.png" class="plus-icon" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
+        <span>${allRegisteredUsers[i].firstName}</span>
+        <span>${allRegisteredUsers[i].lastName}</span>
+        <img id="plus${i}" src="img/icon-plus.png" class="plus-icon  ${v}" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
     </div>
     `;
   }
@@ -78,20 +84,18 @@ function renderUserProfiles() {
 /**
  * this function adds the selected user to a separate box in order to highlight them
  */
- function pushSelectedUser(id) {
+function pushSelectedUser(id) {
   let profile = {
-    id: `${id}`,
     fName: `${allRegisteredUsers[id].firstName}`,
     lName: `${allRegisteredUsers[id].lastName}`,
     email: `${allRegisteredUsers[id].email}`,
   };
-  selectedUser.push(profile);
+  selectedUser.push(allRegisteredUsers[id]);
 
-  // task.selectedId.push(id);
+  getInputValues().selectedId.push(profile);
 
-  let addIcon = document.getElementById("plus" + id);
-  addIcon.style = "opacity: 0.3; cursor: default;";
-  addIcon.onclick = null;
+  document.getElementById("plus" + id).style = "visibility: hidden;";
+
   addSelectedUser();
 }
 
@@ -100,17 +104,15 @@ function addSelectedUser() {
   for (let i = 0; i < selectedUser.length; i++) {
     document.getElementById("assigned-to").innerHTML += `
     <div id="selected${i}" class="assigned-to-card">   
-      <span>${selectedUser[i].fName}</span>
-      <span>${selectedUser[i].lName}</span>
+      <span>${selectedUser[i].firstName}</span>
+      <span>${selectedUser[i].lastName}</span>
       <img onclick="removeSelectedUser(${i})" class="minus-icon" src="img/minus.png">
     <div>
    `;
   }
 }
 
-
 function removeSelectedUser(index) {
-  
   selectedUser.splice(index, 1);
   // document.getElementById("plus" + index).style.visibility = "visible";
   console.log(selectedUser);
@@ -119,37 +121,8 @@ function removeSelectedUser(index) {
 }
 
 /**
- * this function adds the selected user to a separate box in order to highlight them
+ * shows the pulse icons again after a task has been created
  */
-// function addSelectedUser(i) {
-//   let profile = {
-//     id: `${idSelectedUser}`,
-//     fName: `${allRegisteredUsers[i].firstName}`,
-//     lName: `${allRegisteredUsers[i].lastName}`,
-//     email: `${allRegisteredUsers[i].email}`,
-//   };
-//   document.getElementById("plus" + i).style.visibility = "hidden";
-//   selectedUser.push(profile);
-//   idSelectedUser++;
-//   saveSelectedUser();
-//   addAssignedTo(i, profile.id);
-// }
-
-// function addAssignedTo(id) {
-//   document.getElementById("assigned-to").innerHTML = "";
-//   for (let i = 0; i < selectedUser.length; i++) {
-//     document.getElementById("assigned-to").innerHTML += `
-//     <div id="selected${i}" class="assigned-to-card">   
-//       <span>${selectedUser[i].fName}</span>
-//       <span>${selectedUser[i].lName}</span>
-//       <img onclick="removeSelectedUser(${id})" class="minus-icon" src="img/minus.png">
-//     <div>
-//    `;
-//   }
-// }
-
-
-
 function showAddSymbol() {
   let addicons = document.getElementsByClassName("plus-icon");
   for (let i = 0; i < addicons.length; i++) {
@@ -158,16 +131,17 @@ function showAddSymbol() {
   }
 }
 
+/**
+ * highlights the selected user when hovering over the plus sign
+ *
+ * @param {Number} i index of allRegisteredUsers
+ */
 function addHighlight(i) {
   let highLight = document.getElementById("profile" + i);
   highLight.style.backgroundColor = "#dce0dd";
   highLight.addEventListener("mouseout", () => {
     highLight.style.backgroundColor = "white";
   });
-}
-
-function deleteSelectedUser() {
-  backend.deleteItem("selectedUsers");
 }
 
 /**
