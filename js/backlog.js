@@ -43,15 +43,18 @@ function executeRender() {
     let categoryColor = getRightCategoryColor(cardCategory);
     renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
 
-    allTasks[i].selectedId.forEach((user) => {
-       allRegisteredUsers.indexOf((userId) => userId.id == user)
-      // allRegisteredUsers.find((userid) => userid.id == user);
+    allTasks[i].selectedId.forEach((userId) => {
+      console.log(userId);
+      let UserObject = allRegisteredUsers.find((user) => user.id == userId);
+      console.log(UserObject);
+      let index = allRegisteredUsers.indexOf(UserObject);
+      console.log(index);
       document.getElementById("user-information" + i).innerHTML += `
-      <div class="underline">
-          <span class='backlog-unit-name'>${allRegisteredUsers[1].firstName}</span>
-          <span class='backlog-unit-name'>${allRegisteredUsers[0].lastName}</span>
-          <a href='email' class='backlog-unit-email'>${allRegisteredUsers[0].email}</a>
-      </div>`;
+        <div class="underline">
+            <span class='backlog-unit-name'>${allRegisteredUsers[index].firstName}</span>
+            <span class='backlog-unit-name'>${allRegisteredUsers[index].lastName}</span>
+            <a href='email' class='backlog-unit-email'>${allRegisteredUsers[index].email}</a>
+        </div>`;
     });
   }
 }
