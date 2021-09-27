@@ -27,7 +27,7 @@ async function initIndex() {
 }
 
 // function deleteUser() {
-//   backend.deleteItem("allTasks");
+//   backend.deleteItem("registeredUser");
 // }
 
 /**
@@ -114,7 +114,6 @@ registerForm.addEventListener("submit", (event) => {
       resetClassName();
       deleteRegisterInput();
     } else {
-      console.log("already registered");
       outputError(registerEmail, "this email is already registered");
     }
   } else {

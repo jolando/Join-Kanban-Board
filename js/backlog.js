@@ -43,14 +43,16 @@ function executeRender() {
     let categoryColor = getRightCategoryColor(cardCategory);
     renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
 
-    for (let j = 0; j < allTasks[i].selectedId.length; j++) {
-      document.getElementById('user-information' + i).innerHTML +=`
-        <div class="underline">
-            <span class='backlog-unit-name'>${allTasks[i].selectedId[j].fName}</span>
-            <span class='backlog-unit-name'>${allTasks[i].selectedId[j].lName}</span>
-            <a href='email' class='backlog-unit-email'>${allTasks[i].selectedId[j].email}</a>
-        </div>`;
-    }
+    allTasks[i].selectedId.forEach((user) => {
+       allRegisteredUsers.indexOf((userId) => userId.id == user)
+      // allRegisteredUsers.find((userid) => userid.id == user);
+      document.getElementById("user-information" + i).innerHTML += `
+      <div class="underline">
+          <span class='backlog-unit-name'>${allRegisteredUsers[1].firstName}</span>
+          <span class='backlog-unit-name'>${allRegisteredUsers[0].lastName}</span>
+          <a href='email' class='backlog-unit-email'>${allRegisteredUsers[0].email}</a>
+      </div>`;
+    });
   }
 }
 
@@ -85,9 +87,7 @@ const returnResponsiveCard = (index, colorClass, description) => {
           <div class='backlog-unit-content'>
               <div class='user-inforamtion-container'>
                    <div class='user-profile'>
-                      <div id='user-information${index}' class='user-information'>
-                          
-                      </div> 
+                      <div id='user-information${index}' class='user-information'></div> 
                   </div>
                   <span id='description${index}' class='backlog-details'>${description}</span>
                   
@@ -111,16 +111,13 @@ const returnResponsiveCard = (index, colorClass, description) => {
  * @returns {String} responsive card
  */
 const returnNormalCard = (index, colorClass, category, description) => {
- 
   document.getElementById("backlog").innerHTML += `
   <div id='backlog-unit${index}' class='backlog-unit'>
           <span id='category-color' class='category-color ${colorClass}'></span>
           <div class='backlog-unit-content'>
               <div class='user-inforamtion-container'>
                    <div class='user-profile'>
-                    <div id='user-information${index}' class='user-information'>
-                      
-                      </div> 
+                    <div id='user-information${index}' class='user-information'></div> 
                   </div>
                   <div class='tast-information'>
                       <span class='category ${colorClass}'>${category}</span>
@@ -135,7 +132,6 @@ const returnNormalCard = (index, colorClass, category, description) => {
       `;
   return;
 };
-
 
 /**
  * clear selected task and load the rest tasks again
@@ -164,4 +160,4 @@ let checkDescription = (rightDescription) => {
   } else {
     return rightDescription;
   }
-}
+};

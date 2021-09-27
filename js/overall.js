@@ -16,9 +16,6 @@ let taskk;
 
 let InputValues;
 
-
-
-
 /**
  * loads the stored information from the backend into an empty array so that the content can be displayed
  */
@@ -46,7 +43,7 @@ async function loadSelcectedUser() {
 /**
  * converts the global allRegisteredUsers array into a string and stores it in the backend
  */
- async function saveRegisterRequest() {
+async function saveRegisterRequest() {
   await backend.setItem("registeredUser", JSON.stringify(allRegisteredUsers));
 }
 
@@ -95,4 +92,3 @@ let getRightCategoryColor = (category) => {
     return "sales-color";
   }
 };
-
