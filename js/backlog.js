@@ -9,7 +9,6 @@ async function backlogInit() {
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadRegisterRequest();
   await loadAllTasks();
-  await loadSelcectedUser();
   checkBacklogContainer();
 }
 
@@ -41,8 +40,7 @@ function executeRender() {
     let taskDescription = allTasks[i].description;
     let switchDescription = checkDescription(taskDescription);
     let categoryColor = getRightCategoryColor(cardCategory);
-    renderBacklogCard(i, categoryColor, cardCategory, switchDescription);
-
+    renderBacklogCard(i, categoryColor, cardCategory, switchDescription)
     allTasks[i].selectedId.forEach((userId) => {
       console.log(userId);
       let UserObject = allRegisteredUsers.find((user) => user.id == userId);

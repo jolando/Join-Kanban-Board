@@ -3,6 +3,7 @@ body {
 }
 
 .backlog-container {
+  text-align: center;
   margin-left: 163px;
   margin-right: 20px;
   margin-bottom: 100px;
@@ -15,7 +16,7 @@ body {
 
 .backlog-unit-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 100%;
@@ -67,19 +68,13 @@ body {
 .user-profile {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  max-width: 300px;
-  min-width: 30%;
+  text-align: left;
+  /* align-items: center; */
+  max-width: 220px;
+  min-width: 20%;
 }
 
-.profile-picture {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0;
-  margin-left: 10px;
-}
+
 
 .user-inforamtion-container {
   position: relative;
@@ -139,7 +134,7 @@ body {
 }
 
 .category-title {
-  margin-right: 180px;
+  margin-right: 200px;
 }
 
 .delete-icon {

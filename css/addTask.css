@@ -158,7 +158,7 @@ textarea::-webkit-input-placeholder {
   border: 3px solid white;
   background-color: rgba(253, 253, 253, 0.589);
   border: 1px solid rgba(92, 91, 91, 0.404);
-  font-size: 1.17em;
+  font-size: 15px;
   margin-bottom: 20px;
 }
 
@@ -169,13 +169,14 @@ textarea::-webkit-input-placeholder {
 }
 
 .assigned-to-card span {
-  min-width: 100px;
-  margin: auto;
+  min-width: 80px;
+  text-align: left;
+  /* margin: auto; */
 }
 
 .assigned-to-card img {
   /* min-width: 100px; */
-  margin: auto;
+  /* margin: auto; */
 }
 
 .task-profile-pic {
@@ -209,6 +210,10 @@ textarea::-webkit-input-placeholder {
   width: 100%;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgba(117, 116, 116, 0.37);
+}
+
+.assignment-box-assets span {
+  text-align: left;
 }
 
 .create-button {
