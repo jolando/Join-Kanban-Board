@@ -168,9 +168,8 @@ function validateEmail(elementId, hintId) {
       printError(hintId, 'Please enter a valid email address');
       removeSuccess(elementId);
     } else {
-      printError(hintId, '');
+      printError(hintId, 'test');
       showSuccess(elementId);
-
       return true;
     }
   }
@@ -185,7 +184,7 @@ function validatePassword(elementId, hintId) {
     removeSuccess(elementId);
   } else {
     if (pw.length <= 5 && loginPw.length <= 5) {
-      printError(hintId, hintId, 'Please enter a valid password');
+      printError(hintId, 'Please enter a valid password');
       removeSuccess(elementId);
     } else {
       printError(hintId, '');
@@ -253,6 +252,7 @@ function resetClassName() {
   let classNames = document.getElementsByClassName('validation');
   for (let i = 0; i < classNames.length; i++) {
     classNames[i].classList.remove('success');
+    classNames[i].classList.remove('error');
   }
   // closeRegisterWindow();
 }
