@@ -99,6 +99,7 @@ function login(e) {
  * Constantly check input fields
  */
 document.getElementById('login-form').addEventListener('input', () => {
+  // document.getElementById('error-full') = '';
   checkLoginInput();
 });
 
