@@ -30,17 +30,17 @@
     </div>
     <div class="mt">
       <h2>In Progress</h2>
-      <div ondrop="dropTask('progress')" ondragover="allowDrop(event)" id="progress-container" class="board-box">
+      <div ontouchend="dropTask('progress')" ondrop="dropTask('progress')" ondragover="allowDrop(event)" id="progress-container" class="board-box">
       </div>
     </div>
     <div class="mt">
       <h2>Testing</h2>
-      <div ontouchend="dropTask('testing')" ondrop="dropTask('testing')" ondragover="allowDrop(event)"
+      <div ontouchend="dropTask('testing')" ontouchend="dropTask('testing')" ondrop="dropTask('testing')" ondragover="allowDrop(event)"
         id="testing-container" class="board-box"></div>
     </div>
     <div class="mt">
       <h2>Done</h2>
-      <div ontouc="dropTask('done')" ondrop="dropTask('done')" ondragover="allowDrop(event)" id="done-container"
+      <div ontouchend="dropTask('done')" ontouc="dropTask('done')" ondrop="dropTask('done')" ondragover="allowDrop(event)" id="done-container"
         class="board-box"></div>
     </div>
   </div>

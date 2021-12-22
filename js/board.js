@@ -118,16 +118,6 @@ function returnTaskHTML(taskObj) {
       </div>`;
 }
 
-// window.addEventListener('touchmove', () => {
-//   console.log('working');
-//   onDragTask();
-// });
-
-// window.addEventListener('touchmove', () => {
-//   console.log('working end');
-//   dropTask();
-// });
-
 /**
  * delete current task
  *

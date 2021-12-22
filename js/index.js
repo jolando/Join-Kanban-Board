@@ -87,10 +87,13 @@ function login(e) {
 
   if (user && user.userPassword === loginPw) {
     window.location.href = 'board.html';
+    alert('login erfolgreich');
   } else if (user && user.userPassword !== loginPw.value) {
     console.log('falsches password');
+    clearInput();
   } else {
     console.log('nicht registriert');
+    clearInput();
   }
 }
 
@@ -146,13 +149,13 @@ function validateEmail(elementId, hintId) {
   } else {
     let regex = /^\S+@\S+\.\S+$/;
     if (
-      regex.test(registerEmail) === false ||
+      regex.test(registerEmail) === false &&
       regex.test(loginEmail) === false
     ) {
       printError(hintId, 'Please enter a valid email address');
       removeSuccess(elementId);
     } else {
-      printError(hintId, 'nix');
+      printError(hintId, '');
       showSuccess(elementId);
 
       return true;
@@ -168,11 +171,11 @@ function validatePassword(elementId, hintId) {
     printError(hintId, 'Please enter your password');
     removeSuccess(elementId);
   } else {
-    if (pw.length <= 5 || loginPw.length <= 5) {
+    if (pw.length <= 5 && loginPw.length <= 5) {
       printError(hintId, hintId, 'Please enter a valid password');
       removeSuccess(elementId);
     } else {
-      printError(hintId, 'nix');
+      printError(hintId, '');
       showSuccess(elementId);
       return true;
     }
