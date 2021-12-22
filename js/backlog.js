@@ -1,4 +1,6 @@
+// window.onload = checkBacklogContainer;
 window.onresize = checkBacklogContainer;
+
 const ISWINDOW_WIDTH = 720;
 
 /**
@@ -6,52 +8,38 @@ const ISWINDOW_WIDTH = 720;
  */
 async function backlogInit() {
   includeHTML();
-  setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
+
+  setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master');
   await loadRegisterRequest();
   await loadAllTasks();
   checkBacklogContainer();
 }
-
 /**
  * provides the necessary information for the cards and updates them when they are deleted
  */
 function checkBacklogContainer() {
-  if (allTasks.length <= 0) {
-    showEmptyBacklog();
+  if (allTasks.length == 0) {
+    document.getElementById('backlog').innerHTML =
+      '<h2 class="empty-backlog">No Tasks</h2>';
   } else {
     executeRender();
   }
 }
 
 /**
- * if allTasks contains zero tasks show 'No Tasks'
- */
-function showEmptyBacklog() {
-  document.getElementById("empty-backlog").innerHTML = "No Tasks";
-}
-
-/**
  * if allTasks contains more than zero tasks execute render-function
  */
 function executeRender() {
-  document.getElementById("backlog").innerHTML = "";
+  document.getElementById('backlog').innerHTML = '';
   for (let i = 0; i < allTasks.length; i++) {
-    let cardCategory = allTasks[i].category;
-    let taskDescription = allTasks[i].description;
-    let switchDescription = checkDescription(taskDescription);
-    let categoryColor = getRightCategoryColor(cardCategory);
-    renderBacklogCard(i, categoryColor, cardCategory, switchDescription)
+    renderBacklogCard(i);
     allTasks[i].selectedId.forEach((userId) => {
-      console.log(userId);
       let UserObject = allRegisteredUsers.find((user) => user.id == userId);
-      console.log(UserObject);
       let index = allRegisteredUsers.indexOf(UserObject);
-      console.log(index);
-      document.getElementById("user-information" + i).innerHTML += `
+      document.getElementById('user-information' + i).innerHTML += `
         <div class="underline">
             <span class='backlog-unit-name'>${allRegisteredUsers[index].firstName}</span>
             <span class='backlog-unit-name'>${allRegisteredUsers[index].lastName}</span>
-            <a href='email' class='backlog-unit-email'>${allRegisteredUsers[index].email}</a>
         </div>`;
     });
   }
@@ -61,15 +49,17 @@ function executeRender() {
  * checks if you want to load responsive card or the normal one
  *
  * @param {String} index position of task in the array
- * @param {String} colorClass name of the selected class
- * @param {String} category name of the department
- * @param {String} description descrption text
  */
-function renderBacklogCard(index, color, category, description) {
+function renderBacklogCard(index) {
+  let cardCategory = allTasks[index].category;
+  let taskDescription = allTasks[index].description;
+  let categoryColor = getRightCategoryColor(cardCategory);
+  let switchDescription = checkDescription(taskDescription);
+
   if (window.innerWidth > ISWINDOW_WIDTH) {
-    returnNormalCard(index, color, category, description);
+    returnNormalCard(index, categoryColor, cardCategory, switchDescription);
   } else {
-    returnResponsiveCard(index, color, description);
+    returnResponsiveCard(index, categoryColor, switchDescription);
   }
 }
 
@@ -82,7 +72,7 @@ function renderBacklogCard(index, color, category, description) {
  * @returns {String} normal card
  */
 const returnResponsiveCard = (index, colorClass, description) => {
-  document.getElementById("backlog").innerHTML += `
+  document.getElementById('backlog').innerHTML += `
   <div id='backlog-unit${index}' class='backlog-unit ${colorClass}'>
           <span id='category-color' class='category-color ${colorClass}'></span>
           <div class='backlog-unit-content'>
@@ -112,7 +102,7 @@ const returnResponsiveCard = (index, colorClass, description) => {
  * @returns {String} responsive card
  */
 const returnNormalCard = (index, colorClass, category, description) => {
-  document.getElementById("backlog").innerHTML += `
+  document.getElementById('backlog').innerHTML += `
   <div id='backlog-unit${index}' class='backlog-unit'>
           <span id='category-color' class='category-color ${colorClass}'></span>
           <div class='backlog-unit-content'>
@@ -143,9 +133,8 @@ function deleteTask(allTasksIndex) {
   allTasks.splice(allTasksIndex, 1);
   saveAllTasks();
   saveRegisterRequest();
-  document.getElementById("backlog-unit" + allTasksIndex).style =
-    "display: none;";
-  console.log(allTasksIndex);
+  document.getElementById('backlog-unit' + allTasksIndex).style =
+    'display: none;';
   checkBacklogContainer();
 }
 
@@ -156,8 +145,8 @@ function deleteTask(allTasksIndex) {
  * @returns {String} if the description is empty load 'no description' otherwise load the actual description
  */
 let checkDescription = (rightDescription) => {
-  if (rightDescription == "") {
-    return "No Description";
+  if (rightDescription == '') {
+    return 'No Description';
   } else {
     return rightDescription;
   }

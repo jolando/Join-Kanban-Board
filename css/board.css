@@ -46,15 +46,11 @@ h2 {
     flex-direction: column;
     margin: 0;
     margin-top: 40px;
-
     min-width: 96%;
-    /* height: 100vh; */
   }
   .board-box {
     height: 100%;
     min-height: 15vh;
-    /* margin-bottom: 100px; */
-    /* margin: 100px 0; */
   }
   .mt {
     margin-top: 40px;
@@ -88,6 +84,10 @@ h2 {
   font-size: 14px;
   padding: 4px 4px;
   width: 33%;
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
 }
 

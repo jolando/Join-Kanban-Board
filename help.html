@@ -1,56 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Help</title>
-     <!--CSS-FILES-->
-  <link rel="stylesheet" href="css/nav.css" />
-  <link rel="stylesheet" href="css/overall.css" />
-  <link rel="stylesheet" href="css/footer.css">
-  
-  <!--JS-FILES-->
-  <script src="js/include.js"></script>
-  <script src="js/overall.js"></script>
-  <script src="js/mini_backend.js"></script>
-  <script src="js/impressum.js"></script>
-</head>
-<body onload="includeHTML()">
+    <!--CSS-FILES-->
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/overall.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
+    <!--JS-FILES-->
+    <script src="js/include.js"></script>
+    <script src="js/overall.js"></script>
+    <script src="js/mini_backend.js"></script>
+    <script src="js/impressum.js"></script>
+  </head>
+  <body onload="includeHTML()">
     <div w3-include-html="templates/nav.html"></div>
     <div class="container">
-        <h1>Help</h1>
-        <br><br>
-        <p>First of all this project has been created by the Developer Akademie students: Peter Rehmann, Sebastian Seitz and Adilet Sharshekeev
-          </p>
-        <div class="help-section">
-          <h2>Login</h2>
-          <img class="help-img" src="img/login.png">
-          <p>If you haven't created an account yet, click the "Create Account" button in the top right corner. Alternatively, you can enter the site logging in.</p>
-        </div>
-        <div class="help-section">
-          <h2>Board</h2>
-          <img class="help-img" src="img/board.png">
-          <p>In the board section you can see the tasks which have been created. There are four columns which show you the status of each card. 
-              Every task starts off in the "to-do" column. After that, a task is in progress and later its functionality is being tested. 
-              Finally a task cards lands in the "done" column. Every card is draggable, so the members of the project can dynamically display their working process.</p>
-        </div>
-        <div class="help-section">
-          <h2>Backlog</h2>
-          <img class="help-img" src="img/backlog.png">
-          <p>In the backlog section you can see an overview of all the created tasks. 
-            They will remain there even if they are already marked as "done" on the board. 
-            However, you can delete individual backlog cards if you wish to.</p>
-        </div>
-        <div class="help-section">
-          <h2>AddTask</h2>
-          <img class="help-img" src="img/addtask.png">
-          <p>In the Add Task section you can create a new task for your team. Find a title and a description for the task. 
-            You can also set the urgency and the category of the task. Additionally you must set a date at which the task is due. 
-            As a last step, add the user who is responsible for the task. Note that you cannot create a task until you have added a user.</p>
-        </div>
-        
-
-    </div> 
-</body>
+      <h1>Help</h1>
+      <br /><br />
+      <p>
+        First of all this project has been created by the Developer Akademie
+        students: Peter Rehmann, Sebastian Seitz and Adilet Sharshekeev
+      </p>
+      <div class="help-section">
+        <h2>Login</h2>
+        <img class="help-img" src="img/login.png" />
+        <p>
+          If you haven't created an account yet, click the "Create Account"
+          button in the top right corner. Alternatively, you can enter the site
+          logging in.
+        </p>
+      </div>
+      <div class="help-section">
+        <h2>Board</h2>
+        <img class="help-img" src="img/board.png" />
+        <p>
+          In the board section you can see the tasks which have been created.
+          There are four columns which show you the status of each card. Every
+          task starts off in the "to-do" column. After that, a task is in
+          progress and later its functionality is being tested. Finally a task
+          cards lands in the "done" column. Every card is draggable, so the
+          members of the project can dynamically display their working process.
+        </p>
+      </div>
+      <div class="help-section">
+        <h2>Backlog</h2>
+        <img class="help-img" src="img/backlog.png" />
+        <p>
+          In the backlog section you can see an overview of all the created
+          tasks. They will remain there even if they are already marked as
+          "done" on the board. However, you can delete individual backlog cards
+          if you wish to.
+        </p>
+      </div>
+      <div class="help-section">
+        <h2>AddTask</h2>
+        <img class="help-img" src="img/addtask.png" />
+        <p>
+          In the Add Task section you can create a new task for your team. Find
+          a title and a description for the task. You can also set the urgency
+          and the category of the task. Additionally you must set a date at
+          which the task is due. As a last step, add the user who is responsible
+          for the task. Note that you cannot create a task until you have added
+          a user.
+        </p>
+      </div>
+    </div>
+  </body>
 </html>

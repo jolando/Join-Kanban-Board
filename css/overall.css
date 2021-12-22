@@ -1,9 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 * {
   font-family: 'Varela Round', sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .d-none {
@@ -17,34 +18,6 @@
 
 .visible {
   visibility: visible;
-}
-
-.dropDownMenu {
-  background-color: #ebe9e967;
-  position: absolute;
-  right: 3%;
-  flex-direction: column;
-  top: 70px;
-  border-bottom-left-radius: 8px;
-  z-index: 2;
-}
-
-
-
-.dropDownMenu a {
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 8px;
-  align-self: flex-end;
-  border-bottom: 5px solid transparent;
-}
-
-.dropDownMenu a:hover {
-  color: rgb(4, 18, 73);
-  border-bottom: 5px solid rgba(53, 129, 173, 0.335);
 }
 
 .sales-color {
@@ -70,16 +43,14 @@
   margin: 40px 0;
 }
 
-.help-img{
+.help-img {
   max-width: 1200px;
   width: 100%;
 }
 
-
-@media  screen and (max-width: 1120px) {
+@media screen and (max-width: 1120px) {
   .container {
     margin: 100px 3%;
     text-align: center;
   }
-  
 }

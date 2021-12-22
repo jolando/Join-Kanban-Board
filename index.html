@@ -1,125 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <!--CSS-FILES-->
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- <link rel="stylesheet" href="css/indexnew.css" /> -->
+    <link rel="stylesheet" href="css/overall.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <!--JS-FILES-->
+    <script src="js/include.js"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join</title>
-  <!--CSS-FILES-->
-  <link rel="stylesheet" href="css/nav.css" />
-  <link rel="stylesheet" href="css/index.css" />
-  <!-- <link rel="stylesheet" href="css/indexnew.css" /> -->
-  <link rel="stylesheet" href="css/overall.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <!--JS-FILES-->
-  <script src="js/include.js"></script>
-  
-  <script src="js/overall.js"></script>
-  <script src="js/mini_backend.js"></script>
- 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-</head>
+    <script src="js/overall.js"></script>
+    <script src="js/mini_backend.js"></script>
 
-<body onload="initIndex()">
-  <div class="index-container">
-    <div class="login-container">
-      <div class="login-form-content">
-        <div class="content-container">
-          <img class="programm-logo" src="img/logo.png" />
-          <div>
-            <h1 class="index-title">Welcome to</h1>
-            <span class="title">JOIN</span>
-            <span class="index-sub-title">Kanban-Board</span>
-          </div>
-        </div>
-      </div>
-      <div id="form-c" class="login-form-container">
-        <form id="login-form">
-          <div>
-            <h2 class="content-title">Login into JOIN</h2>
-            <span class="gray-look sub-title">Enter your login details blow.</span>
-          </div>
-          <div class="login-input-group">
-            <div class="single-input">
-              <span class="gray-look">EMAIL-ADDRESS</span>
-              <input id="login-email" class="validation index-input-style1" type="text" placeholder="example@join.com" /><br />
-              <small>ErrMsg</small>
-            </div>
-            <div class="single-input">
-              <span class="gray-look">PASSWORD</span>
-              <input id="login-password" class="validation index-input-style2" 
-                style="-webkit-text-security: square" type="password" placeholder="Enter your password" />
-                <small>ErrMsg</small>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body onload="initIndex()">
+    <div class="index-container">
+      <div class="login-container">
+        <div class="login-form-content">
+          <div class="content-container">
+            <img class="programm-logo" src="img/logo.png" />
+            <div>
+              <h1 class="index-title">Welcome to</h1>
+              <label class="title">JOIN</label>
+              <label class="index-sub-title">Kanban-Board</label>
             </div>
           </div>
-
-          <div class="form-end">
-            <button  class="login-submit-btn" type="submit">Sign in</button>
-            <a class="without-login" href="board.html">without login</a>
-          </div>
-        </form>
-        <div class="create-account">
-          <span class="gray-look sub-title">Don't have an account?</span>
-          <button onclick="openRegisterWindow(event)" class="create-account-btn gray-look">Create Account</button>
         </div>
-        <span class="copy">© 2021 gruppe-99.developerakademie.com</span>
-        <div id="register-window" class="overlay">
-          <form id="register-form">
-            <div class="register-form-container">
-              <h3 class="content-title">Register</h3>
-              <span class="gray-look sub-title">Enter your login details blow.</span>
-              
-              <div class="login-input-group">
-                <span class="gray-look">FIRST NAME</span>
-                <input id="register-firstname" minlength="2" maxlength="10"
-                  onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
-                  class="validation index-input-style2" type="text" placeholder="First Name" />
-                  <small>ErrMsg</small>
+        <div id="form-c" class="login-form-container">
+          <form id="login-form" onsubmit="login(event)">
+            <div>
+              <h2 class="content-title">Login into JOIN</h2>
+              <label class="gray-look sub-title"
+                >Enter your login details blow.</label
+              >
+            </div>
+            <div class="input-group">
+              <div class="single-input">
+                <label class="gray-look">EMAIL-ADDRESS</label>
+                <input
+                  id="login-email"
+                  class="validation index-input-style1"
+                  type="text"
+                  placeholder="example@join.com"
+                /><br />
+                <small id="login-email-hint" class="visibility">Err</small>
               </div>
-              <div class="login-input-group">
-                <span class="gray-look">LAST NAME</span>
-                <input id="register-lastname" minlength="2" maxlength="10"
-                  onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
-                  class="validation index-input-style1" type="text" placeholder="Last Name" />
-                  <small>ErrMsg</small>
+              <div class="input-group">
+                <label class="gray-look">PASSWORD</label>
+                <input
+                  id="login-password"
+                  class="validation index-input-style2"
+                  style="-webkit-text-security: square"
+                  type="password"
+                  placeholder="Enter your password"
+                />
+                <small id="login-pw-hint" class="visibility">ErrMsg</small>
               </div>
-              <div class="login-input-group">
-                <span class="gray-look">EMAIL-ADDRESS</span>
-                <input id="register-email" class="validation index-input-style1" type="text" placeholder="example@join.com"
-                   />
-                  <small>ErrMsg</small>
-              </div>
-              <div class="login-input-group">
-                <span class="gray-look">PASSWORD</span>
-                <input id="register-password" class="validation index-input-style1" type="password" minlength="5" maxlength="100"
-                  placeholder="Enter your password" />
-                  <small>ErrMsg</small>
-              </div>
-              <div class="login-input-group">
-                <span class="gray-look">CONFIRM PASSWORD</span>
-                <input id="register-confirmed" class="validation index-input-style2" type="password" minlength="5" maxlength="100"
-                  placeholder=" Confirm Password"/>
-                  <small>ErrMsg</small>
-              </div>
-              <div class="login-input-group">
-                <input type="submit" class="login-submit-btn" value="Register">
-                <p class="register-end gray-look">By clicking register, you agree to the privacy policy : zero security</p>
-              </div>
-              <img onclick="closeRegisterWindow(event)" class="close-icon" src="img/close.png">
-              <span class="copy">© 2021 gruppe-99.developerakademie.com</span>
+            </div>
+
+            <div class="form-end">
+              <button class="login-submit-btn" type="submit">Sign in</button>
+              <a class="without-login" href="board.html">without login</a>
             </div>
           </form>
+          <div class="create-account">
+            <label class="gray-look sub-title">Don't have an account?</label>
+            <button
+              onclick="openRegisterWindow(event)"
+              class="create-account-btn gray-look"
+            >
+              Create Account
+            </button>
+          </div>
+          <label class="copy">© 2021 gruppe-99.developerakademie.com</label>
+          <div id="register-window" class="overlay">
+            <form id="register-form" onsubmit="validateRegister(event)">
+              <div class="register-form-container">
+                <h3 class="content-title">Register</h3>
+                <label class="gray-look sub-title"
+                  >Enter your login details blow.</label
+                >
+
+                <div class="input-group">
+                  <label class="gray-look">FIRST NAME</label>
+                  <input
+                    id="register-firstname"
+                    class="validation index-input-style2"
+                    type="text"
+                    placeholder="First Name"
+                  />
+                  <small id="fname-hint" class="visibility">err</small>
+                </div>
+                <div class="input-group">
+                  <label class="gray-look">LAST NAME</label>
+                  <input
+                    id="register-lastname"
+                    maxlength="10"
+                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+                    class="validation index-input-style1"
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                  <small id="lname-hint" class="visibility">err</small>
+                </div>
+                <div class="input-group">
+                  <label class="gray-look">EMAIL-ADDRESS</label>
+                  <input
+                    id="register-email"
+                    class="validation index-input-style1"
+                    type="text"
+                    placeholder="example@join.com"
+                  />
+                  <small id="email-hint" class="visibility">err</small>
+                </div>
+                <div class="input-group">
+                  <label class="gray-look">PASSWORD</label>
+                  <input
+                    id="register-password"
+                    class="validation index-input-style1"
+                    type="password"
+                    placeholder="Enter your password"
+                  />
+                  <small id="pw-hint" class="visibility">err</small>
+                </div>
+
+                <div class="input-group">
+                  <input
+                    type="submit"
+                    class="login-submit-btn"
+                    value="Register"
+                  />
+                  <!-- <p class="register-end gray-look">By clicking register, you agree to the privacy policy : zero security</p> -->
+                </div>
+              </div>
+            </form>
+            <img
+              onclick="closeRegisterWindow(event)"
+              class="close-icon"
+              src="img/close.png"
+            />
+            <label class="copy">© 2021 gruppe-99.developerakademie.com</label>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script src="js/index.js"></script>
-</body>
-
+    <script src="js/index.js"></script>
+  </body>
 </html>
 
- <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+<!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
 title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" - -->

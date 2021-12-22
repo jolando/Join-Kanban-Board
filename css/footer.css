@@ -1,20 +1,20 @@
 .footer-section {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 18px;
-   
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-    color: gray !important;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  color: gray !important;
 }
 
 .footer-section a {
-    color: rgb(66, 65, 65);
-    text-decoration: none;
+  color: rgb(66, 65, 65);
+  text-decoration: none;
 }
 
 .footer-section a:hover {
-    color: rgba(70, 67, 67, 0.74);    
+  color: rgba(70, 67, 67, 0.74);
 }

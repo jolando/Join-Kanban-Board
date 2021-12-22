@@ -1,15 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
 .index-forms-container {
   display: grid;
   place-items: center;
   height: 100vh;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('../img/bg.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: "Gruppo", cursive !important;
+  font-family: 'Gruppo', cursive !important;
 }
 
 .overlay {
@@ -37,8 +35,7 @@
   background-color: rgba(0, 0, 0, 0.829);
   border-radius: 5px;
   z-index: 2;
-  /* flex-shrink: 1; */
-  font-family: "Gruppo", cursive;
+  font-family: 'Gruppo', cursive;
 }
 
 .login-input-container {
@@ -46,11 +43,11 @@
 }
 
 .form-title {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .index-input-style {
- --webkit-text-security: square;  
+  --webkit-text-security: square;
   width: 70%;
   padding: 14px;
   margin: 10px 0;
@@ -67,15 +64,15 @@
 }
 
 input {
-    font: small-caption;
-    font-size: 16px;
-  }
+  font: small-caption;
+  font-size: 16px;
+}
 
 .index-input-style:focus::placeholder {
   color: white;
 }
 .register-link {
-    color: rgb(235, 233, 231);
+  color: rgb(235, 233, 231);
 }
 
 .index-input-style::placeholder {
@@ -90,7 +87,7 @@ input {
   height: 100%;
   width: 100%;
   text-align: center;
-  background-image: url("img/bg.jpg");
+  background-image: url('img/bg.jpg');
   color: white;
 }
 
@@ -106,7 +103,7 @@ input {
 }
 
 .login-submit-btn:hover {
-    background-color: teal;
+  background-color: teal;
 }
 
 .blur-effect {

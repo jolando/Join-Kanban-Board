@@ -1,12 +1,6 @@
-const title = document.getElementById("title-field");
-const description = document.getElementById("description-field");
-const date = document.getElementById("date-field");
-const urgency = document.getElementById("urgency-category");
-const category = document.getElementById("task-category");
-
 async function initAddTask() {
   includeHTML();
-  setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
+  setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master');
   await loadAllTasks();
   await loadRegisterRequest();
   getInputValues();
@@ -18,47 +12,57 @@ async function initAddTask() {
  * @returns the input values of every form input field
  */
 function getInputValues() {
-  taskk = {
+  task = {
     id: `${new Date().getTime()}`,
-    title: document.getElementById("title-field").value,
-    description: document.getElementById("description-field").value,
-    date: document.getElementById("date-field").value,
-    urgency: document.getElementById("urgency-category").value,
-    category: document.getElementById("task-category").value,
-    status: "todo",
+    title: document.getElementById('title-field').value,
+    description: document.getElementById('description-field').value,
+    date: document.getElementById('date-field').value,
+    urgency: document.getElementById('urgency-category').value,
+    category: document.getElementById('task-category').value,
+    status: 'todo',
     selectedId: [],
   };
-  return taskk;
+  return task;
 }
-
 
 /**
  * This function pushes the input values of the form into a global array and informs the user that a task has been created
  * @param {*} event -this is an onsubmit default event
  */
-async function addTask(event) {
+function addTask(event) {
   event.preventDefault();
+  if (selectedUser.length == 0) {
+    alert('You have to choose at least one user');
+  } else {
+    executeAddTask();
+  }
+}
+
+/**
+ * This function creates a task and clears the input fields
+ *
+ */
+function executeAddTask() {
   let task = getInputValues();
-  taskk.selectedId = selectedUser.map((u) => u.id);
+  task.selectedId = selectedUser.map((u) => u.id);
   allTasks.push(task);
-  document.getElementById("assigned-to").innerHTML = "";
   saveAllTasks();
   resetAddTask();
   showAddSymbol();
-  alert("Task has been created");
+  alert('Task has been created');
 }
 
 /**
  * This function displays the users who are saved in the backend
  */
 function renderUserProfiles() {
-  document.getElementById("assignment-box").innerHTML = "";
+  document.getElementById('assignment-box').innerHTML = '';
   for (let i = 0; i < allRegisteredUsers.length; i++) {
-    let v = "";
+    let v = '';
     if (selectedUser.find((user) => user.id == allRegisteredUsers[i].id)) {
-      v = "hidden";
+      v = 'hidden';
     }
-    document.getElementById("assignment-box").innerHTML += `
+    document.getElementById('assignment-box').innerHTML += `
     <div class="profile-box" id="profile${i}">
         <span>${allRegisteredUsers[i].firstName}</span>
         <span>${allRegisteredUsers[i].lastName}</span>
@@ -73,18 +77,17 @@ function renderUserProfiles() {
  */
 function pushSelectedUser(id) {
   selectedUser.push(allRegisteredUsers[id]);
-  document.getElementById("plus" + id).style = "visibility: hidden;";
+  document.getElementById('plus' + id).style = 'visibility: hidden;';
   addSelectedUser();
 }
-
 
 /**
  * this function adds the selected user to a separate box in order to highlight them
  */
 function addSelectedUser() {
-  document.getElementById("assigned-to").innerHTML = "";
+  document.getElementById('assigned-to').innerHTML = '';
   for (let i = 0; i < selectedUser.length; i++) {
-    document.getElementById("assigned-to").innerHTML += `
+    document.getElementById('assigned-to').innerHTML += `
     <div id="selected${i}" class="assigned-to-card">   
       <span>${selectedUser[i].firstName}</span>
       <span>${selectedUser[i].lastName}</span>
@@ -95,7 +98,7 @@ function addSelectedUser() {
 }
 
 /**
- *deletes the selected users 
+ *deletes the selected users
  *
  * @param {index} index of allRegisteredUsers
  */
@@ -110,10 +113,10 @@ function removeSelectedUser(index) {
  * shows the pulse icons again after a task has been created
  */
 function showAddSymbol() {
-  let addicons = document.getElementsByClassName("plus-icon");
+  let addicons = document.getElementsByClassName('plus-icon');
   for (let i = 0; i < addicons.length; i++) {
     const addicon = addicons[i];
-    addicon.style.visibility = "visible";
+    addicon.style.visibility = 'visible';
   }
 }
 
@@ -123,10 +126,10 @@ function showAddSymbol() {
  * @param {Number} i index of allRegisteredUsers
  */
 function addHighlight(i) {
-  let highLight = document.getElementById("profile" + i);
-  highLight.style.backgroundColor = "#dce0dd";
-  highLight.addEventListener("mouseout", () => {
-    highLight.style.backgroundColor = "white";
+  let highLight = document.getElementById('profile' + i);
+  highLight.style.backgroundColor = '#dce0dd';
+  highLight.addEventListener('mouseout', () => {
+    highLight.style.backgroundColor = 'white';
   });
 }
 
@@ -142,15 +145,14 @@ function saveSelectedUser(indexOfselectedUser) {
 }
 
 /**
- * this function removes the selected user from the separate box again
- */
-function clearSelectedUser() {
-  document.getElementById("assigned-to").innerHTML = "";
-}
-
-/**
  * This functions resets the entire form after submitting
  */
 function resetAddTask() {
-  document.forms["addTask-form"].reset();
+  document.forms['addTask-form'].reset();
+  document.getElementById('assigned-to').innerHTML = '';
+
+  selectedUser = [];
+  console.log(selectedUser);
+  addSelectedUser();
+  renderUserProfiles();
 }
