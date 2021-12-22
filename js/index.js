@@ -77,24 +77,42 @@ async function createUserObject() {
  */
 function login(e) {
   e.preventDefault();
+  checkLoginInput();
   const loginEmail = document.getElementById('login-email');
   const loginPw = document.getElementById('login-password');
 
-  validateEmail('login-email', 'login-email-hint');
-  validatePassword('login-password', 'login-pw-hint');
-
   let user = emailExists(loginEmail.value);
 
-  if (user && user.userPassword === loginPw) {
+  if (user && user.userPassword === loginPw.value) {
     window.location.href = 'board.html';
-    alert('login erfolgreich');
   } else if (user && user.userPassword !== loginPw.value) {
-    console.log('falsches password');
-    clearInput();
+    document.getElementById('error-full').innerHTML = 'Wrong password';
   } else {
-    console.log('nicht registriert');
-    clearInput();
+    if (loginEmail.value.length > 0) {
+      document.getElementById('error-full').innerHTML = 'User not registered';
+      clearInput();
+    }
   }
+}
+
+document.getElementById('login-form').addEventListener('input', () => {
+  checkLoginInput();
+});
+
+document.getElementById('register-form').addEventListener('input', () => {
+  checkRegisterInput();
+});
+
+function checkLoginInput() {
+  validateEmail('login-email', 'login-email-hint');
+  validatePassword('login-password', 'login-pw-hint');
+}
+
+function checkRegisterInput() {
+  validateFirstname();
+  validateLastname();
+  validateEmail('register-email', 'email-hint');
+  validatePassword('register-password', 'pw-hint');
 }
 
 /**
@@ -119,6 +137,8 @@ function validateRegister(e) {
       clearInput();
     } else {
       console.log('user already registered');
+      document.getElementById('error-full').innerHTML =
+        'User alreader registered';
       clearInput();
     }
   } else {
@@ -130,13 +150,6 @@ function clearInput() {
   deleteRegisterInput();
   resetClassName();
   deleteLoginInput();
-}
-
-function checkRegisterInput() {
-  validateFirstname();
-  validateLastname();
-  validateEmail('register-email', 'email-hint');
-  validatePassword('register-password', 'pw-hint');
 }
 
 function validateEmail(elementId, hintId) {
