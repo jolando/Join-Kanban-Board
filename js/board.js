@@ -6,7 +6,7 @@ let testingArr;
 let doneArr;
 
 /**
- * load tasks from backend
+ * Load tasks from backend
  */
 async function initBoard() {
   includeHTML();
@@ -17,7 +17,7 @@ async function initBoard() {
 }
 
 /**
- *  refresh all tasks
+ *  Refresh all tasks
  */
 function renderTaskInfo() {
   filterAllTasks();
@@ -25,7 +25,7 @@ function renderTaskInfo() {
 }
 
 /**
- * filters by task status
+ * Filters by task status
  */
 function filterAllTasks() {
   todosArr = allTasks.filter((t) => t.status == 'todo');
@@ -35,7 +35,7 @@ function filterAllTasks() {
 }
 
 /**
- * render all tasks
+ * Render all tasks
  */
 function renderTasks() {
   renderTask(todosArr, 'todo-container');
@@ -45,7 +45,7 @@ function renderTasks() {
 }
 
 /**
- * get the ids of the elements and save it in a global variable
+ * Get the ids of the elements and save it in a global variable
  *
  * @param {number} id of every task
  */
@@ -59,7 +59,7 @@ function onDragTask(id) {
 }
 
 /**
- * changes the task status after dropping the task into another container
+ * Changes the task status after dropping the task into another container
  *
  * @param {string} currentStatus equals the status in every container
  */
@@ -69,7 +69,7 @@ function dropTask(currentStatus) {
 }
 
 /**
- * render each container by task status
+ * Render each container by task status
  *
  * @param {array} arr for each status
  * @param {string} containerId of the task container
@@ -86,7 +86,7 @@ function renderTask(arr, containerId) {
 }
 
 /**
- * allow dropping
+ * Allow dropping
  *
  * @param {Event} ev drop event
  */
@@ -95,7 +95,7 @@ function allowDrop(ev) {
 }
 
 /**
- * create a HMTL task element
+ * Create a HMTL task element
  *
  * @param {number} i
  * @param {object} taskObj
@@ -119,7 +119,7 @@ function returnTaskHTML(taskObj) {
 }
 
 /**
- * delete current task
+ * Delete current task
  *
  * @param {number} allTasksIndex
  */

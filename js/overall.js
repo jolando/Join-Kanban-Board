@@ -7,6 +7,7 @@ let allRegisteredUsers = [
     email: '123@gmail.com',
   },
 ];
+
 let allTasks = [];
 let selectedUser = [];
 let index;

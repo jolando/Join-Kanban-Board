@@ -8,7 +8,7 @@ async function initAddTask() {
 }
 
 /**
- * this function saves the values of the form input fields into variables
+ * This function saves the values of the form input fields into variables
  * @returns the input values of every form input field
  */
 function getInputValues() {
@@ -73,7 +73,7 @@ function renderUserProfiles() {
 }
 
 /**
- * this function pushes the id of a registeredUser into the "selectedUser" array
+ * This function pushes the id of a registeredUser into the "selectedUser" array
  */
 function pushSelectedUser(id) {
   selectedUser.push(allRegisteredUsers[id]);
@@ -82,7 +82,7 @@ function pushSelectedUser(id) {
 }
 
 /**
- * this function adds the selected user to a separate box in order to highlight them
+ * This function adds the selected user to a separate box in order to highlight them
  */
 function addSelectedUser() {
   document.getElementById('assigned-to').innerHTML = '';
@@ -98,7 +98,7 @@ function addSelectedUser() {
 }
 
 /**
- *deletes the selected users
+ *Deletes the selected users
  *
  * @param {index} index of allRegisteredUsers
  */
@@ -110,7 +110,7 @@ function removeSelectedUser(index) {
 }
 
 /**
- * shows the pulse icons again after a task has been created
+ * Shows the pulse icons again after a task has been created
  */
 function showAddSymbol() {
   let addicons = document.getElementsByClassName('plus-icon');
@@ -121,7 +121,7 @@ function showAddSymbol() {
 }
 
 /**
- * highlights the selected user when hovering over the plus sign
+ * Highlights the selected user when hovering over the plus sign
  *
  * @param {Number} i index of allRegisteredUsers
  */
@@ -137,7 +137,7 @@ function addHighlight(i) {
  *
  * @param {integer} indexOfselectedUser - stands for the index of the selected users
  * @returns
- * this function saves the index of the selected users into the global variable index
+ * This function saves the index of the selected users into the global variable index
  */
 function saveSelectedUser(indexOfselectedUser) {
   index = indexOfselectedUser;

@@ -4,7 +4,7 @@ window.onresize = checkBacklogContainer;
 const ISWINDOW_WIDTH = 720;
 
 /**
- * will be executed when the backlog page is refreshed
+ * Will be executed when the backlog page is refreshed
  */
 async function backlogInit() {
   includeHTML();
@@ -15,7 +15,7 @@ async function backlogInit() {
   checkBacklogContainer();
 }
 /**
- * provides the necessary information for the cards and updates them when they are deleted
+ * Provides the necessary information for the cards and updates them when they are deleted
  */
 function checkBacklogContainer() {
   if (allTasks.length == 0) {
@@ -27,7 +27,7 @@ function checkBacklogContainer() {
 }
 
 /**
- * if allTasks contains more than zero tasks execute render-function
+ * If allTasks contains more than zero tasks execute render-function
  */
 function executeRender() {
   document.getElementById('backlog').innerHTML = '';
@@ -46,7 +46,7 @@ function executeRender() {
 }
 
 /**
- * checks if you want to load responsive card or the normal one
+ * Checks if you want to load responsive card or the normal one
  *
  * @param {String} index position of task in the array
  */
@@ -64,7 +64,7 @@ function renderBacklogCard(index) {
 }
 
 /**
- * returns the normal card
+ * Returns the normal card
  *
  * @param {String} index position of task in the array
  * @param {String} colorClass name of the selected class
@@ -93,7 +93,7 @@ const returnResponsiveCard = (index, colorClass, description) => {
 };
 
 /**
- * returns the responsive card
+ * Returns the responsive card
  *
  * @param {String} index position of task in the array
  * @param {String} colorClass name of the selected class

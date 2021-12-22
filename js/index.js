@@ -95,19 +95,31 @@ function login(e) {
   }
 }
 
+/**
+ * Constantly check input fields
+ */
 document.getElementById('login-form').addEventListener('input', () => {
   checkLoginInput();
 });
 
+/**
+ * Constantly check input fields
+ */
 document.getElementById('register-form').addEventListener('input', () => {
   checkRegisterInput();
 });
 
+/**
+ * Check if login-form is valid
+ */
 function checkLoginInput() {
   validateEmail('login-email', 'login-email-hint');
   validatePassword('login-password', 'login-pw-hint');
 }
 
+/**
+ * Check if register-form is valid
+ */
 function checkRegisterInput() {
   validateFirstname();
   validateLastname();
@@ -134,11 +146,11 @@ function validateRegister(e) {
     );
     if (!found) {
       createUserObject();
+      window.location.href = 'board.html';
       clearInput();
     } else {
-      console.log('user already registered');
       document.getElementById('error-full').innerHTML =
-        'User alreader registered';
+        'User already registered';
       clearInput();
     }
   } else {
@@ -168,8 +180,11 @@ function validateEmail(elementId, hintId) {
       printError(hintId, 'Please enter a valid email address');
       removeSuccess(elementId);
     } else {
-      printError(hintId, 'test');
-      showSuccess(elementId);
+      if (hintId || elementId) {
+        printError(hintId, '');
+        showSuccess(elementId);
+      }
+
       return true;
     }
   }
@@ -187,8 +202,10 @@ function validatePassword(elementId, hintId) {
       printError(hintId, 'Please enter a valid password');
       removeSuccess(elementId);
     } else {
-      printError(hintId, '');
-      showSuccess(elementId);
+      if (hintId || elementId) {
+        printError(hintId, '');
+        showSuccess(elementId);
+      }
       return true;
     }
   }
@@ -207,7 +224,6 @@ function validateFirstname() {
       removeSuccess('register-firstname');
     } else {
       printError('fname-hint', '');
-
       showSuccess('register-firstname');
       return true;
     }
