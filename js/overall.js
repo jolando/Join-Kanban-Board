@@ -1,7 +1,7 @@
 let allRegisteredUsers = [
   {
     userPassword: '123123123',
-    validatePassword: '123123123',
+    id: '123123123',
     firstName: 'example',
     lastName: 'name',
     email: '123@gmail.com',

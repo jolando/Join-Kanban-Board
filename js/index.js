@@ -6,9 +6,13 @@ async function initIndex() {
   setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master');
   await loadAllTasks();
   await loadRegisterRequest();
-  // deleteUser();
+  console.log(allRegisteredUsers);
+  deleteUser();
 }
 
+/**
+ * Reset User-array
+ */
 // function deleteUser() {
 //   backend.deleteItem('registeredUser');
 // }
@@ -19,7 +23,7 @@ async function initIndex() {
  * @param {string} id string of errormessage
  */
 function printError(id, message) {
-  console.log(id, 'Element Id', message, 'Element Message');
+  // console.log(id, 'Element Id', message, 'Element Message');
   document.getElementById(id).innerHTML = message;
   showHint(id);
 }
@@ -62,9 +66,9 @@ async function createUserObject() {
   let user = {
     id: new Date().getTime(),
     firstName: document.getElementById('register-firstname').value,
-    lastName: document.getElementById('register-firstname').value,
+    lastName: document.getElementById('register-lastname').value,
     email: document.getElementById('register-email').value,
-    userPassword: document.getElementById('register-firstname').value,
+    userPassword: document.getElementById('register-password').value,
   };
   allRegisteredUsers.push(user);
   console.log(allRegisteredUsers);
@@ -147,15 +151,15 @@ function validateRegister(e) {
     );
     if (!found) {
       createUserObject();
-      window.location.href = 'board.html';
-      clearInput();
+      console.log('test');
+      // window.location.href = 'board.html';
+      closeRegisterWindow();
+      // clearInput();
     } else {
       document.getElementById('error-full').innerHTML =
         'User already registered';
       clearInput();
     }
-  } else {
-    console.log('something is missing');
   }
 }
 
