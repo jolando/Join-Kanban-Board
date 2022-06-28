@@ -9,7 +9,7 @@ const ISWINDOW_WIDTH = 720;
 async function backlogInit() {
   includeHTML();
 
-  setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master');
+  setURL('https://gruppe-99.developerakademie.com/smallest_backend_ever-master');
   await loadRegisterRequest();
   await loadAllTasks();
   checkBacklogContainer();

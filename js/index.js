@@ -3,7 +3,7 @@
  */
 async function initIndex() {
   includeHTML();
-  setURL('http://gruppe-99.developerakademie.com/smallest_backend_ever-master');
+  setURL('https://gruppe-99.developerakademie.com/smallest_backend_ever-master');
   await loadAllTasks();
   await loadRegisterRequest();
   console.log(allRegisteredUsers);
