@@ -49,7 +49,6 @@ async function addTask(event) {
   let task = getInputValues();
   taskk.selectedId = selectedUser.map(u => u.id);
   allTasks.push(task);
-
   saveAllTasks();
   resetAddTask();
   document.getElementById("assigned-to").innerHTML = "";
@@ -81,11 +80,7 @@ function renderUserProfiles() {
  * this function adds the selected user to a separate box in order to highlight them
  */
 function pushSelectedUser(id) {
-  // let profile = {
-  //   fName: `${allRegisteredUsers[id].firstName}`,
-  //   lName: `${allRegisteredUsers[id].lastName}`,
-  //   email: `${allRegisteredUsers[id].email}`,
-  // };
+  
   selectedUser.push(allRegisteredUsers[id]);
   // getInputValues().selectedId.push(profile);
   document.getElementById("plus" + id).style = "visibility: hidden;";

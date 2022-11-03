@@ -9,7 +9,6 @@ async function backlogInit() {
   setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
   await loadRegisterRequest();
   await loadAllTasks();
-  await loadSelcectedUser();
   checkBacklogContainer();
 }
 
