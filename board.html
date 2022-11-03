@@ -25,19 +25,23 @@
   <div class="board-container">
     <div class="mt">
       <h2>Todo</h2>
-      <div ondrop="dropTask('todo')" ondragover="allowDrop(event)" class="board-box" id="todo-container"></div>
+      <div ontouchend="dropTask('todo')" ondrop="dropTask('todo')" ondragover="allowDrop(event)" class="board-box"
+        id="todo-container"></div>
     </div>
     <div class="mt">
       <h2>In Progress</h2>
-      <div ondrop="dropTask('progress')" ondragover="allowDrop(event)"  id="progress-container"class="board-box"></div>
+      <div ontouchend="dropTask('progress')" ondrop="dropTask('progress')" ondragover="allowDrop(event)" id="progress-container" class="board-box">
+      </div>
     </div>
     <div class="mt">
       <h2>Testing</h2>
-      <div ondrop="dropTask('testing')" ondragover="allowDrop(event)" id="testing-container" class="board-box"></div>
+      <div ontouchend="dropTask('testing')" ontouchend="dropTask('testing')" ondrop="dropTask('testing')" ondragover="allowDrop(event)"
+        id="testing-container" class="board-box"></div>
     </div>
     <div class="mt">
       <h2>Done</h2>
-      <div ondrop="dropTask('done')" ondragover="allowDrop(event)" id="done-container" class="board-box"></div>
+      <div ontouchend="dropTask('done')" ontouc="dropTask('done')" ondrop="dropTask('done')" ondragover="allowDrop(event)" id="done-container"
+        class="board-box"></div>
     </div>
   </div>
   </div>

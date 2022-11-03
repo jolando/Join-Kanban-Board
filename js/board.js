@@ -6,18 +6,18 @@ let testingArr;
 let doneArr;
 
 /**
- * load tasks from backend
+ * Load tasks from backend
  */
 async function initBoard() {
   includeHTML();
-  setURL("http://gruppe-99.developerakademie.com/smallest_backend_ever-master");
+  setURL('https://gruppe-99.developerakademie.com/smallest_backend_ever-master');
   await loadAllTasks();
   await loadRegisterRequest();
   renderTaskInfo();
 }
 
 /**
- *  refresh all tasks
+ *  Refresh all tasks
  */
 function renderTaskInfo() {
   filterAllTasks();
@@ -25,31 +25,32 @@ function renderTaskInfo() {
 }
 
 /**
- * filters by task status
+ * Filters by task status
  */
 function filterAllTasks() {
-  todosArr = allTasks.filter((t) => t.status == "todo");
-  progressArr = allTasks.filter((t) => t.status == "progress");
-  testingArr = allTasks.filter((t) => t.status == "testing");
-  doneArr = allTasks.filter((t) => t.status == "done");
+  todosArr = allTasks.filter((t) => t.status == 'todo');
+  progressArr = allTasks.filter((t) => t.status == 'progress');
+  testingArr = allTasks.filter((t) => t.status == 'testing');
+  doneArr = allTasks.filter((t) => t.status == 'done');
 }
 
 /**
- * render all tasks
+ * Render all tasks
  */
 function renderTasks() {
-  renderTask(todosArr, "todo-container");
-  renderTask(progressArr, "progress-container");
-  renderTask(testingArr, "testing-container");
-  renderTask(doneArr, "done-container");
+  renderTask(todosArr, 'todo-container');
+  renderTask(progressArr, 'progress-container');
+  renderTask(testingArr, 'testing-container');
+  renderTask(doneArr, 'done-container');
 }
 
 /**
- * get the ids of the elements and save it in a global variable
+ * Get the ids of the elements and save it in a global variable
  *
  * @param {number} id of every task
  */
 function onDragTask(id) {
+  console.log('do');
   allTasks.forEach((task) => {
     if (task.id == id) {
       currentElement = allTasks.indexOf(task);
@@ -58,23 +59,23 @@ function onDragTask(id) {
 }
 
 /**
- * changes the task status after dropping the task into another container
+ * Changes the task status after dropping the task into another container
  *
- * @param {String} currentStatus equals the status in every container
+ * @param {string} currentStatus equals the status in every container
  */
 function dropTask(currentStatus) {
-  allTasks[currentElement]["status"] = currentStatus;
+  allTasks[currentElement]['status'] = currentStatus;
   renderTaskInfo();
 }
 
 /**
- * render each container by task status
+ * Render each container by task status
  *
- * @param {Array} arr for each status
- * @param {String} containerId of the task container
+ * @param {array} arr for each status
+ * @param {string} containerId of the task container
  */
 function renderTask(arr, containerId) {
-  document.getElementById(containerId).innerHTML = "";
+  document.getElementById(containerId).innerHTML = '';
   for (let i = 0; i < arr.length; i++) {
     const taskObj = arr[i];
     document.getElementById(containerId).innerHTML += returnTaskHTML(taskObj);
@@ -85,7 +86,7 @@ function renderTask(arr, containerId) {
 }
 
 /**
- * allow dropping
+ * Allow dropping
  *
  * @param {Event} ev drop event
  */
@@ -94,16 +95,16 @@ function allowDrop(ev) {
 }
 
 /**
- * create a HMTL task element
+ * Create a HMTL task element
  *
- * @param {*} i
- * @param {*} taskObj
+ * @param {number} i
+ * @param {object} taskObj
  * @returns created task
  */
 function returnTaskHTML(taskObj) {
   let categoryColor = getRightCategoryColor(taskObj.category);
   return `
-      <div id="task-unit${taskObj.id}" draggable="true" ondragstart="onDragTask(${taskObj.id})" class="task-unit">
+      <div id="task-unit${taskObj.id}" draggable="true"    ondragstart="onDragTask(${taskObj.id})" ontouchstart="onDragTask(${taskObj.id})"  class="task-unit">
           <div class="task-container">
               <span class="task-title" id="description-container" class="description-container"> ${taskObj.title}</span>
               <span id="task-title" > ${taskObj.description}</span>
@@ -118,9 +119,9 @@ function returnTaskHTML(taskObj) {
 }
 
 /**
- * delete current task
+ * Delete current task
  *
- * @param {Number} allTasksIndex
+ * @param {number} allTasksIndex
  */
 function deleteBoardCard(taskId) {
   let task = allTasks.find((task) => task.id == taskId);

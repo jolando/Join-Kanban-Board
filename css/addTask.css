@@ -40,11 +40,19 @@ h3 {
 }
 
 input {
-  width: 99%;
-  height: 30px;
+  width: 100%;
+  height: 35px;
   font-size: 15px;
   margin-bottom: 20px;
-  padding-left: 5px;
+  outline: none;
+  padding: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.466);
+}
+
+select {
+  height: 35px !important;
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 
 .left {
@@ -79,31 +87,14 @@ input {
   z-index: 1;
 }
 
-.urgency-content:hover .urgency-content {
-  display: flex !important;
-}
-
-.urgency-status:hover {
-  cursor: pointer;
-}
-
 .category-field-box img {
   height: 26px;
   width: 23px;
-  border-left: 0.3px solid grey;
-  padding: 2px;
   object-fit: contain;
 }
 
 .category-field-box img:hover {
   cursor: pointer;
-}
-
-.category {
-  margin-right: 5px;
-  padding-left: 5px;
-  align-self: center;
-  font-size: 15px;
 }
 
 textarea {
@@ -112,15 +103,10 @@ textarea {
   text-align: left;
   font-size: 15px;
   resize: none;
+  outline: none;
+  padding: 5px;
   border: 1px solid rgba(128, 128, 128, 0.466);
 }
-
-textarea::-webkit-input-placeholder {
-  font-size: 15px;
-  color: black;
-}
-
-
 
 .profile-box {
   display: flex;
@@ -133,50 +119,33 @@ textarea::-webkit-input-placeholder {
   margin-top: 10px;
 }
 
-.title-input {
-  border: 1px solid rgba(128, 128, 128, 0.466);
-}
-
-#date-field {
-  border: 1px solid rgba(128, 128, 128, 0.466);
-}
-
-.profile-box span {
-  margin: auto;
-  min-width: 100px;
-  object-fit: contain;
-}
-
-.profile-box img {
-  margin: auto;
-  object-fit: contain;
-}
-
 .assigned-to {
-  height: 100%;
-  width: 100%;
-  min-height: 20px;
-  border: 3px solid white;
-  background-color: rgba(253, 253, 253, 0.589);
-  border: 1px solid rgba(92, 91, 91, 0.404);
-  font-size: 1.17em;
+  min-height: 30px;
+  border: 1px solid rgba(155, 151, 151, 0.445);
+  background-color: white;
+  font-size: 15px;
   margin-bottom: 20px;
+  padding: 5px;
 }
 
 .assigned-to-card {
-  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .assigned-to-card span {
-  min-width: 100px;
-  margin: auto;
+  min-width: 80px;
+  width: 80px;
+  margin: 5px auto;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .assigned-to-card img {
-  /* min-width: 100px; */
-  margin: auto;
+  text-align: left;
+  margin: auto 5px;
 }
 
 .task-profile-pic {
@@ -188,28 +157,38 @@ textarea::-webkit-input-placeholder {
   object-position: top;
 }
 
-.plus-icon, .minus-icon{
+.plus-icon,
+.minus-icon {
   height: 20px;
   width: 20px;
-  transition: transform 0.15s;
+  margin: auto 0;
 }
 
-
-
-.plus-icon:hover, .minus-icon{
+.plus-icon:hover,
+.minus-icon {
   cursor: pointer;
   transform: scale(1.15);
 }
 
 .assignment-box-assets {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-around;
-  align-items: flex-start;
-  /* overflow-y: auto; */
-  width: 100%;
+  padding: 5px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgba(117, 116, 116, 0.37);
+}
+
+.assignment-box-assets span {
+  text-align: left;
+  margin: 5px auto;
+  min-width: 80px;
+  width: 90px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.assignment-box-assets img {
+  text-align: left;
+  margin: auto 5px;
 }
 
 .create-button {
@@ -251,9 +230,7 @@ textarea::-webkit-input-placeholder {
     width: 77vw;
     align-items: center;
   }
-  /* .profile-box {
-    justify-content: center;
-  } */
+
   textarea {
     height: 150px;
   }
@@ -263,10 +240,7 @@ textarea::-webkit-input-placeholder {
   .form-left {
     width: 60vw;
   }
-  .task-profile-pic {
-    width: 50px !important;
-    height: 50px !important;
-  }
+
   .button-box {
     display: flex;
   }
@@ -282,7 +256,7 @@ textarea::-webkit-input-placeholder {
   }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1100px) {
   form {
     margin-left: 3%;
     margin-top: 22px;
@@ -297,22 +271,13 @@ textarea::-webkit-input-placeholder {
   .box-title {
     margin-top: 20px;
   }
+  .assignment-box-assets {
+    width: 60vw;
+    text-align: left;
+  }
 }
 
 @media (max-width: 550px) {
-  h3 {
-    font-size: 16px;
-  }
-  input {
-    font-size: 13px;
-  }
-  .form-control {
-    font-size: 13px;
-  }
-  .task-profile-pic {
-    width: 55px !important;
-    height: 55px !important;
-  }
   .button-box {
     display: flex;
   }
@@ -325,14 +290,5 @@ textarea::-webkit-input-placeholder {
     width: 110px;
     height: 35px;
     font-size: 13px;
-  }
-}
-
-@media (max-width: 465px) {
-  h1 {
-    font-size: 22px !important;
-  }
-  h2 {
-    font-size: 12px !important;
   }
 }

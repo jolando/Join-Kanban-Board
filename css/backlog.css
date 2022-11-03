@@ -5,19 +5,17 @@ body {
 .backlog-container {
   margin-left: 163px;
   margin-right: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 1000px;
 }
 
-.empty-backlog-container {
-  background-color: rgba(0, 0, 255, 0.233);
-  padding: 10px;
+.empty-backlog {
+  margin: 100px;
+  text-align: center;
+  font-size: 80px;
+  color: rgba(128, 128, 128, 0.322);
 }
 
 .backlog-unit-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
 }
 
@@ -47,7 +45,7 @@ body {
 .backlog-unit {
   display: flex;
   align-items: center;
-  height: 100%;
+
   width: 100%;
   background-color: rgba(0, 0, 255, 0.062);
   border-radius: 10px;
@@ -67,18 +65,9 @@ body {
 .user-profile {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  max-width: 300px;
-  min-width: 30%;
-}
-
-.profile-picture {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0;
-  margin-left: 10px;
+  text-align: left;
+  max-width: 220px;
+  min-width: 20%;
 }
 
 .user-inforamtion-container {
@@ -112,7 +101,6 @@ body {
   margin-top: 3px;
   text-decoration: none;
   font-size: 10px;
-  /* min-width: 200px; */
 }
 
 .backlog-unit-email:hover {
@@ -133,13 +121,13 @@ body {
   border-radius: 50px;
   min-width: 50%;
   text-align: center;
-  /* margin-left: 170px; */
+
   min-width: 120px;
   width: 100px;
 }
 
 .category-title {
-  margin-right: 180px;
+  margin-right: 200px;
 }
 
 .delete-icon {
@@ -149,11 +137,18 @@ body {
 
 .underline {
   border-bottom: 1px solid rgba(105, 104, 104, 0.205);
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 200px;
+  height: 1.2em;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 1120px) {
   .backlog-container {
     margin: 60px 3%;
+    text-align: center;
   }
   .backlog-subtitle {
     margin-bottom: 10px;
@@ -172,5 +167,8 @@ body {
   }
   .category {
     display: none;
+  }
+  .empty-backlog {
+    font-size: 30px;
   }
 }

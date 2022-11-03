@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="088ecfac-7c68-4721-b63d-04634db66a23" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/css/addTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/addTask.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/backlog.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/backlog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/impressum.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/impressum.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/indexnew.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/indexnew.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/nav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/overall.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/overall.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/addTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/addTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/backlog.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/backlog.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="22SnwkJgTKXW6pPljnq8VJdvSeQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="088ecfac-7c68-4721-b63d-04634db66a23" name="Default Changelist" comment="" />
+      <created>1639840099262</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639840099262</updated>
+    </task>
+    <servers />
+  </component>
+</project>

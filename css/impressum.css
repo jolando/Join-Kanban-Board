@@ -1,22 +1,21 @@
 .container {
-    margin: 80px 0;
-    margin-right: 50px;
-    margin-left: 200px;
-    
-    
-    word-wrap: break-word;
+  margin-top: 100px;
+  margin-right: 50px;
+  margin-left: 200px;
+  word-wrap: break-word;
 }
 
-
 .close-icon {
-    position: absolute;
-    top: 30px;
-    left: 30px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 
 @media screen and (max-width: 1100px) {
-    .container {
-        text-align: center;
-        margin: 100px;
-    }
+  .container {
+    text-align: center;
+    margin-top: 100px;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
 }
