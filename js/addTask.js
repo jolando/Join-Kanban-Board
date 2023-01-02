@@ -1,10 +1,9 @@
 async function initAddTask() {
   includeHTML();
-  setURL('https://gruppe-99.developerakademie.com/smallest_backend_ever-master');
-  await loadAllTasks();
+  await getTasks();
+  await renderUserProfiles();
   await loadRegisterRequest();
-  getInputValues();
-  renderUserProfiles();
+
 }
 
 /**
@@ -16,11 +15,11 @@ function getInputValues() {
     id: `${new Date().getTime()}`,
     title: document.getElementById('title-field').value,
     description: document.getElementById('description-field').value,
-    date: document.getElementById('date-field').value,
-    urgency: document.getElementById('urgency-category').value,
+    due_date: document.getElementById('date-field').value,
+    // urgency: document.getElementById('urgency-category').value,
     category: document.getElementById('task-category').value,
-    status: 'todo',
-    selectedId: [],
+    // status: 'todo',
+    // selectedId: [],
   };
   return task;
 }
@@ -31,11 +30,11 @@ function getInputValues() {
  */
 function addTask(event) {
   event.preventDefault();
-  if (selectedUser.length == 0) {
-    alert('You have to choose at least one user');
-  } else {
+  // if (selectedUser.length == 0) {
+  //   alert('You have to choose at least one user');
+  // } else {
     executeAddTask();
-  }
+  // }
 }
 
 /**
@@ -44,10 +43,11 @@ function addTask(event) {
  */
 function executeAddTask() {
   let task = getInputValues();
-  task.selectedId = selectedUser.map((u) => u.id);
-  allTasks.push(task);
-  saveAllTasks();
-  resetAddTask();
+  // task.selectedId = selectedUser.map((u) => u.id);
+  // allTasks.push(task);
+  // saveAllTasks();
+  tasks.push(task);
+  saveTasks(task);
   showAddSymbol();
   alert('Task has been created');
 }
@@ -55,18 +55,18 @@ function executeAddTask() {
 /**
  * This function displays the users who are saved in the backend
  */
-function renderUserProfiles() {
+async function renderUserProfiles() {
   document.getElementById('assignment-box').innerHTML = '';
-  for (let i = 0; i < allRegisteredUsers.length; i++) {
-    let v = '';
-    if (selectedUser.find((user) => user.id == allRegisteredUsers[i].id)) {
-      v = 'hidden';
-    }
+  for (let i = 0; i < tasks.length; i++) {
+    // let v = '';
+    // if (selectedUser.find((user) => user.id == allRegisteredUsers[i].id)) {
+    //   v = 'hidden';
+    // }
     document.getElementById('assignment-box').innerHTML += `
     <div class="profile-box" id="profile${i}">
-        <span>${allRegisteredUsers[i].firstName}</span>
-        <span>${allRegisteredUsers[i].lastName}</span>
-        <img id="plus${i}" src="img/icon-plus.png" class="plus-icon  ${v}" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
+        <span>${tasks[i].user.first_name}</span>
+        <span>${tasks[i].user.last_name}</span>
+        <img id="plus${i}" src="img/icon-plus.png" class="plus-icon" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
     </div>
     `;
   }
