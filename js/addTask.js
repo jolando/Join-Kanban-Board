@@ -1,9 +1,13 @@
+let selectedUsers = [];
+let uniqueUserIDs;
+
+
 async function initAddTask() {
   includeHTML();
   await getTasks();
+  await getUsers();
   await renderUserProfiles();
-  await loadRegisterRequest();
-
+  // await loadRegisterRequest();
 }
 
 /**
@@ -20,6 +24,7 @@ function getInputValues() {
     category: document.getElementById('task-category').value,
     // status: 'todo',
     // selectedId: [],
+    user: selectedUsers
   };
   return task;
 }
@@ -57,15 +62,15 @@ function executeAddTask() {
  */
 async function renderUserProfiles() {
   document.getElementById('assignment-box').innerHTML = '';
-  for (let i = 0; i < tasks.length; i++) {
+  for (let i = 0; i < newUsers.length; i++) {
     // let v = '';
     // if (selectedUser.find((user) => user.id == allRegisteredUsers[i].id)) {
     //   v = 'hidden';
     // }
     document.getElementById('assignment-box').innerHTML += `
     <div class="profile-box" id="profile${i}">
-        <span>${tasks[i].user.first_name}</span>
-        <span>${tasks[i].user.last_name}</span>
+        <span>${newUsers[i].first_name}</span>
+        <span>${newUsers[i].last_name}</span>
         <img id="plus${i}" src="img/icon-plus.png" class="plus-icon" onmouseover="addHighlight(${i})" onclick="pushSelectedUser(${i});"/>
     </div>
     `;
@@ -81,25 +86,33 @@ function pushSelectedUser(id) {
   //   lName: `${allRegisteredUsers[id].lastName}`,
   //   email: `${allRegisteredUsers[id].email}`,
   // };
-  selectedUser.push(allRegisteredUsers[id]);
+  selectedUsers.push(id);
+  // filterUserArray();
+  //let task = getInputValues();
+  //task.user.push(tasks[id].user);
   document.getElementById('plus' + id).style = 'visibility: hidden;';
-  addSelectedUser();
+  renderSelectedUser(id);
 }
+
+// function filterUserArray(){
+//   uniqueUserIDs = selectedUsers.filter((item, i, ar) => ar.indexOf(item) === i);
+// }
+
+//1. Get users List users
 
 /**
  * This function adds the selected user to a separate box in order to highlight them
  */
-function addSelectedUser() {
-  document.getElementById('assigned-to').innerHTML = '';
-  for (let i = 0; i < selectedUser.length; i++) {
+function renderSelectedUser(id) {
+  // document.getElementById('assigned-to').innerHTML = '';
     document.getElementById('assigned-to').innerHTML += `
-    <div id="selected${i}" class="assigned-to-card">
-      <span>${selectedUser[i].firstName}</span>
-      <span>${selectedUser[i].lastName}</span>
-      <img onclick="removeSelectedUser(${i})" class="minus-icon" src="img/minus.png">
+    <div id="selected${id}" class="assigned-to-card">
+      <span>${newUsers[id].first_name}</span>
+      <span>${newUsers[id].last_name}</span>
+      <img onclick="removeSelectedUser(${id})" class="minus-icon" src="img/minus.png">
     <div>
    `;
-  }
+
 }
 
 /**
@@ -108,9 +121,9 @@ function addSelectedUser() {
  * @param {index} index of allRegisteredUsers
  */
 function removeSelectedUser(index) {
-  selectedUser.splice(index, 1);
-  console.log(selectedUser);
-  addSelectedUser();
+  selectedUsers.splice(index, 1);
+  console.log(selectedUsers);
+  renderSelectedUser();
   renderUserProfiles();
 }
 
@@ -158,6 +171,6 @@ function resetAddTask() {
 
   selectedUser = [];
   console.log(selectedUser);
-  addSelectedUser();
+  renderSelectedUser();
   renderUserProfiles();
 }

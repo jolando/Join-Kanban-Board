@@ -1,4 +1,5 @@
 let tasks;
+let newUsers;
 
 async function getTasks() {
   try {
@@ -10,8 +11,19 @@ async function getTasks() {
   } catch (error) {
     console.error(error);
   }
-
 }
+async function getUsers() {
+  try {
+    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/users/');
+      newUsers = await response.json();
+    if (!response.ok)
+      throw new Error("Response not ok");
+    console.log(newUsers);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function saveTasks(task) {
   try {
     let response = await fetch('https://sebastianseitz36.pythonanywhere.com/tasks/',
