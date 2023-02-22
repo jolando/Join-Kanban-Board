@@ -1,5 +1,12 @@
-let selectedUsers = [];
+let selectedUsers = [
+  // {
+  //   "email": '',
+  //   "first_name": '',
+  //   "last_name": '',
+  // }
+];
 let uniqueUserIDs;
+let newTask;
 
 
 async function initAddTask() {
@@ -15,18 +22,20 @@ async function initAddTask() {
  * @returns the input values of every form input field
  */
 function getInputValues() {
-  task = {
+  newTask = {
     id: `${new Date().getTime()}`,
     title: document.getElementById('title-field').value,
     description: document.getElementById('description-field').value,
     due_date: document.getElementById('date-field').value,
-    // urgency: document.getElementById('urgency-category').value,
+    urgency: document.getElementById('urgency-category').value,
     category: document.getElementById('task-category').value,
     // status: 'todo',
     // selectedId: [],
-    user: selectedUsers
+    user: {
+      "id": selectedUsers,
+    }
   };
-  return task;
+  return newTask;
 }
 
 /**
@@ -47,12 +56,12 @@ function addTask(event) {
  *
  */
 function executeAddTask() {
-  let task = getInputValues();
+  let newTask = getInputValues();
   // task.selectedId = selectedUser.map((u) => u.id);
   // allTasks.push(task);
   // saveAllTasks();
-  tasks.push(task);
-  saveTasks(task);
+  // tasks.push(task);
+  saveTasks(newTask);
   showAddSymbol();
   alert('Task has been created');
 }
@@ -63,10 +72,7 @@ function executeAddTask() {
 async function renderUserProfiles() {
   document.getElementById('assignment-box').innerHTML = '';
   for (let i = 0; i < newUsers.length; i++) {
-    // let v = '';
-    // if (selectedUser.find((user) => user.id == allRegisteredUsers[i].id)) {
-    //   v = 'hidden';
-    // }
+
     document.getElementById('assignment-box').innerHTML += `
     <div class="profile-box" id="profile${i}">
         <span>${newUsers[i].first_name}</span>
@@ -81,15 +87,9 @@ async function renderUserProfiles() {
  * This function pushes the id of a registeredUser into the "selectedUser" array
  */
 function pushSelectedUser(id) {
-  // let profile = {
-  //   fName: `${allRegisteredUsers[id].firstName}`,
-  //   lName: `${allRegisteredUsers[id].lastName}`,
-  //   email: `${allRegisteredUsers[id].email}`,
-  // };
-  selectedUsers.push(id);
+  let userID = newUsers[id].id;
+  selectedUsers.push(userID);
   // filterUserArray();
-  //let task = getInputValues();
-  //task.user.push(tasks[id].user);
   document.getElementById('plus' + id).style = 'visibility: hidden;';
   renderSelectedUser(id);
 }
