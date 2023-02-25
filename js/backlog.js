@@ -11,6 +11,7 @@ async function backlogInit() {
   // setURL('https://gruppe-99.developerakademie.com/smallest_backend_ever-master');
   // await loadRegisterRequest();
   await getTasks();
+  await getUsers();
   checkBacklogContainer();
 }
 /**
@@ -29,18 +30,21 @@ function checkBacklogContainer() {
  * If allTasks contains more than zero tasks execute render-function
  */
 function executeRender() {
+
   document.getElementById('backlog').innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     renderBacklogCard(i);
-    // tasks[i].selectedId.forEach((userId) => {
-    //   let UserObject = allRegisteredUsers.find((user) => user.id == userId);
-    //   let index = allRegisteredUsers.indexOf(UserObject);
-      document.getElementById('user-information' + i).innerHTML += `
+    const user = newUsers.find(u => u.id === tasks[i].id);
+
+    // Render user information if found
+    if (user) {
+      const userInformationElement = document.getElementById('user-information' + i);
+      userInformationElement.innerHTML += `
         <div class="underline">
-            <span class='backlog-unit-name'>${tasks[i].user.first_name}</span>
-            <span class='backlog-unit-name'>${tasks[i].user.last_name}</span>
+          <span class='backlog-unit-name'>${user.first_name} ${user.last_name}</span>
+          <span class='backlog-unit-email'>${user.email}</span>
         </div>`;
-    // });
+    }
   }
 }
 
@@ -109,7 +113,7 @@ const returnNormalCard = (index, colorClass, category, description) => {
                    <div class='user-profile'>
                     <div id='user-information${index}' class='user-information'></div>
                   </div>
-                  <div class='tast-information'>
+                  <div class='task-information'>
                       <span class='category ${colorClass}' id='category${index}'>${category}</span>
                       <span id='description${index}' class='backlog-details'>${description}</span>
                   </div>
