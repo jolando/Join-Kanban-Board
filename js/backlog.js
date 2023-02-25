@@ -29,24 +29,27 @@ function checkBacklogContainer() {
 /**
  * If allTasks contains more than zero tasks execute render-function
  */
-function executeRender() {
-
+async function executeRender() {
   document.getElementById('backlog').innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     renderBacklogCard(i);
-    const user = newUsers.find(u => u.id === tasks[i].id);
+    for (const userId of tasks[i].user) {
+      const user = newUsers.find(u => u.id === userId);
 
-    // Render user information if found
-    if (user) {
-      const userInformationElement = document.getElementById('user-information' + i);
-      userInformationElement.innerHTML += `
-        <div class="underline">
-          <span class='backlog-unit-name'>${user.first_name} ${user.last_name}</span>
-          <span class='backlog-unit-email'>${user.email}</span>
-        </div>`;
+      // Render user information if found
+      if (user) {
+        const userInformationElement = document.getElementById('user-information' + i);
+        userInformationElement.innerHTML += `
+          <div class="underline">
+            <span class='backlog-unit-name'>${user.first_name} ${user.last_name}</span>
+            <span class='backlog-unit-email'>${user.email}</span>
+          </div>`;
+      }
     }
   }
 }
+
+
 
 /**
  * Checks if you want to load responsive card or the normal one
