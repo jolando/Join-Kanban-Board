@@ -63,3 +63,22 @@ fetch("http://127.0.0.1:8000/tasks/", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 }
+
+function updateTask(task){
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  let currentTask = JSON.stringify(task);
+
+  let requestOptions = {
+    method: 'PUT',
+    headers: myHeaders,
+    body: currentTask,
+    redirect: 'follow'
+  };
+
+  fetch("http://127.0.0.1:8000/tasks/", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  }

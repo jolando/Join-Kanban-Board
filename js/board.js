@@ -1,5 +1,4 @@
 let currentElement;
-
 let todosArr;
 let progressArr;
 let testingArr;
@@ -10,9 +9,8 @@ let doneArr;
  */
 async function initBoard() {
   includeHTML();
-  setURL('https://gruppe-99.developerakademie.com/smallest_backend_ever-master');
-  await loadAllTasks();
-  await loadRegisterRequest();
+  await getTasks();
+  await getUsers();
   renderTaskInfo();
 }
 
@@ -28,10 +26,10 @@ function renderTaskInfo() {
  * Filters by task status
  */
 function filterAllTasks() {
-  todosArr = allTasks.filter((t) => t.status == 'todo');
-  progressArr = allTasks.filter((t) => t.status == 'progress');
-  testingArr = allTasks.filter((t) => t.status == 'testing');
-  doneArr = allTasks.filter((t) => t.status == 'done');
+  todosArr = tasks.filter((t) => t.status == 'todo');
+  progressArr = tasks.filter((t) => t.status == 'progress');
+  testingArr = tasks.filter((t) => t.status == 'testing');
+  doneArr = tasks.filter((t) => t.status == 'done');
 }
 
 /**
@@ -51,9 +49,9 @@ function renderTasks() {
  */
 function onDragTask(id) {
   console.log('do');
-  allTasks.forEach((task) => {
+  tasks.forEach((task) => {
     if (task.id == id) {
-      currentElement = allTasks.indexOf(task);
+      currentElement = tasks.indexOf(task);
     }
   });
 }
@@ -64,7 +62,8 @@ function onDragTask(id) {
  * @param {string} currentStatus equals the status in every container
  */
 function dropTask(currentStatus) {
-  allTasks[currentElement]['status'] = currentStatus;
+  tasks[currentElement]['status'] = currentStatus;
+  updateTask(tasks[currentElement]['status']);
   renderTaskInfo();
 }
 
@@ -81,8 +80,9 @@ function renderTask(arr, containerId) {
     document.getElementById(containerId).innerHTML += returnTaskHTML(taskObj);
     console.log(taskObj);
   }
-  saveAllTasks();
-  loadAllTasks();
+
+  // saveTasks();
+  // getTasks();
 }
 
 /**
@@ -110,7 +110,7 @@ function returnTaskHTML(taskObj) {
               <span id="task-title" > ${taskObj.description}</span>
               <div class="info-container">
                 <span class=" extra-info ${categoryColor}">${taskObj.category}</span>
-                <span class="extra-info">${taskObj.date}</span></span>
+                <span class="extra-info">${taskObj.due_date}</span></span>
                 <span class="extra-info">${taskObj.urgency}</span>
               </div>
               <img onclick="deleteBoardCard(${taskObj.id})" class="delete-icon" src="img/close-board.png">
@@ -127,6 +127,6 @@ function deleteBoardCard(taskId) {
   let task = allTasks.find((task) => task.id == taskId);
   let taskIndex = allTasks.indexOf(task);
   allTasks.splice(taskIndex, 1);
-  saveAllTasks();
+  // saveAllTasks();
   renderTaskInfo();
 }

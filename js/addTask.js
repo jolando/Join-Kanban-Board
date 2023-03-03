@@ -29,7 +29,7 @@ function getInputValues() {
     due_date: document.getElementById('date-field').value,
     urgency: document.getElementById('urgency-category').value,
     category: document.getElementById('task-category').value,
-
+    status: 'todo',
     users: selectedUsers
 
   };
