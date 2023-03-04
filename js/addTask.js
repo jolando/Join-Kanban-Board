@@ -1,9 +1,5 @@
 let selectedUsers = [
-  // {
-  //   "email": '',
-  //   "first_name": '',
-  //   "last_name": '',
-  // }
+
 ];
 let uniqueUserIDs;
 let newTask;
@@ -167,8 +163,8 @@ function resetAddTask() {
   document.forms['addTask-form'].reset();
   document.getElementById('assigned-to').innerHTML = '';
 
-  selectedUser = [];
-  console.log(selectedUser);
+  selectedUsers = [];
+  console.log(selectedUsers);
   renderSelectedUser();
   renderUserProfiles();
 }

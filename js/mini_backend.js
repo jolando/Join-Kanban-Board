@@ -64,11 +64,11 @@ fetch("http://127.0.0.1:8000/tasks/", requestOptions)
   .catch(error => console.log('error', error));
 }
 
-function updateTask(task){
+function updateTask(tasks, id){
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  let currentTask = JSON.stringify(task);
+  let currentTask = JSON.stringify(tasks);
 
   let requestOptions = {
     method: 'PUT',
@@ -77,7 +77,7 @@ function updateTask(task){
     redirect: 'follow'
   };
 
-  fetch("http://127.0.0.1:8000/tasks/", requestOptions)
+  fetch(`http://127.0.0.1:8000/tasks/${id}`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
