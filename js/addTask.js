@@ -58,6 +58,7 @@ function executeAddTask() {
   saveTasks(newTask);
   showAddSymbol();
   alert('Task has been created');
+  resetAddTask();
 }
 
 /**

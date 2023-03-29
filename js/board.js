@@ -64,7 +64,7 @@ function onDragTask(id) {
 function dropTask(currentStatus) {
   tasks[currentElement]['status'] = currentStatus;
   let backendTaskID = tasks[currentElement]['id'];
-  updateTask(tasks, backendTaskID);
+  updateTask(tasks[currentElement]);
   renderTaskInfo();
 }
 

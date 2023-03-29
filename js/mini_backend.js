@@ -64,20 +64,22 @@ fetch("http://127.0.0.1:8000/tasks/", requestOptions)
   .catch(error => console.log('error', error));
 }
 
-function updateTask(tasks, id){
+function updateTask(task){
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  let currentTask = JSON.stringify(tasks);
+  let payload = JSON.stringify(task);
 
   let requestOptions = {
-    method: 'PUT',
+    method: 'PATCH',
     headers: myHeaders,
-    body: currentTask,
-    redirect: 'follow'
+    body: payload,
+    // redirect: 'follow',
+    // credentials: 'include',
+    // mode: 'cors',
   };
 
-  fetch(`http://127.0.0.1:8000/tasks/${id}`, requestOptions)
+  fetch(`http://127.0.0.1:8000/tasks/${task.id}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
