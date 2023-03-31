@@ -87,7 +87,7 @@ const returnResponsiveCard = (index, colorClass, description) => {
                   <span id='description${index}' class='backlog-details'>${description}</span>
 
                   <div class='delete-icon'>
-                      <img onclick='deleteTask(${index})' src='img/trash2.png'>
+                      <img onclick='deleteFromFrontend(${index})' src='img/trash2.png'>
                   </div>
               </div>
           </div>
@@ -119,13 +119,13 @@ const returnNormalCard = (index, colorClass, category, description) => {
                       <span id='description${index}' class='backlog-details'>${description}</span>
                   </div>
                   <div class='delete-icon'>
-                      <img onclick='deleteTask(${index})' src='img/trash.png'>
+                      <img onclick='deleteFromFrontend(${index})' src='img/trash.png'>
                   </div>
               </div>
           </div>
       </div>
       `;
-  return;
+  // return;
 };
 
 /**
@@ -133,10 +133,11 @@ const returnNormalCard = (index, colorClass, category, description) => {
  *
  * @param {String} allTasksIndex position of task in the array
  */
-function deleteTask(allTasksIndex) {
-  allTasks.splice(allTasksIndex, 1);
-  saveAllTasks();
-  saveRegisterRequest();
+function deleteFromFrontend(allTasksIndex) {
+  taskToDeleteId = tasks[allTasksIndex].id;
+  console.log(taskToDeleteId);
+  deleteTask(taskToDeleteId);
+  // saveRegisterRequest();
   document.getElementById('backlog-unit' + allTasksIndex).style =
     'display: none;';
   checkBacklogContainer();

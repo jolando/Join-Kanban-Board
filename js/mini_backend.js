@@ -74,9 +74,7 @@ function updateTask(task){
     method: 'PATCH',
     headers: myHeaders,
     body: payload,
-    // redirect: 'follow',
-    // credentials: 'include',
-    // mode: 'cors',
+
   };
 
   fetch(`http://127.0.0.1:8000/tasks/${task.id}/`, requestOptions)
@@ -84,3 +82,18 @@ function updateTask(task){
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
   }
+
+  function deleteTask(taskId){
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let requestOptions = {
+      method: 'DELETE',
+      headers: myHeaders,
+    };
+
+    fetch(`http://127.0.0.1:8000/tasks/${taskId}/`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    }
