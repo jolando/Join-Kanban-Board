@@ -30,18 +30,20 @@ async function checkBacklogContainer() {
 function executeRender() {
   document.getElementById('backlog').innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    renderBacklogCard(i);
-    for (const userId of tasks[i].user) {
-      const user = newUsers.find(u => u.id === userId);
+    if (tasks[i].status === "todo") {
+      renderBacklogCard(i);
+      for (const userId of tasks[i].user) {
+        const user = newUsers.find(u => u.id === userId);
 
-      // Render user information if found
-      if (user) {
-        const userInformationElement = document.getElementById('user-information' + i);
-        userInformationElement.innerHTML += `
+        // Render user information if found
+        if (user) {
+          const userInformationElement = document.getElementById('user-information' + i);
+          userInformationElement.innerHTML += `
           <div class="underline">
             <span class='backlog-unit-name'>${user.first_name} ${user.last_name}</span>
             <span class='backlog-unit-email'>${user.email}</span>
           </div>`;
+        }
       }
     }
   }
@@ -60,12 +62,15 @@ function renderBacklogCard(index) {
   let categoryColor = getRightCategoryColor(cardCategory);
   let switchDescription = checkDescription(taskDescription);
 
+
   if (window.innerWidth > ISWINDOW_WIDTH) {
     returnNormalCard(index, categoryColor, cardCategory, switchDescription);
   } else {
     returnResponsiveCard(index, categoryColor, switchDescription);
   }
 }
+
+
 
 /**
  * Returns the normal card

@@ -125,9 +125,9 @@ function returnTaskHTML(taskObj) {
  * @param {number} allTasksIndex
  */
 function deleteBoardCard(taskId) {
-  let task = allTasks.find((task) => task.id == taskId);
-  let taskIndex = allTasks.indexOf(task);
-  allTasks.splice(taskIndex, 1);
-  // saveAllTasks();
+  let task = tasks.find((task) => task.id == taskId);
+  let taskIndex = tasks.indexOf(task);
+  tasks.splice(taskIndex, 1);
+  deleteTask(taskId);
   renderTaskInfo();
 }
