@@ -24,22 +24,6 @@ async function getUsers() {
   }
 }
 
-// async function saveTasks(task) {
-//   if (typeof task !== 'object') {
-//     throw new Error('Task parameter is not a valid object');
-//   }
-//   try {
-//     let response = await fetch('https://sebastianseitz36.pythonanywhere.com/tasks/',
-//       { method: 'POST', body: task, headers: {'Content-Type': 'application/json'} } );
-//     if (!response.ok)
-//       throw new Error("Response not ok");
-//     const tasks = await response.json();
-//     console.log(tasks);
-//   } catch (error) {
-//     console.error(error);
-//   }
-
-// }
 
 /**
  * Javascript Code Snippet to send post request from frontend to backend
@@ -59,6 +43,25 @@ let requestOptions = {
 };
 
 fetch("http://127.0.0.1:8000/tasks/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
+
+function saveUser(user){
+let myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+let currentUser = JSON.stringify(user);
+
+let requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: currentUser,
+  redirect: 'follow'
+};
+
+fetch("http://127.0.0.1:8000/users/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));

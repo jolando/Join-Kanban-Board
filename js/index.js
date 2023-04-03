@@ -5,7 +5,7 @@ async function initIndex() {
   includeHTML();
   await getTasks();
   await getUsers();
-  console.log(allRegisteredUsers);
+  console.log(newUsers);
   // deleteUser();
 }
 
@@ -64,14 +64,14 @@ async function createUserObject() {
   console.log('success');
   let user = {
     id: new Date().getTime(),
-    firstName: document.getElementById('register-firstname').value,
-    lastName: document.getElementById('register-lastname').value,
     email: document.getElementById('register-email').value,
-    userPassword: document.getElementById('register-password').value,
+    first_name: document.getElementById('register-firstname').value,
+    last_name: document.getElementById('register-lastname').value,
+    password: document.getElementById('register-password').value,
   };
-  allRegisteredUsers.push(user);
-  console.log(allRegisteredUsers);
-  await saveRegisterRequest();
+  saveUser(user);
+  // allRegisteredUsers.push(user);
+  // console.log(allRegisteredUsers);
 }
 
 /**
@@ -86,9 +86,9 @@ function login(e) {
 
   let user = emailExists(loginEmail.value);
 
-  if (user && user.userPassword === loginPw.value) {
+  if (user && user.password === loginPw.value) {
     window.location.href = 'board.html';
-  } else if (user && user.userPassword !== loginPw.value) {
+  } else if (user && user.password !== loginPw.value) {
     document.getElementById('error-full').innerHTML = 'Wrong password';
   } else {
     if (loginEmail.value.length > 0) {
@@ -145,7 +145,7 @@ function validateRegister(e) {
     validateEmail() &&
     validatePassword() === true
   ) {
-    const found = allRegisteredUsers.find(
+    const found = newUsers.find(
       (u) => u.email === document.getElementById('register-email').value
     );
     if (!found) {
@@ -259,7 +259,7 @@ function validateLastname() {
  * @returns {Boolean} true if found undefined if not
  */
 const emailExists = (currentEmail) => {
-  const result = allRegisteredUsers.find(
+  const result = newUsers.find(
     (value) => value.email == currentEmail
   );
   return result;
