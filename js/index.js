@@ -3,11 +3,10 @@
  */
 async function initIndex() {
   includeHTML();
-  setURL('https://gruppe-99.developerakademie.com/smallest_backend_ever-master');
-  await loadAllTasks();
-  await loadRegisterRequest();
+  await getTasks();
+  await getUsers();
   console.log(allRegisteredUsers);
-  deleteUser();
+  // deleteUser();
 }
 
 /**
@@ -59,7 +58,7 @@ function showHint(id) {
 }
 
 /**
- *  Creates an user-object
+ *  Creates a user-object
  */
 async function createUserObject() {
   console.log('success');

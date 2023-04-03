@@ -15,7 +15,7 @@ async function backlogInit() {
 /**
  * Provides the necessary information for the cards and updates them when they are deleted
  */
-function checkBacklogContainer() {
+async function checkBacklogContainer() {
   if (tasks.length == 0) {
     document.getElementById('backlog').innerHTML =
       '<h2 class="empty-backlog">No Tasks</h2>';
@@ -27,7 +27,7 @@ function checkBacklogContainer() {
 /**
  * If allTasks contains more than zero tasks execute render-function
  */
-async function executeRender() {
+function executeRender() {
   document.getElementById('backlog').innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     renderBacklogCard(i);
@@ -137,10 +137,9 @@ function deleteFromFrontend(allTasksIndex) {
   taskToDeleteId = tasks[allTasksIndex].id;
   console.log(taskToDeleteId);
   deleteTask(taskToDeleteId);
-  // saveRegisterRequest();
-  document.getElementById('backlog-unit' + allTasksIndex).style =
-    'display: none;';
-  checkBacklogContainer();
+  document.getElementById('backlog-unit' + allTasksIndex).remove();
+  getTasks();
+  // checkBacklogContainer();
 }
 
 /**
