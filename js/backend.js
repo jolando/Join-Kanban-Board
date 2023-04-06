@@ -3,7 +3,7 @@ let newUsers;
 
 async function getTasks() {
   try {
-    let response = await fetch('http://127.0.0.1:8000/tasks/');
+    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/tasks/');
       tasks = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -14,7 +14,7 @@ async function getTasks() {
 }
 async function getUsers() {
   try {
-    let response = await fetch('http://127.0.0.1:8000/users/');
+    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/users/');
       newUsers = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -42,7 +42,7 @@ let requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://127.0.0.1:8000/tasks/", requestOptions)
+fetch("https://sebastianseitz36.pythonanywhere.com/tasks/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -61,7 +61,7 @@ let requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://127.0.0.1:8000/users/", requestOptions)
+fetch("https://sebastianseitz36.pythonanywhere.com/users/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -80,7 +80,7 @@ function updateTask(task){
 
   };
 
-  fetch(`http://127.0.0.1:8000/tasks/${task.id}/`, requestOptions)
+  fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${task.id}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -95,7 +95,7 @@ function updateTask(task){
       headers: myHeaders,
     };
 
-    fetch(`http://127.0.0.1:8000/tasks/${taskId}/`, requestOptions)
+    fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${taskId}/`, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
