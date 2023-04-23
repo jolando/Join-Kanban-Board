@@ -107,7 +107,7 @@ function returnTaskHTML(taskObj) {
   return `
       <div id="task-unit${taskObj.id}" draggable="true"    ondragstart="onDragTask(${taskObj.id})" ontouchstart="onDragTask(${taskObj.id})"  class="task-unit">
           <div class="task-container">
-              <span class="task-title" id="description-container" class="description-container"> ${taskObj.title}</span>
+              <span class="task-title" id="description-container" class="description-container"> ${taskObj.title} <div class="subtask"><img class="subtask_button" src="img/icons8-plus.png" onclick="addSubtask()"><span class="tooltip">Create a subtask</span></div></span>
               <span id="task-title" > ${taskObj.description}</span>
               <div class="info-container">
                 <span class=" extra-info ${categoryColor}">${taskObj.category}</span>
@@ -118,6 +118,19 @@ function returnTaskHTML(taskObj) {
           </div>
       </div>`;
 }
+
+function addSubtask() {
+  console.log("subtaskadded");
+  document.getElementById("addSubtask-form").classList.remove('d-none');
+  document.addEventListener('mouseup', function(e) {
+    var container = document.getElementById("addSubtask-form");
+    if (!container.contains(e.target)) {
+        container.classList.add('d-none');
+    }
+  });
+}
+
+
 
 /**
  * Delete current task

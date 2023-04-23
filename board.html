@@ -30,22 +30,56 @@
     </div>
     <div class="mt">
       <h2>In Progress</h2>
-      <div ontouchend="dropTask('progress')" ondrop="dropTask('progress')" ondragover="allowDrop(event)" id="progress-container" class="board-box">
+      <div ontouchend="dropTask('progress')" ondrop="dropTask('progress')" ondragover="allowDrop(event)"
+        id="progress-container" class="board-box">
       </div>
     </div>
     <div class="mt">
       <h2>Testing</h2>
-      <div ontouchend="dropTask('testing')" ontouchend="dropTask('testing')" ondrop="dropTask('testing')" ondragover="allowDrop(event)"
-        id="testing-container" class="board-box"></div>
+      <div ontouchend="dropTask('testing')" ontouchend="dropTask('testing')" ondrop="dropTask('testing')"
+        ondragover="allowDrop(event)" id="testing-container" class="board-box"></div>
     </div>
     <div class="mt">
       <h2>Done</h2>
-      <div ontouchend="dropTask('done')" ontouc="dropTask('done')" ondrop="dropTask('done')" ondragover="allowDrop(event)" id="done-container"
-        class="board-box"></div>
+      <div ontouchend="dropTask('done')" ontouc="dropTask('done')" ondrop="dropTask('done')"
+        ondragover="allowDrop(event)" id="done-container" class="board-box"></div>
     </div>
   </div>
   </div>
   <div w3-include-html="templates/footer.html"></div>
 </body>
+
+
+
+<form onsubmit="addSubtask(event)" id="addSubtask-form" class="d-none">
+  <div class="form-left">
+    <div class="title-box">
+      <h3>TITLE</h3>
+      <input type="text" class="title-input" id="title-field" placeholder="Create a title" minlength="3" required />
+    </div>
+    <div class="description-box">
+      <h3>DESCRIPTION</h3>
+      <textarea type="text" class="longInput" id="description-field" cols="30" rows="10" minlength="5"
+        required></textarea>
+    </div>
+  </div>
+  <div class="form-right">
+
+    <h3>ASSIGNED TO</h3>
+    <div class="assigned-to" id="assigned-to"></div>
+
+    <div>
+      <div class="assignment-box">
+        <span class="box-title">List of all registered Users</span>
+        <div class="assignment-box-assets" id="assignment-box"></div>
+        <div class="button-box">
+          <button onclick="resetAddTask()" class="cancel-button">
+            CANCEL
+          </button>
+          <button type="submit" class="create-button">CREATE TASK</button>
+        </div>
+      </div>
+    </div>
+</form>
 
 </html>
