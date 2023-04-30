@@ -12,6 +12,18 @@ async function getTasks() {
     console.error(error);
   }
 }
+
+async function getSubtasks() {
+  try {
+    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/subtasks/');
+      subtasks = await response.json();
+    if (!response.ok)
+      throw new Error("Response not ok");
+    console.log(subtasks);
+  } catch (error) {
+    console.error(error);
+  }
+}
 async function getUsers() {
   try {
     let response = await fetch('https://sebastianseitz36.pythonanywhere.com/users/');

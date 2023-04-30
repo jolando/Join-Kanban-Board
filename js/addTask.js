@@ -5,6 +5,7 @@ async function initAddTask() {
   includeHTML();
   await getTasks();
   await getUsers();
+  await getSubtasks();
   await renderUserProfiles();
 }
 
