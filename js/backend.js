@@ -60,6 +60,25 @@ fetch("https://sebastianseitz36.pythonanywhere.com/tasks/", requestOptions)
   .catch(error => console.log('error', error));
 }
 
+function saveSubtasks(subtask){
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  let currentSubtask = JSON.stringify(subtask);
+
+  let requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: currentSubtask,
+    redirect: 'follow'
+  };
+
+  fetch("https://sebastianseitz36.pythonanywhere.com/subtasks/", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  }
+
 function saveUser(user){
 let myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");

@@ -1,5 +1,6 @@
 let selectedUsers = [];
 let newTask;
+let newSubtask;
 
 async function initAddTask() {
   includeHTML();
@@ -23,13 +24,33 @@ function getInputValues() {
   return newTask;
 }
 
+function getSubtaskValues(){
+  newSubtask ={
+    title: document.getElementById('subtask-field'),
+    completion_status: false,
+  };
+  return newSubtask
+}
+
 function addTask(event) {
   event.preventDefault();
   executeAddTask();
 }
 
+function addSubtask(){
+  subtaskTitle = document.getElementById('subtask-field');
+  renderSubtasks(subtaskTitle);
+  subtaskTitle.value = '';
+}
+
+function renderSubtasks(title){
+  document.getElementById('subtaskcontainer').innerHTML +=`
+  <span class="subtaskcase">${title.value}</span>`
+}
+
 function executeAddTask() {
   let newTask = getInputValues();
+  let newSubtask = getSubtaskValues();
   saveTasks(newTask);
   showAddSymbol();
   alert('Task has been created');
