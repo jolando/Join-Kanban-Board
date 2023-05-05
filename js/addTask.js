@@ -1,6 +1,9 @@
 let selectedUsers = [];
 let newTask;
-let newSubtask;
+let subtaskArray = [
+  {
+  },
+];
 
 async function initAddTask() {
   includeHTML();
@@ -24,13 +27,13 @@ function getInputValues() {
   return newTask;
 }
 
-function getSubtaskValues(){
-  newSubtask ={
-    title: document.getElementById('subtask-field'),
-    completion_status: false,
-  };
-  return newSubtask
-}
+// function getSubtaskValues(){
+//   newSubtask ={
+//     title: document.getElementById('subtask-field'),
+//     completion_status: false,
+//   };
+//   return newSubtask
+// }
 
 function addTask(event) {
   event.preventDefault();
@@ -40,6 +43,7 @@ function addTask(event) {
 function addSubtask(){
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);
+  subtaskArray.push({title: subtaskTitle.value, completion_status: false});
   subtaskTitle.value = '';
 }
 
