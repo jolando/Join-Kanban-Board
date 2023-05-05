@@ -1,9 +1,6 @@
 let selectedUsers = [];
 let newTask;
-let subtaskArray = [
-  {
-  },
-];
+let subtaskArray = [];
 
 async function initAddTask() {
   includeHTML();
@@ -43,7 +40,7 @@ function addTask(event) {
 function addSubtask(){
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);
-  subtaskArray.push({title: subtaskTitle.value, completion_status: false});
+  subtaskArray.push({title: subtaskTitle.value, completion_status: false, task:109});
   subtaskTitle.value = '';
 }
 
@@ -54,11 +51,18 @@ function renderSubtasks(title){
 
 function executeAddTask() {
   let newTask = getInputValues();
-  let newSubtask = getSubtaskValues();
+  checkSubtasks();
   saveTasks(newTask);
   showAddSymbol();
   alert('Task has been created');
   resetAddTask();
+}
+
+function checkSubtasks(){
+  for (let i = 0; i < subtaskArray.length; i++) {
+    const subtaskElement = subtaskArray[i];
+    saveSubtasks(subtaskElement);
+  }
 }
 
 async function renderUserProfiles() {
