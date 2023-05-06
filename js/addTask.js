@@ -1,6 +1,7 @@
 let selectedUsers = [];
 let newTask;
 let subtaskArray = [];
+let subtaskIDs = [];
 
 async function initAddTask() {
   includeHTML();
@@ -37,15 +38,21 @@ function addTask(event) {
   executeAddTask();
 }
 
-function addSubtask(){
+function addSubtask() {
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);
-  subtaskArray.push({title: subtaskTitle.value, completion_status: false, task:109});
+  subtaskArray.push({ id: new Date().getTime(), title: subtaskTitle.value, completion_status: false, task: 109 });
+  for (let i = 0; i < subtaskArray.length; i++) {
+    const subtaskElement = subtaskArray[i];
+    if (!subtaskIDs.includes(subtaskElement.id)) {
+      subtaskIDs.push(subtaskElement.id);
+    }
+  }
   subtaskTitle.value = '';
 }
 
-function renderSubtasks(title){
-  document.getElementById('subtaskcontainer').innerHTML +=`
+function renderSubtasks(title) {
+  document.getElementById('subtaskcontainer').innerHTML += `
   <span class="subtaskcase">${title.value}</span>`
 }
 
@@ -58,9 +65,10 @@ function executeAddTask() {
   resetAddTask();
 }
 
-function checkSubtasks(){
+function checkSubtasks() {
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
+    subtaskIDs.push(subtaskElement.id);
     saveSubtasks(subtaskElement);
   }
 }
