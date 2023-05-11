@@ -41,9 +41,10 @@ function addTask(event) {
 function addSubtask() {
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);
-  subtaskArray.push({ id: new Date().getTime(), title: subtaskTitle.value, completion_status: false, task: 109 });
+  subtaskArray.push({id: `${new Date().getTime()}`, title: subtaskTitle.value, completion_status: false, task: 109});
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
+    saveSubtasks(subtaskElement);
     if (!subtaskIDs.includes(subtaskElement.id)) {
       subtaskIDs.push(subtaskElement.id);
     }
@@ -57,8 +58,8 @@ function renderSubtasks(title) {
 }
 
 function executeAddTask() {
-  let newTask = getInputValues();
   checkSubtasks();
+  let newTask = getInputValues();
   saveTasks(newTask);
   showAddSymbol();
   alert('Task has been created');
@@ -69,7 +70,7 @@ function checkSubtasks() {
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
     subtaskIDs.push(subtaskElement.id);
-    saveSubtasks(subtaskElement);
+    // saveSubtasks(subtaskElement);
   }
 }
 
