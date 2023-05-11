@@ -25,13 +25,6 @@ function getInputValues() {
   return newTask;
 }
 
-// function getSubtaskValues(){
-//   newSubtask ={
-//     title: document.getElementById('subtask-field'),
-//     completion_status: false,
-//   };
-//   return newSubtask
-// }
 
 function addTask(event) {
   event.preventDefault();
@@ -41,10 +34,16 @@ function addTask(event) {
 function addSubtask() {
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);
-  subtaskArray.push({id: `${new Date().getTime()}`, title: subtaskTitle.value, completion_status: false, task: 109});
+  subtaskObject = {
+    id: `${new Date().getTime()}`,
+    title: subtaskTitle.value,
+    completion_status: false,
+    task: 109}
+  subtaskArray.push(subtaskObject);
+  saveSubtasks(subTaskobject);
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
-    saveSubtasks(subtaskElement);
+
     if (!subtaskIDs.includes(subtaskElement.id)) {
       subtaskIDs.push(subtaskElement.id);
     }
