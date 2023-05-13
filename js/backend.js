@@ -117,6 +117,25 @@ function updateTask(task){
     .catch(error => console.log('error', error));
   }
 
+  function updateSubtask(subtask){
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let payload = JSON.stringify(subtask);
+
+    let requestOptions = {
+      method: 'PATCH',
+      headers: myHeaders,
+      body: payload,
+
+    };
+
+    fetch(`https://sebastianseitz36.pythonanywhere.com/subtasks/${subtask.id}/`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    }
+
   function deleteTask(taskId){
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

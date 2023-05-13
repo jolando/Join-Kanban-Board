@@ -20,7 +20,8 @@ function getInputValues() {
     urgency: document.getElementById('urgency-category').value,
     category: document.getElementById('task-category').value,
     status: 'todo',
-    users: selectedUsers
+    users: selectedUsers,
+    subtasks: subtaskIDs
   };
   return newTask;
 }
@@ -40,7 +41,7 @@ function addSubtask() {
     completion_status: false,
     task: 109}
   subtaskArray.push(subtaskObject);
-  saveSubtasks(subTaskobject);
+  saveSubtasks(subtaskObject);
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
 
@@ -49,6 +50,7 @@ function addSubtask() {
     }
   }
   subtaskTitle.value = '';
+  getSubtasks();
 }
 
 function renderSubtasks(title) {
@@ -57,8 +59,8 @@ function renderSubtasks(title) {
 }
 
 function executeAddTask() {
-  checkSubtasks();
   let newTask = getInputValues();
+  checkSubtasks();
   saveTasks(newTask);
   showAddSymbol();
   alert('Task has been created');
@@ -68,8 +70,8 @@ function executeAddTask() {
 function checkSubtasks() {
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
-    subtaskIDs.push(subtaskElement.id);
-    // saveSubtasks(subtaskElement);
+    subtaskElement.task = newTask.id;
+    updateSubtask(subtaskElement);
   }
 }
 
