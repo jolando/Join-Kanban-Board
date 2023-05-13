@@ -41,7 +41,7 @@ function addSubtask() {
     completion_status: false,
     task: 109}
   subtaskArray.push(subtaskObject);
-  saveSubtasks(subtaskObject);
+  // saveSubtasks(subtaskObject);
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
 
@@ -50,7 +50,7 @@ function addSubtask() {
     }
   }
   subtaskTitle.value = '';
-  getSubtasks();
+  // getSubtasks();
 }
 
 function renderSubtasks(title) {
@@ -71,7 +71,7 @@ function checkSubtasks() {
   for (let i = 0; i < subtaskArray.length; i++) {
     const subtaskElement = subtaskArray[i];
     subtaskElement.task = newTask.id;
-    updateSubtask(subtaskElement);
+    saveSubtasks(subtaskElement);
   }
 }
 
