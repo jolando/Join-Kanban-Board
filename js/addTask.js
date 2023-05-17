@@ -21,7 +21,7 @@ function getInputValues() {
     category: document.getElementById('task-category').value,
     status: 'todo',
     users: selectedUsers,
-    subtasks: subtaskIDs
+    subtasks: []
   };
   return newTask;
 }
@@ -36,7 +36,7 @@ function addSubtask() {
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);
   subtaskObject = {
-    id: `${new Date().getTime()}`,
+    // id: `${new Date().getTime()}`,
     title: subtaskTitle.value,
     completion_status: false,
     task: 109}
@@ -60,8 +60,8 @@ function renderSubtasks(title) {
 
 function executeAddTask() {
   let newTask = getInputValues();
-  checkSubtasks();
   saveTasks(newTask);
+  checkSubtasks();
   showAddSymbol();
   alert('Task has been created');
   resetAddTask();
