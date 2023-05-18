@@ -96,6 +96,7 @@ async function renderUserProfiles() {
   renderSelectedUsers();
 }
 
+
 function renderSelectedUsers() {
   document.getElementById('assigned-to').innerHTML = '';
 
