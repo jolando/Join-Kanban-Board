@@ -4,7 +4,7 @@ let newUsers;
 async function getTasks() {
   try {
     let response = await fetch('https://sebastianseitz36.pythonanywhere.com/tasks/');
-      tasks = await response.json();
+    tasks = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
     console.log(tasks);
@@ -16,7 +16,7 @@ async function getTasks() {
 async function getSubtasks() {
   try {
     let response = await fetch('https://sebastianseitz36.pythonanywhere.com/subtasks/');
-      subtasks = await response.json();
+    subtasks = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
     console.log(subtasks);
@@ -27,7 +27,7 @@ async function getSubtasks() {
 async function getUsers() {
   try {
     let response = await fetch('https://sebastianseitz36.pythonanywhere.com/users/');
-      newUsers = await response.json();
+    newUsers = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
     console.log(newUsers);
@@ -41,26 +41,24 @@ async function getUsers() {
  * Javascript Code Snippet to send post request from frontend to backend
  */
 
-function saveTasks(task){
-let myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+function saveTasks(task) {
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
-let currentTask = JSON.stringify(task);
+  let currentTask = JSON.stringify(task);
 
-let requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: currentTask,
-  redirect: 'follow'
-};
+  let requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: currentTask,
+    redirect: 'follow'
+  };
 
-fetch("https://sebastianseitz36.pythonanywhere.com/tasks/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  return fetch("https://sebastianseitz36.pythonanywhere.com/tasks/", requestOptions)
+    .then(response => response.json());
 }
 
-function saveSubtasks(subtask){
+function saveSubtasks(subtask) {
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -77,28 +75,28 @@ function saveSubtasks(subtask){
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-  }
-
-function saveUser(user){
-let myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-let currentUser = JSON.stringify(user);
-
-let requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: currentUser,
-  redirect: 'follow'
-};
-
-fetch("https://sebastianseitz36.pythonanywhere.com/users/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 }
 
-function updateTask(task){
+function saveUser(user) {
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  let currentUser = JSON.stringify(user);
+
+  let requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: currentUser,
+    redirect: 'follow'
+  };
+
+  fetch("https://sebastianseitz36.pythonanywhere.com/users/", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+function updateTask(task) {
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -115,38 +113,38 @@ function updateTask(task){
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-  }
+}
 
-  function updateSubtask(subtask){
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+function updateSubtask(subtask) {
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
-    let payload = JSON.stringify(subtask);
+  let payload = JSON.stringify(subtask);
 
-    let requestOptions = {
-      method: 'PATCH',
-      headers: myHeaders,
-      body: payload,
+  let requestOptions = {
+    method: 'PATCH',
+    headers: myHeaders,
+    body: payload,
 
-    };
+  };
 
-    fetch(`https://sebastianseitz36.pythonanywhere.com/subtasks/${subtask.id}/`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-    }
+  fetch(`https://sebastianseitz36.pythonanywhere.com/subtasks/${subtask.id}/`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
 
-  function deleteTask(taskId){
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+function deleteTask(taskId) {
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
-    let requestOptions = {
-      method: 'DELETE',
-      headers: myHeaders,
-    };
+  let requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+  };
 
-    fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${taskId}/`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-    }
+  fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${taskId}/`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}

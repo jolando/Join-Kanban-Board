@@ -13,7 +13,6 @@ async function initAddTask() {
 
 function getInputValues() {
   newTask = {
-    id: `${new Date().getTime()}`,
     title: document.getElementById('title-field').value,
     description: document.getElementById('description-field').value,
     due_date: document.getElementById('date-field').value,
@@ -36,10 +35,9 @@ function addSubtask() {
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);
   subtaskObject = {
-    id: `${new Date().getTime()}`,
     title: subtaskTitle.value,
-    completion_status: false,
-    task: 109}
+    completion_status: false
+  }
     subtaskArray.push(subtaskObject);
   // saveSubtasks(subtaskObject);
   for (let i = 0; i < subtaskArray.length; i++) {
@@ -58,12 +56,12 @@ function renderSubtasks(title) {
   <span class="subtaskcase">${title.value}</span>`
 }
 
-function executeAddTask() {
+async function executeAddTask() {
   let newTask = getInputValues();
   newTask.subtasks.push(...subtaskIDs);
-  // checkSubtasks();
-  saveTasks(newTask);
-  getandSaveSubtasks();
+  checkSubtasks();
+  const resp = await saveTasks(newTask);
+  getandSaveSubtasks(resp[0].pk);
   // saveSubtasks(...subtaskArray);
   showAddSymbol();
   alert('Task has been created');
@@ -77,9 +75,10 @@ function checkSubtasks() {
   }
 }
 
-function getandSaveSubtasks(){
+function getandSaveSubtasks(primaryKey){
   for (let i = 0; i < subtaskArray.length; i++) {
     const singleSubtask = subtaskArray[i];
+    singleSubtask.task = primaryKey;
     saveSubtasks(singleSubtask);
   }
 }
