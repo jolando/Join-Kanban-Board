@@ -1,0 +1,41 @@
+#contacts-box{
+    display: flex;
+    flex-direction: column;
+    margin-left: calc(3% + 130px);
+    margin-top: 22px;
+    height: auto;
+    width: auto;
+    max-width: 70%;
+    background-color: rgba(0, 0, 255, 0.062);
+    padding: 45px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.contacts{
+    margin-bottom: 5px;
+}
+
+table, th, td {
+    border: 1px solid;
+  }
+
+td {
+    padding-left: 3px;
+}
+
+th {
+    color: rgb(39, 39, 185);
+    margin-bottom: 8px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    max-width: 70%;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}

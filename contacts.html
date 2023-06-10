@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/include.js"></script>
+    <script src="js/contacts.js"></script>
+    <script src="js/backend.js"></script>
+    <script src="js/overall.js"></script>
+    <link rel="stylesheet" href="css/contacts.css" />
+    <link rel="stylesheet" href="css/addTask.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/overall.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/addTask.css" />
+</head>
+
+<body onload="initContacts()">
+    <div w3-include-html="templates/nav.html"></div>
+    <h1 class="addTask">Contacts</h1>
+    <div class="contacts-box" id="contacts-box">
+    </div>
+    <form onsubmit="addContact(event)">
+        <h3>Add a new Contact</h3>
+        <input type="text" id="first-name-field" placeholder="First Name">
+        <input type="text" id="last-name-field"placeholder="Last Name">
+        <input type="text" id="email-field"placeholder="Email">
+    </form>
+    <div w3-include-html="templates/footer.html"></div>
+
+</body>
+
+</html>
