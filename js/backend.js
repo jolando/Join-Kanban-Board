@@ -239,6 +239,24 @@ function saveSubtasks(subtask) {
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 }
+async function saveContacts(contact) {
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  let currentContact = JSON.stringify(contact);
+
+  let requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: currentContact,
+    redirect: 'follow'
+  };
+
+  fetch("http://127.0.0.1:8000/contacts/", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
 
 function saveUser(user) {
   let myHeaders = new Headers();

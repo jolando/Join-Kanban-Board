@@ -1,9 +1,21 @@
 let contacts;
+let newContact;
 
 async function initContacts() {
     includeHTML();
     await getContacts();
     renderContacts();
+}
+
+function getNewContacts() {
+  newContact = {
+    email: document.getElementById('email-field').value,
+    first_name: document.getElementById('first-name-field').value,
+    last_name: document.getElementById('last-name-field').value,
+    user: 1
+  }
+
+  return newContact;
 }
 
 function renderContacts() {
@@ -32,8 +44,10 @@ function addContact(event){
     executeAddContact();
 }
 
-function executeAddContact(){
-    
+async function executeAddContact(){
+  newContact = getNewContacts();
+  await saveContacts(newContact);
+  location.reload();
 }
 
 
