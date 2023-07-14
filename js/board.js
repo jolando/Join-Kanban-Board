@@ -9,10 +9,18 @@ let doneArr;
  */
 async function initBoard() {
   includeHTML();
+  getLoggedInUser();
   await getTasks();
   await getUsers();
   await getSubtasks();
   renderTaskInfo();
+}
+
+function getLoggedInUser(){
+  let loggedInUser = localStorage.getItem('username');
+  let userId = localStorage.getItem('userid');
+  console.log("this is the current user:", loggedInUser);
+  console.log("this is the current userid:", userId);
 }
 
 /**

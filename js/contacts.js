@@ -8,11 +8,12 @@ async function initContacts() {
 }
 
 function getNewContacts() {
+  userid = localStorage.getItem('userid');
   newContact = {
     email: document.getElementById('email-field').value,
     first_name: document.getElementById('first-name-field').value,
     last_name: document.getElementById('last-name-field').value,
-    user: 1
+    user: userid
   }
 
   return newContact;

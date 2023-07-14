@@ -1,4 +1,4 @@
-function includeHTML() {
+async function includeHTML() {
   var z, i, elmnt, file, xhttp;
   /* Loop through a collection of all HTML elements: */
   z = document.getElementsByTagName('*');
@@ -25,7 +25,15 @@ function includeHTML() {
       xhttp.open('GET', file, true);
       xhttp.send();
       /* Exit the function: */
+      await includeloggedInUser();
       return;
     }
   }
 }
+
+async function includeloggedInUser(){
+  let username = localStorage.getItem('username');
+  document.getElementById('loggedin-box').innerHTML =`logged in as: ${username}`;
+}
+
+

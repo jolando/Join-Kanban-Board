@@ -61,7 +61,6 @@ function showHint(id) {
  *  Creates a user-object
  */
 async function createUserObject() {
-  console.log('success');
   let user = {
     id: new Date().getTime(),
     email: document.getElementById('register-email').value,
@@ -69,7 +68,11 @@ async function createUserObject() {
     last_name: document.getElementById('register-lastname').value,
     password: document.getElementById('register-password').value,
   };
+  // loginWithBackend(user.email, user.password);
+  await registerWithBackend(user);
   saveUser(user);
+  console.log('success');
+
   // allRegisteredUsers.push(user);
   // console.log(allRegisteredUsers);
 }
@@ -80,22 +83,23 @@ async function createUserObject() {
  */
 function login(e) {
   e.preventDefault();
-  checkLoginInput();
-  const loginEmail = document.getElementById('login-email');
-  const loginPw = document.getElementById('login-password');
+  // checkLoginInput();
+  const loginEmail = document.getElementById('login-email').value;
+  const loginPw = document.getElementById('login-password').value;
+  loginWithBackend(loginEmail, loginPw);
 
-  let user = emailExists(loginEmail.value);
+  // let user = emailExists(loginEmail.value);
 
-  if (user && user.password === loginPw.value) {
-    window.location.href = 'board.html';
-  } else if (user && user.password !== loginPw.value) {
-    document.getElementById('error-full').innerHTML = 'Wrong password';
-  } else {
-    if (loginEmail.value.length > 0) {
-      document.getElementById('error-full').innerHTML = 'User not registered';
-      clearInput();
-    }
-  }
+  // if (user && user.password === loginPw.value) {
+  //   window.location.href = 'board.html';
+  // } else if (user && user.password !== loginPw.value) {
+  //   document.getElementById('error-full').innerHTML = 'Wrong password';
+  // } else {
+  //   if (loginEmail.value.length > 0) {
+  //     document.getElementById('error-full').innerHTML = 'User not registered';
+  //     clearInput();
+  //   }
+  // }
 }
 
 /**
@@ -116,7 +120,7 @@ document.getElementById('register-form').addEventListener('input', () => {
 /**
  * Check if login-form is valid
  */
-function checkLoginInput() {
+function checkLoginInput() {                           // old version with frontend validation
   validateEmail('login-email', 'login-email-hint');
   validatePassword('login-password', 'login-pw-hint');
 }
@@ -145,20 +149,12 @@ function validateRegister(e) {
     validateEmail() &&
     validatePassword() === true
   ) {
-    const found = newUsers.find(
-      (u) => u.email === document.getElementById('register-email').value
-    );
-    if (!found) {
-      createUserObject();
-      console.log('test');
-      // window.location.href = 'board.html';
-      closeRegisterWindow();
-      // clearInput();
-    } else {
-      document.getElementById('error-full').innerHTML =
-        'User already registered';
-      clearInput();
-    }
+    // const found = newUsers.find(
+    //   (u) => u.email === document.getElementById('register-email').value
+    // );
+    // if (!found) {
+    createUserObject();
+
   }
 }
 

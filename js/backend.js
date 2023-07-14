@@ -151,6 +151,7 @@
 
 let tasks;
 let newUsers;
+let loggedInUser;
 
 async function getTasks() {
   try {
@@ -177,7 +178,7 @@ async function getSubtasks() {
 }
 async function getUsers() {
   try {
-    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/users/');
+    let response = await fetch('http://127.0.0.1:8000/users/');
     newUsers = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -271,7 +272,7 @@ function saveUser(user) {
     redirect: 'follow'
   };
 
-  fetch("https://sebastianseitz36.pythonanywhere.com/users/", requestOptions)
+  fetch("http://127.0.0.1:8000/users/", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -328,4 +329,78 @@ function deleteTask(taskId) {
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
+}
+
+async function loginWithBackend(email, password) {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    "username": email,
+    "password": password
+  });
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  try {
+    let resp = await fetch("http://127.0.0.1:8000/login/", requestOptions)
+    let json = await resp.json();
+    loggedInUser = json.email;
+    localStorage.setItem('token', json.token);
+    localStorage.setItem('username', loggedInUser);
+    window.location.href = "http://127.0.0.1:5505/board.html";
+    await getUserId(json);
+  } catch (e) {
+    console.error();
+  }
+}
+
+async function getUserId(json){
+  for (let i = 0; i < newUsers.length; i++) {
+    const user = newUsers[i];
+    if(user.email == json.email)
+    localStorage.setItem('userid', user.id);
+  }
+}
+
+async function registerWithBackend(user) {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    email: user.email,
+    first_name: user.first_name,
+    last_name: user.last_name,
+    password: user.password,
+  });
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  try {
+    const response = await fetch("http://127.0.0.1:8000/register/", requestOptions);
+    if (response.ok) {
+      // Registration successful
+      const json = await response.json();
+      // Do something with the response data
+      console.log(json);
+    } else {
+      // Registration failed
+      const errorResponse = await response.json();
+      // Handle the error
+      console.error(errorResponse);
+    }
+  } catch (error) {
+    // Network or other error occurred
+    console.error(error);
+  }
 }
