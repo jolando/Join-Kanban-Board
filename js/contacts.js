@@ -2,9 +2,10 @@ let contacts;
 let newContact;
 
 async function initContacts() {
-    includeHTML();
-    await getContacts();
-    renderContacts();
+  includeHTML();
+  await getContacts();
+  await getUsers();
+  renderContacts();
 }
 
 function getNewContacts() {
@@ -20,32 +21,35 @@ function getNewContacts() {
 }
 
 function renderContacts() {
-    let tableHTML = `
+  userid = localStorage.getItem('userid');
+  let tableHTML = `
     <table>
       <tr>
         <th>Name</th>
         <th>E-Mail</th>
       </tr>
   `;
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        tableHTML += `
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    if (contact.user == userid) {
+      tableHTML += `
       <tr>
         <td>${contact.first_name} ${contact.last_name}</td>
         <td>${contact.email}</td>
       </tr>
     `;
-    }
+    }}
     tableHTML += `</table>`;
     document.getElementById('contacts-box').innerHTML = tableHTML;
+
 }
 
-function addContact(event){
-    event.preventDefault();
-    executeAddContact();
+function addContact(event) {
+  event.preventDefault();
+  executeAddContact();
 }
 
-async function executeAddContact(){
+async function executeAddContact() {
   newContact = getNewContacts();
   await saveContacts(newContact);
   location.reload();

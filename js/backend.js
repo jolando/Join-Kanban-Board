@@ -167,7 +167,7 @@ async function getTasks() {
 
 async function getSubtasks() {
   try {
-    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/subtasks/');
+    let response = await fetch('http://127.0.0.1:8000/subtasks/');
     subtasks = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -205,7 +205,7 @@ async function getContacts() {
  * Javascript Code Snippet to send post request from frontend to backend
  */
 
-function saveTasks(task) {
+async function saveTasks(task) {
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -218,11 +218,11 @@ function saveTasks(task) {
     redirect: 'follow'
   };
 
-  return fetch("https://sebastianseitz36.pythonanywhere.com/tasks/", requestOptions)
+  return fetch("http://127.0.0.1:8000/tasks/", requestOptions)
     .then(response => response.json());
 }
 
-function saveSubtasks(subtask) {
+async function saveSubtasks(subtask) {
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -235,7 +235,7 @@ function saveSubtasks(subtask) {
     redirect: 'follow'
   };
 
-  fetch("https://sebastianseitz36.pythonanywhere.com/subtasks/", requestOptions)
+  fetch("http://127.0.0.1:8000/subtasks/", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -291,7 +291,7 @@ function updateTask(task) {
 
   };
 
-  fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${task.id}/`, requestOptions)
+  fetch(`http://127.0.0.1:8000/tasks/${task.id}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -310,7 +310,7 @@ function updateSubtask(subtask) {
 
   };
 
-  fetch(`https://sebastianseitz36.pythonanywhere.com/subtasks/${subtask.id}/`, requestOptions)
+  fetch(`http://127.0.0.1:8000/subtasks/${subtask.id}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
