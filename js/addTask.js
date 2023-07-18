@@ -31,6 +31,17 @@ function addTask(event) {
   executeAddTask();
 }
 
+function toggleAddSubtaskButton() {
+  let subtaskField = document.getElementById('subtask-field');
+  let addSubtaskButton = document.getElementById('addSubtaskButton');
+
+  if (subtaskField.value.trim() === '') {
+    addSubtaskButton.disabled = true;
+  } else {
+    addSubtaskButton.disabled = false;
+  }
+}
+
 function addSubtask() {
   subtaskTitle = document.getElementById('subtask-field');
   renderSubtasks(subtaskTitle);

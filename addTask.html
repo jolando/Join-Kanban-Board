@@ -50,8 +50,8 @@
       <div class="subtaskbox" id="subtask-box">
         <h3>SUBTASKS</h3>
         <div>
-        <input type="text" class="title-input" id="subtask-field" placeholder="Create a Subtask" minlength="3">
-        <img src="img/icon-plus.png" class="plus-icon" onclick="addSubtask()">
+        <input type="text" class="title-input" id="subtask-field" placeholder="Create a Subtask" minlength="3" oninput="toggleAddSubtaskButton()">
+        <img src="img/icon-plus.png" class="plus-icon" onclick="addSubtask()" id="addSubtaskButton" disabled>
         <div class="subtaskcontainer" id="subtaskcontainer"></div>
       </div>
       </div>

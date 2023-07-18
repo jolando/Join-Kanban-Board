@@ -325,7 +325,7 @@ function deleteTask(taskId) {
     headers: myHeaders,
   };
 
-  fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${taskId}/`, requestOptions)
+  fetch(`http://127.0.0.1:8000/tasks/${taskId}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
