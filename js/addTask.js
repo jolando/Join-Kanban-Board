@@ -31,35 +31,28 @@ function addTask(event) {
   executeAddTask();
 }
 
-function toggleAddSubtaskButton() {
-  let subtaskField = document.getElementById('subtask-field');
-  let addSubtaskButton = document.getElementById('addSubtaskButton');
 
-  if (subtaskField.value.trim() === '') {
-    addSubtaskButton.disabled = true;
-  } else {
-    addSubtaskButton.disabled = false;
-  }
-}
 
 function addSubtask() {
   subtaskTitle = document.getElementById('subtask-field');
-  renderSubtasks(subtaskTitle);
-  subtaskObject = {
-    title: subtaskTitle.value,
-    completion_status: false
-  }
-    subtaskArray.push(subtaskObject);
-  // saveSubtasks(subtaskObject);
-  for (let i = 0; i < subtaskArray.length; i++) {
-    const subtaskElement = subtaskArray[i];
-
-    if (!subtaskIDs.includes(subtaskElement.id)) {
-      subtaskIDs.push(subtaskElement.id);
+  if (subtaskTitle.value.trim() !== '') {
+    renderSubtasks(subtaskTitle);
+    subtaskObject = {
+      title: subtaskTitle.value,
+      completion_status: false
     }
+    subtaskArray.push(subtaskObject);
+    // saveSubtasks(subtaskObject);
+    for (let i = 0; i < subtaskArray.length; i++) {
+      const subtaskElement = subtaskArray[i];
+
+      if (!subtaskIDs.includes(subtaskElement.id)) {
+        subtaskIDs.push(subtaskElement.id);
+      }
+    }
+    subtaskTitle.value = '';
+    // getSubtasks();
   }
-  subtaskTitle.value = '';
-  // getSubtasks();
 }
 
 function renderSubtasks(title) {
@@ -86,7 +79,7 @@ function checkSubtasks() {
   }
 }
 
-function getandSaveSubtasks(primaryKey){
+function getandSaveSubtasks(primaryKey) {
   for (let i = 0; i < subtaskArray.length; i++) {
     const singleSubtask = subtaskArray[i];
     singleSubtask.task = primaryKey;
@@ -111,7 +104,6 @@ async function renderUserProfiles() {
       </div>
     `;
   }
-
   renderSelectedUsers();
 }
 
