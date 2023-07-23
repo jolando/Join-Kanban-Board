@@ -1,5 +1,3 @@
-
-
 .addTask {
   margin-top: 30px;
   margin-bottom: 4px;
@@ -37,14 +35,14 @@ h3 {
   margin-bottom: 8px;
 }
 
-.subtaskcase{
+.subtaskcase {
   border-radius: 12%;
   border: 2.5px solid rgb(39, 39, 185);
   padding: 5px;
   margin-right: 8px;
 }
 
-.subtaskcontainer{
+.subtaskcontainer {
   display: flex;
 }
 
@@ -183,6 +181,8 @@ textarea {
   padding: 5px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgba(117, 116, 116, 0.37);
+  max-height: 200px;
+  overflow: scroll;
 }
 
 .assignment-box-assets span {
@@ -207,6 +207,11 @@ textarea {
   background-color: rgb(39, 39, 185);
   color: white;
   font-size: 15px;
+}
+
+.subtask-button{
+  margin-right: 4px;
+  background-color: rgb(85, 85, 207) !important;
 }
 
 .cancel-button {

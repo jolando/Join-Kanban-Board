@@ -57,7 +57,7 @@ function addSubtask() {
 
 function renderSubtasks(title) {
   document.getElementById('subtaskcontainer').innerHTML += `
-  <span class="subtaskcase">${title.value}</span>`
+  <button class="create-button subtask-button" disabled>${title.value}</button>`
 }
 
 async function executeAddTask() {
