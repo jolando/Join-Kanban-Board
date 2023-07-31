@@ -80,6 +80,14 @@ h2 {
   flex-direction: column;
   overflow-y: auto;
 }
+
+.subtask-container{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  border-top: solid rgb(4, 18, 73);
+  padding-top: 2px;
+}
 .extra-info {
   font-size: 14px;
   padding: 4px 4px;

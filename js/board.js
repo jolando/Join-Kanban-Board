@@ -3,6 +3,8 @@ let todosArr;
 let progressArr;
 let testingArr;
 let doneArr;
+let subtasks;
+let subtask;
 
 /**
  * Load tasks from backend
@@ -16,7 +18,7 @@ async function initBoard() {
   renderTaskInfo();
 }
 
-function getLoggedInUser(){
+function getLoggedInUser() {
   let loggedInUser = localStorage.getItem('username');
   let userId = localStorage.getItem('userid');
   console.log("this is the current user:", loggedInUser);
@@ -113,6 +115,13 @@ function allowDrop(ev) {
  */
 function returnTaskHTML(taskObj) {
   let categoryColor = getRightCategoryColor(taskObj.category);
+  let subtasksHTML = '';
+
+  const matchingSubtasks = getSubtasksForTask(taskObj);
+  for (let i = 0; i < matchingSubtasks.length; i++) {
+    const subtask = matchingSubtasks[i];
+    subtasksHTML += `<span>${subtask.title}</span>`;
+  }
   return `
       <div id="task-unit${taskObj.id}" draggable="true"    ondragstart="onDragTask(${taskObj.id})" ontouchstart="onDragTask(${taskObj.id})"  class="task-unit">
           <div class="task-container">
@@ -124,12 +133,23 @@ function returnTaskHTML(taskObj) {
                 <span class="extra-info">${taskObj.urgency}</span>
               </div>
               <img onclick="deleteBoardCard(${taskObj.id})" class="delete-icon" src="img/close-board.png">
+              <div class="subtask-container">
+              ${subtasksHTML}
+              </div>
           </div>
       </div>`;
 }
 
-
-
+function getSubtasksForTask(taskObj) {
+  let matchingSubtasks = [];
+  for (let i = 0; i < subtasks.length; i++) {
+    let subtask = subtasks[i];
+    if (taskObj.subtasks.includes(subtask.id)) {
+      matchingSubtasks.push(subtask);
+    }
+  }
+  return matchingSubtasks;
+}
 
 
 /**
@@ -145,15 +165,3 @@ function deleteBoardCard(taskId) {
   renderTaskInfo();
 }
 
-/* <div class="subtask"><img class="subtask_button" src="img/icons8-plus.png" onclick="addSubtask()"><span class="tooltip">Create a subtask</span></div> */
-
-// function addSubtask() {
-//   console.log("subtaskadded");
-//   document.getElementById("addSubtask-form").classList.remove('d-none');
-//   document.addEventListener('mouseup', function(e) {
-//     var container = document.getElementById("addSubtask-form");
-//     if (!container.contains(e.target)) {
-//         container.classList.add('d-none');
-//     }
-//   });
-// }

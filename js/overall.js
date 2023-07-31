@@ -33,16 +33,16 @@ function openBurgerMenu() {
  * @returns {String} retrun the right classname
  */
 let getRightCategoryColor = (category) => {
-  if (category == 'MT') {
+  if (category == 'Management') {
     return 'management-color';
   }
-  if (category == 'MK') {
+  if (category == 'Marketing') {
     return 'marketing-color';
   }
-  if (category == 'PR') {
+  if (category == 'Product') {
     return 'product-color';
   }
-  if (category == 'SL') {
+  if (category == 'Sales') {
     return 'sales-color';
   }
 };
