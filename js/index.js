@@ -70,7 +70,7 @@ async function createUserObject() {
   };
   // loginWithBackend(user.email, user.password);
   await registerWithBackend(user);
-  saveUser(user);
+  // saveUser(user);
   console.log('success');
 
   // allRegisteredUsers.push(user);

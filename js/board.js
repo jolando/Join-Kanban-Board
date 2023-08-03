@@ -120,10 +120,14 @@ function returnTaskHTML(taskObj) {
   const matchingSubtasks = getSubtasksForTask(taskObj);
   for (let i = 0; i < matchingSubtasks.length; i++) {
     const subtask = matchingSubtasks[i];
-    subtasksHTML += `<span>${subtask.title}</span>`;
+    const completionStatus = subtask.completion_status;
+    const checkBoxImage = completionStatus ? 'checkbox_checked.png' : 'checkbox_unchecked.jpg';
+    subtasksHTML += `
+    <span>${subtask.title}</span>
+    <img src="img/${checkBoxImage}" id="checkbox-image-${subtask.id}" class="checkbox-image" onclick="subtaskCompleted(${subtask.id}, '${checkBoxImage}')"/>`;
   }
   return `
-      <div id="task-unit${taskObj.id}" draggable="true"    ondragstart="onDragTask(${taskObj.id})" ontouchstart="onDragTask(${taskObj.id})"  class="task-unit">
+      <div id="task-unit${taskObj.id}" draggable="true" ondragstart="onDragTask(${taskObj.id})" ontouchstart="onDragTask(${taskObj.id})"  class="task-unit">
           <div class="task-container">
               <span class="task-title" id="description-container" class="description-container"> ${taskObj.title}</span>
               <span id="task-title" > ${taskObj.description}</span>
@@ -138,6 +142,13 @@ function returnTaskHTML(taskObj) {
               </div>
           </div>
       </div>`;
+}
+
+function subtaskCompleted(subtaskid, checkbox) {
+  if (subtask[subtaskid].completion_status === false) {
+    subtask[subtaskid].completion_status = true;
+    document.getElementById(`checkbox-image-${subtask.id}`).src = `img/${checkbox}`;
+  }
 }
 
 function getSubtasksForTask(taskObj) {

@@ -391,7 +391,7 @@ async function registerWithBackend(user) {
     if (response.ok) {
       // Registration successful
       const json = await response.json();
-      // Do something with the response data
+      window.location.href = "http://127.0.0.1:5505/index.html";
       console.log(json);
     } else {
       // Registration failed
