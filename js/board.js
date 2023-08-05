@@ -144,13 +144,14 @@ function returnTaskHTML(taskObj) {
       </div>`;
 }
 
-function subtaskCompleted(subtaskid, checkbox) {
+function subtaskCompleted(subtaskid) {
   for (let i = 0; i < subtasks.length; i++) {
     const subtask = subtasks[i];
     if (subtask.id == subtaskid) {
       if (subtask.completion_status === false) {
-        subtask.id.completion_status = true;
+        subtask.completion_status = true;
         document.getElementById(`checkbox-image-${subtaskid}`).src = `img/checkbox_checked.png`;
+        updateSubtask(subtask);
       }
     }
   }
