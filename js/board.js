@@ -145,11 +145,18 @@ function returnTaskHTML(taskObj) {
 }
 
 function subtaskCompleted(subtaskid, checkbox) {
-  if (subtask[subtaskid].completion_status === false) {
-    subtask[subtaskid].completion_status = true;
-    document.getElementById(`checkbox-image-${subtask.id}`).src = `img/${checkbox}`;
+  for (let i = 0; i < subtasks.length; i++) {
+    const subtask = subtasks[i];
+    if (subtask.id == subtaskid) {
+      if (subtask.completion_status === false) {
+        subtask.id.completion_status = true;
+        document.getElementById(`checkbox-image-${subtaskid}`).src = `img/checkbox_checked.png`;
+      }
+    }
   }
 }
+
+
 
 function getSubtasksForTask(taskObj) {
   let matchingSubtasks = [];

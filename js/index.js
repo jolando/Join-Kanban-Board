@@ -120,7 +120,7 @@ document.getElementById('register-form').addEventListener('input', () => {
 /**
  * Check if login-form is valid
  */
-function checkLoginInput() {                           // old version with frontend validation
+function checkLoginInput() {
   validateEmail('login-email', 'login-email-hint');
   validatePassword('login-password', 'login-pw-hint');
 }
@@ -149,10 +149,7 @@ function validateRegister(e) {
     validateEmail() &&
     validatePassword() === true
   ) {
-    // const found = newUsers.find(
-    //   (u) => u.email === document.getElementById('register-email').value
-    // );
-    // if (!found) {
+  
     createUserObject();
 
   }
