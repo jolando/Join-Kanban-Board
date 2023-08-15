@@ -33,7 +33,7 @@ async function includeHTML() {
 
 async function includeloggedInUser(){
   let username = localStorage.getItem('username');
-  document.getElementById('loggedin-box').innerHTML =`<span style="color:white">logged in as:</span> ${username}`;
+  document.getElementById('loggedin-box').innerHTML =`<span class="username-span" style="color:white">logged in as:</span> ${username}`;
 }
 
 

@@ -11,7 +11,9 @@
   color: rgb(97, 178, 97);
   text-align: center;
   margin-top: 8px;
+  overflow-wrap: anywhere;
 }
+
 
 .form-left {
   width: 27%;

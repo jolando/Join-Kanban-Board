@@ -353,7 +353,7 @@ async function loginWithBackend(email, password) {
     loggedInUser = json.email;
     localStorage.setItem('token', json.token);
     localStorage.setItem('username', loggedInUser);
-    window.location.href = "http://127.0.0.1:5505/board.html"; //!!! change frontend url
+    window.location.href = "https://sebastian-seitz.developerakademie.com/Join-Kanban-Board22/board.html";
     await getUserId(json);
   } catch (e) {
     console.error();
@@ -391,7 +391,7 @@ async function registerWithBackend(user) {
     if (response.ok) {
       // Registration successful
       const json = await response.json();
-      window.location.href = "http://127.0.0.1:5505/index.html"; //!!!change frontend url
+      window.location.href = "https://sebastian-seitz.developerakademie.com/Join-Kanban-Board22/index.html"; 
       console.log(json);
     } else {
       // Registration failed
