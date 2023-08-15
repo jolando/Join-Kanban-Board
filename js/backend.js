@@ -155,7 +155,7 @@ let loggedInUser;
 
 async function getTasks() {
   try {
-    let response = await fetch("http://127.0.0.1:8000/tasks/");
+    let response = await fetch("https://sebastianseitz36.pythonanywhere.com/tasks");
     tasks = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -167,7 +167,7 @@ async function getTasks() {
 
 async function getSubtasks() {
   try {
-    let response = await fetch('http://127.0.0.1:8000/subtasks/');
+    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/subtasks');
     subtasks = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -178,7 +178,7 @@ async function getSubtasks() {
 }
 async function getUsers() {
   try {
-    let response = await fetch('http://127.0.0.1:8000/users/');
+    let response = await fetch('https://sebastianseitz36.pythonanywhere.com/users/');
     newUsers = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -190,7 +190,7 @@ async function getUsers() {
 
 async function getContacts() {
   try {
-    let response = await fetch("http://127.0.0.1:8000/contacts/");
+    let response = await fetch("https://sebastianseitz36.pythonanywhere.com/contacts");
     contacts = await response.json();
     if (!response.ok)
       throw new Error("Response not ok");
@@ -218,7 +218,7 @@ async function saveTasks(task) {
     redirect: 'follow'
   };
 
-  return fetch("http://127.0.0.1:8000/tasks/", requestOptions)
+  return fetch("https://sebastianseitz36.pythonanywhere.com/tasks/", requestOptions)
     .then(response => response.json());
 }
 
@@ -235,7 +235,7 @@ async function saveSubtasks(subtask) {
     redirect: 'follow'
   };
 
-  fetch("http://127.0.0.1:8000/subtasks/", requestOptions)
+  fetch("https://sebastianseitz36.pythonanywhere.com/subtasks/", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -253,7 +253,7 @@ async function saveContacts(contact) {
     redirect: 'follow'
   };
 
-  fetch("http://127.0.0.1:8000/contacts/", requestOptions)
+  fetch("https://sebastianseitz36.pythonanywhere.com/contacts/", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -272,7 +272,7 @@ function saveUser(user) {
     redirect: 'follow'
   };
 
-  fetch("http://127.0.0.1:8000/users/", requestOptions)
+  fetch("https://sebastianseitz36.pythonanywhere.com/users/", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -291,7 +291,7 @@ function updateTask(task) {
 
   };
 
-  fetch(`http://127.0.0.1:8000/tasks/${task.id}/`, requestOptions)
+  fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${task.id}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -310,7 +310,7 @@ function updateSubtask(subtask) {
 
   };
 
-  fetch(`http://127.0.0.1:8000/subtasks/${subtask.id}/`, requestOptions)
+  fetch(`https://sebastianseitz36.pythonanywhere.com/subtasks/${subtask.id}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -325,7 +325,7 @@ function deleteTask(taskId) {
     headers: myHeaders,
   };
 
-  fetch(`http://127.0.0.1:8000/tasks/${taskId}/`, requestOptions)
+  fetch(`https://sebastianseitz36.pythonanywhere.com/tasks/${taskId}/`, requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -348,12 +348,12 @@ async function loginWithBackend(email, password) {
   };
 
   try {
-    let resp = await fetch("http://127.0.0.1:8000/login/", requestOptions)
+    let resp = await fetch("https://sebastianseitz36.pythonanywhere.com/login/", requestOptions)
     let json = await resp.json();
     loggedInUser = json.email;
     localStorage.setItem('token', json.token);
     localStorage.setItem('username', loggedInUser);
-    window.location.href = "http://127.0.0.1:5505/board.html";
+    window.location.href = "http://127.0.0.1:5505/board.html"; //!!! change frontend url
     await getUserId(json);
   } catch (e) {
     console.error();
@@ -387,11 +387,11 @@ async function registerWithBackend(user) {
   };
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/register/", requestOptions);
+    const response = await fetch("https://sebastianseitz36.pythonanywhere.com/register/", requestOptions);
     if (response.ok) {
       // Registration successful
       const json = await response.json();
-      window.location.href = "http://127.0.0.1:5505/index.html";
+      window.location.href = "http://127.0.0.1:5505/index.html"; //!!!change frontend url
       console.log(json);
     } else {
       // Registration failed
